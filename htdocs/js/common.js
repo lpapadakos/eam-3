@@ -1,29 +1,9 @@
-//////// MENU /////////
-(function($){
-			//cache nav
-			var nav = $("#topNav");
-			//add indicator and hovers to submenu parents
-			nav.find("li").each(function() {
-				if ($(this).find("ul").length > 0) {
-					//show subnav on hover
-					$(this).mouseenter(function() {
-						$(this).find("ul").stop(true, true).slideDown();
-					});
-					//hide submenus on exit
-					$(this).mouseleave(function() {
-						$(this).find("ul").stop(true, true).slideUp();
-					});
-				}
-			});
-		})(jQuery);
-
-
 //////// SCROLL TO TOP /////////
 $(document).ready(function(){
 
 	// hide #back-top first
 	$(".back-top").hide();
-	
+
 	// fade in #back-top
 	$(function () {
 		$(window).scroll(function () {
@@ -56,7 +36,7 @@ window.selectnav=function(){return function(p,q){var a,h=function(b){var c;b||(b
 c;f++){var e=b.children[f].children[0];if("undefined"!==typeof e){var h=e.innerText||e.textContent,i="";j&&(i=-1!==e.className.search(j)||-1!==e.parentElement.className.search(j)?m:"");s&&!i&&(i=e.href===document.URL?m:"");a+='<option value="'+e.href+'" '+i+">"+d+h+"</option>";t&&(e=b.children[f].children[1])&&k(e)&&(a+=n(e))}}1===g&&o&&(a='<option value="">'+o+"</option>"+a);1===g&&(a='<select class="selectnav" id="'+l(!0)+'">'+a+"</select>");g--;return a}};if((a=document.getElementById(p))&&k(a)){document.documentElement.className+=
 " js";var d=q||{},j=d.activeclass||"active",s="boolean"===typeof d.autoselect?d.autoselect:!0,t="boolean"===typeof d.nested?d.nested:!0,r=d.indent||"\u2192",o=d.label||"- Navigation -",g=0,m=" selected ";a.insertAdjacentHTML("afterend",n(a));a=document.getElementById(l());a.addEventListener&&a.addEventListener("change",h);a.attachEvent&&a.attachEvent("onchange",h)}}}();
 
-selectnav('responsivemenu', { 
+selectnav('responsivemenu', {
   label: 'MENU',
   nested: true,
   indent: '-'
