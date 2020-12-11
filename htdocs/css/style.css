@@ -191,15 +191,15 @@ nav ul { padding: 0; margin: 0; }
 nav ul ul li { height: auto }
 nav li { -webkit-transition: all 0.5s ease-in-out; -moz-transition: all 0.5s ease-in-out; -o-transition: all 0.5s ease-in-out; -ms-transition: all 0.5s ease-in-out; transition: all 0.5s ease-in-out; position: relative; float: left; list-style-type: none; z-index: 1; font-size: 15px; margin-left: 5px; line-height: 67px; }
 nav li:hover, nav li a:hover { -webkit-transition: all 0.5s ease-in-out; -moz-transition: all 0.5s ease-in-out; -o-transition: all 0.5s ease-in-out; -ms-transition: all 0.5s ease-in-out; transition: all 0.5s ease-in-out; background: #555; color: #fff; }
-nav li.active { background: #555 }
-nav li.active a { color: #fff }
+nav li.active > a { font-weight: bold; }
+/* nav li.active a { color: #fff } */
 nav ul:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 nav li a { display: block; padding: 10px 13px 10px 10px; color: #111; text-decoration: none; }
 nav li a:focus { outline: none; text-decoration: none; }
 nav li:first-child a { border-left: none }
 nav li.last a { border-right: none }
 nav a span { display: block; float: right; margin-left: 5px; }
-nav ul ul { display: none; position: absolute; background: #555; left: 0px; min-width: 150px; }
+nav ul ul { display: none; position: absolute; background: #555; left: 0px; min-width: 170px; }
 nav ul ul li { float: none; line-height: 30px; }
 nav ul ul a { text-transform: none; -webkit-transition-property: background color; -webkit-transition-duration: 0.5s; -webkit-transition-timing-function: ease; -moz-transition-property: background color; -moz-transition-duration: 0.5s; -moz-transition-timing-function: ease; -o-transition-property: background color; -o-transition-duration: 0.5s; -o-transition-timing-function: ease; -ms-transition-property: background color; -ms-transition-duration: 0.5s; -ms-transition-timing-function: ease; transition-property: background color; transition-duration: 0.5s; transition-timing-function: ease; padding: 5px 10px; border-left: none; border-right: none; font-size: 14px; color: #fff; margin-left: -5px; }
 nav ul ul a:hover { margin-left: 0px; background: rgba(0,0,0,0.1); margin-left: -5px; -webkit-transition-property: background color; -webkit-transition-duration: 0.5s; -webkit-transition-timing-function: ease; -moz-transition-property: background color; -moz-transition-duration: 0.5s; -moz-transition-timing-function: ease; -o-transition-property: background color; -o-transition-duration: 0.5s; -o-transition-timing-function: ease; -ms-transition-property: background color; -ms-transition-duration: 0.5s; -ms-transition-timing-function: ease; transition-property: background color; transition-duration: 0.5s; transition-timing-function: ease; }
