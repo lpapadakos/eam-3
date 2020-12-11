@@ -69,7 +69,7 @@
 	<div class="grid">
 		<div class="row">
 			<div class="c6">
-				 Your Name &copy; 2015. All Rights Reserved.
+				Totally το Υπουργείο Εργασίας &amp; &copy; 2015. All Rights Reserved.
 			</div>
 			<div class="c6">
 				<span class="right">

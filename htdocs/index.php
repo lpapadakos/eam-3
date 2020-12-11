@@ -1,5 +1,9 @@
+<!-- TODO BOIII
+	include_path = ".${_SERVER['DOCUMENT_ROOT']}";
+-->
+
 <!DOCTYPE html>
-<html>
+<html lang="el">
 <head>
 	<meta name="viewport" content="width=device-width"/>
 	<title>Υπουργείο Εργασίας &amp; Κοινωνικών Υποθέσεων</title>
@@ -11,7 +15,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/slider.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/skinblue.css"/><!-- change skin color -->
 	<link rel="stylesheet" type="text/css" href="/css/responsive.css"/>
-	<script src="js/jquery-1.9.0.min.js"></script><!-- the rest of the scripts at the bottom of the document -->
+	<script src="/js/jquery-1.9.0.min.js"></script><!-- the rest of the scripts at the bottom of the document -->
 </head>
 <body>
 	<!-- TOP LOGO & MENU
@@ -287,23 +291,6 @@
 				</div>
 			</div>
 		</div>
-		<!-- CALL TO ACTION
-		================================================== -->
-		<div class="row space-bot">
-			<div class="c12">
-				<div class="wrapaction">
-					<div class="c9">
-						<h1 class="subtitles">Salique is incredibly awesome, with a refreshingly clean design</h1>
-						We produce comprehensive mapping of consumers' relationships with communications across bought, owned & earned media based on bespoke insight. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam hendrerit lacus mattis orci fermentum mollis iaculis.
-					</div>
-					<div class="c3 text-center" style="margin-top:40px;">
-						<div class="actionbutton">
-							<i class=" icon-download-alt"></i> DOWNLOAD NOW
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 	</div><!-- end grid -->
 
 	<!-- FOOTER
@@ -313,22 +300,22 @@
 	<!-- JAVASCRIPTS
 	================================================== -->
 	<!-- all -->
-	<script src="js/modernizr-latest.js"></script>
+	<script src="/js/modernizr-latest.js"></script>
 
 	<!-- menu & scroll to top -->
-	<script src="js/common.js"></script>
+	<!-- <script src="/js/common.js"></script> -->
 
 	<!-- slider -->
-	<script src="js/jquery.cslider.js"></script>
+	<script src="/js/jquery.cslider.js"></script>
 
 	<!-- cycle -->
-	<script src="js/jquery.cycle.js"></script>
+	<script src="/js/jquery.cycle.js"></script>
 
 	<!-- carousel items -->
-	<script src="js/jquery.carouFredSel-6.0.3-packed.js"></script>
+	<script src="/js/jquery.carouFredSel-6.0.3-packed.js"></script>
 
 	<!-- twitter -->
-	<script src="js/jquery.tweet.js"></script>
+	<script src="/js/jquery.tweet.js"></script>
 
 	<!-- Call Showcase - change 4 from min:4 and max:4 to the number of items you want visible -->
 	<script type="text/javascript">
