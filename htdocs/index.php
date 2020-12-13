@@ -114,43 +114,105 @@
 					<h1 class="title" style="text-transform:none;">Html theme with awesome features, sliders, unlimited colors & much more!</h1>
 				</div>
 			</div>
-			<!--Box 1-->
-			<div class="c4">
-				<h2 class="title hometitlebg"><i class="icon-qrcode smallrightmargin"></i> Responsive Theme</h2>
-				<div class="noshadowbox">
-					<h5>DELIVERY</h5>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam hendrerit lacus mattis orci fermentum mollis iaculis purus lobortis. In et purus ut nunc elementum dapibus facilisis in quam.
-					</p>
-					<p class="bottomlink">
-						<a href="#" class="neutralbutton"><i class="icon-link"></i></a>
-					</p>
+			<div class="c12">
+				<!--Box 1-->
+				<div class="vuzz-pricing-table c4">
+					<div class="vuzz-pricing-content">
+						<div class="vuzz-pricing-header">
+							<h5>Εργοδότες</h5>
+						</div>
+						<div class="button">
+							<a class="button" href="#">
+								<i class="icon-cog">Δήλωση εξ αποστασεως εργασιας</i>			
+							</a>
+						</div>
+						<div class="button">
+							<a class="button" href="#">
+								<i class="icon-cog">Κρατική Επιχορηγηση</i>			
+							</a>
+						</div>
+						<div class="button">
+							<a class="button" href="#">
+								<i class="icon-cog">Κρατική Επιχορηγηση</i>			
+							</a>
+						</div>
+						<div class="button">
+							<a class="button" href="#">
+								<i class="icon-cog">Κρατική Επιχορηγηση</i>			
+							</a>
+						</div>
+						<div class="button">
+							<a class="button" href="#">
+								<i class="icon-cog">Κρατική Επιχορηγηση</i>			
+							</a>
+						</div>
+					</div>
 				</div>
-			</div>
-			<!--Box 2-->
-			<div class="c4">
-				<h2 class="title hometitlebg"><i class="icon-cog smallrightmargin"></i> Unlimited Colors</h2>
-				<div class="noshadowbox">
-					<h5>QUALITY</h5>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam hendrerit lacus mattis orci fermentum mollis iaculis purus lobortis. In et purus ut nunc elementum dapibus facilisis in quam.
-					</p>
-					<p class="bottomlink">
-						<a href="#" class="neutralbutton"><i class="icon-link"></i></a>
-					</p>
+				<!--Box 2-->
+				<div class="vuzz-pricing-table c4">
+					<div class="vuzz-pricing-content">
+						<div class="vuzz-pricing-header">
+							<h5>Εργαζόμενοι</h5>
+						</div>
+						<div class="button">
+							<a class="button" href="#">
+								<i class="icon-cog">Δήλωση εξ αποστασεως εργασιας</i>			
+							</a>
+						</div>
+						<div class="button">
+							<a class="button" href="#">
+								<i class="icon-cog">Κρατική Επιχορηγηση</i>			
+							</a>
+						</div>
+						<div class="button">
+							<a class="button" href="#">
+								<i class="icon-cog">Κρατική Επιχορηγηση</i>			
+							</a>
+						</div>
+						<div class="button">
+							<a class="button" href="#">
+								<i class="icon-cog">Κρατική Επιχορηγηση</i>			
+							</a>
+						</div>
+						<div class="button">
+							<a class="button" href="#">
+								<i class="icon-cog">Κρατική Επιχορηγηση</i>			
+							</a>
+						</div>
+					</div>
 				</div>
-			</div>
-			<!--Box 3-->
-			<div class="c4">
-				<h2 class="title hometitlebg"><i class="icon-user" style="margin-right:10px;"></i> MultiPurpose Use</h2>
-				<div class="noshadowbox">
-					<h5>PRICING</h5>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam hendrerit lacus mattis orci fermentum mollis iaculis purus lobortis. In et purus ut nunc elementum dapibus facilisis in quam.
-					</p>
-					<p class="bottomlink">
-						<a href="#" class="neutralbutton"><i class="icon-link"></i></a>
-					</p>
+				<!--Box 3-->
+				<div class="vuzz-pricing-table c4">
+					<div class="vuzz-pricing-content">
+						<div class="vuzz-pricing-header">
+							<h5>Άνεργοι</h5>
+						</div>
+						<div class="button">
+							<a class="button" href="#">
+								<i class="icon-cog">Δήλωση εξ αποστασεως εργασιας</i>			
+							</a>
+						</div>
+						<div class="button">
+							<a class="button" href="#">
+								<i class="icon-cog">Κρατική Επιχορηγηση</i>			
+							</a>
+						</div>
+						<div class="button">
+							<a class="button" href="#">
+								<i class="icon-cog">Κρατική Επιχορηγηση</i>			
+							</a>
+						</div>
+						<div class="button">
+							<a class="button" href="#">
+								<i class="icon-cog">Κρατική Επιχορηγηση</i>			
+							</a>
+						</div>
+						<div class="button">
+							<a class="button" href="#">
+								<i class="icon-cog">Κρατική Επιχορηγηση</i>			
+							</a>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
