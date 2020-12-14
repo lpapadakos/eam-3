@@ -29,41 +29,26 @@
 		<div id="da-slider" class="da-slider">
 			<!--Slide 1-->
 			<div class="da-slide">
-				<h2> Elegant Design </h2>
+				<h2> Ηλεκτρονικά Ραντεβού </h2>
 				<p>
-					With the right, great looking responsive website template, you will be able to attract visitors and increase your sales. This is an elegant theme designed for multi-purpose use.
+				Οι επισκέπτες δύνανται να κλείσουν ηλεκτρονικό ραντεβού μέσω της σχετικής πλατφόρμας μόνο για συγκεκριμένες κατηγορίες αιτήματος.
 				</p>
-				<a href="#" class="da-link" style="width:202px;">Multi-Purpose</a>
+				<a href="#" class="da-link" style="width:202px;">Δηλωση</a>
 				<div class="da-img">
-					<img src="http://placehold.it/238x420&text=Silhouette+here" alt="">
+					<img src="https://startpage.com/av/proxy-image?piurl=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcQBCZg0SSoZ6yIbH0HAdnbtmr8mQZjwVq-RDX0KX8RA29vIT1-A%26s&sp=1607880060T47965a34d0579d1357f31a1346a5945936fbaa85d125c087fb098af21e000b28" alt="">
 				</div>
 			</div>
 			<!--Slide 2-->
 			<div class="da-slide">
-				<h2>Responsive</h2>
+				<h2>Covid-19</h2>
 				<p>
-					We produce comprehensive mapping of consumers' relationships with communications across bought, owned & earned media based on bespoke insight.
+					Οδηγιες για την ασφαλεια στην εργασια απο τον Covid-19
 				</p>
-				<a href="#" class="da-link" style="width:192px;">MEDIA DEVICES</a>
+				<a href="#" class="da-link" style="width:192px;">Οδηγιες</a>
 				<div class="da-img">
-					<img src="http://placehold.it/238x420&text=Silhouette+here" alt="">
+					<img src="https://startpage.com/av/proxy-image?piurl=https%3A%2F%2Fwww.coe.int%2Fdocuments%2F21202288%2F62129062%2Flanguages-COVID-19_used%2Bby%2BCoE%2Bmain%2Bportal.jpg%2Fb9882ed7-9e7b-caf8-c6e4-9cec0f125baa%3Ft%3D1585837178000&sp=1607880025T589d4d0b0432c04b95fa6188ff2e9de50c40c940d32aa108b5a02debe7b6ff2b" alt="">
 				</div>
 			</div>
-			<!--Slide 3-->
-			<div class="da-slide">
-				<h2> Easy to modify </h2>
-				<p>
-					We design, create and manage fully integrated social media platforms, online PR strategy and campaigns for our clients, ability to analyse, monitor and optimise brand presence.
-				</p>
-				<a href="#" class="da-link" style="width:224px;">fully supported</a>
-				<div class="da-img">
-					<img src="http://placehold.it/238x420" alt="">
-				</div>
-			</div>
-			<nav class="da-arrows">
-			<span class="da-arrows-prev"></span>
-			<span class="da-arrows-next"></span>
-			</nav>
 		</div>
 	</div>
 	<!-- UNDER SLIDER - BLACK AREA
@@ -110,8 +95,7 @@
 			<!--INTRO-->
 			<div class="c12">
 				<div class="royalcontent">
-					<h1 class="royalheader">WELCOME TO SALIQUE, MULTI-PURPOSE THEME</h1>
-					<h1 class="title" style="text-transform:none;">Html theme with awesome features, sliders, unlimited colors & much more!</h1>
+					<h1 class="title">ΥΠΗΡΕΣΙΕΣ ΠΡΟΣ</h1>
 				</div>
 			</div>
 			<div class="c12">
@@ -152,7 +136,7 @@
 				<div class="vuzz-pricing-table c4">
 					<div class="vuzz-pricing-content">
 						<div class="vuzz-pricing-header">
-							<h5>Εργαζόμενοι</h5>
+							<h5>Εργαζόμενους</h5>
 						</div>
 						<div class="button">
 							<a class="button" href="#">
@@ -185,7 +169,7 @@
 				<div class="vuzz-pricing-table c4">
 					<div class="vuzz-pricing-content">
 						<div class="vuzz-pricing-header">
-							<h5>Άνεργοι</h5>
+							<h5>Ανέργους</h5>
 						</div>
 						<div class="button">
 							<a class="button" href="#">
@@ -221,7 +205,7 @@
 		<div class="row space-top">
 			<div class="c12 space-top">
 				<h1 class="maintitle ">
-				<span>SHOWCASE</span>
+				<span>Δελτια Τύπου και Ανακοινώσεις</span>
 				</h1>
 			</div>
 		</div>
@@ -238,115 +222,64 @@
 						<!--featured-projects 1-->
 						<li>
 						<div class="featured-projects">
-							<div class="featured-projects-image">
-								<a href="#"><img src="http://placehold.it/275x180" class="imgOpa" alt=""></a>
-							</div>
 							<div class="featured-projects-content">
-								<h1><a href="#">Dolor sit amet</a></h1>
+								<h1><a href="#">ΚΥΑ - ΔΙΑΔΙΚΑΣΙΑ ΓΙΑ ΤΗΝ ΨΗΦΙΑΚΗ ΣΥΝΔΕΣΗ ΠΑΙΔΙΩΝ ΜΕ ΥΠΟΨΗΦΙΟΥΣ ΑΝΑΔΟΧΟΥΣ Η ΘΕΤΟΥΣ ΓΟΝΕΙΣ (DT_2020-08-0_01)</a></h1>
 								<p>
-									porta acean pulvinar
+								Υπoγράφηκε χθες η Κοινή Υπουργική Απόφαση (ΚΥΑ) για την ολοκλήρωση της σύνδεσης των παιδιών που βρίσκονται σε δομές παιδικής προστασίας και των υποψηφίων γονέων. Η απόφαση προβλέπει, για πρώτη φορά, την ακριβή διαδικασία τοποθέτησης παιδιών σε ανάδοχες ή θετές οικογένειες μετά την πρόταση σύνδεσης από το Πληροφοριακό Σύστημα. Προστατεύει τα προσωπικά δεδομένα και τα δικαιώματα των παιδιών και ορίζει εξειδικευμένους κοινωνικούς λειτουργούς τόσο για το παιδί όσο και για τους υποψήφιους γονείς 
 								</p>
+								<a href="#">Περισσότερα...</a>
 							</div>
 						</div>
 						</li>
 						<!--featured-projects 2-->
 						<li>
 						<div class="featured-projects">
-							<div class="featured-projects-image">
-								<a href="#"><img src="http://placehold.it/275x180" class="imgOpa" alt=""></a>
-							</div>
 							<div class="featured-projects-content">
-								<h1><a href="#">Nunc elementum </a></h1>
+								<h1><a href="#">ΤΕΛΕΤΗ ΠΑΡΑΛΑΒΗΣ ΤΟΥ ΥΦΥΠ. ΚΟΙΝΩΝΙΚΗΣ ΑΣΦΑΛΙΣΗΣ ΣΤΟ ΥΠΟΥΡΓΕΙΟ ΕΡΓΑΣΙΑΣ (DT_2020-08-05_01)</a></h1>
 								<p>
-									porta acean pulvinar
+								Τελετή παραλαβής στο Υπουργείο Εργασίας και Κοινωνικών Υποθέσεων από τον νέο Υφυπουργό Κοινωνικής Ασφάλισης Παναγιώτη Τσακλόγλου με αρμοδιότητα την Κοινωνική Ασφάλιση 
 								</p>
+								<a href="#">Περισσότερα...</a>
 							</div>
 						</div>
 						</li>
 						<!--featured-projects 3-->
 						<li>
 						<div class="featured-projects">
-							<div class="featured-projects-image">
-								<a href="#"><img src="http://placehold.it/275x180" class="imgOpa" alt=""></a>
-							</div>
 							<div class="featured-projects-content">
-								<h1><a href="#">Sit amet</a></h1>
+								<h1><a href="#">ΑΝΑΡΤΗΣΗ ΟΡΙΣΤΙΚΩΝ ΠΙΝΑΚΩΝ ΓΙΑ ΤΟ ΠΡΟΓΡΑΜΜΑ ΚΟΙΝΩΦΕΛΟΥΣ ΑΠΑΣΧΟΛΗΣΗΣ 36.500 ΑΝΕΡΓΩΝ (DT_2020-08-04_01)</a></h1>
 								<p>
-									porta acean pulvinar
+								Αναρτήθηκαν σήμερα, Δευτέρα 3 Αυγούστου 2020, στη διαδικτυακή πύλη του ΟΑΕΔ www.oaed.gr ο Οριστικός Πίνακας Κατάταξης Ανέργων, στο Πρόγραμμα «Προώθηση της απασχόλησης μέσω προγραμμάτων κοινωφελούς χαρακτήρα, συμπεριλαμβανομένης και της κατάρτισης για 36.500 άτομα σε Δήμους, Περιφέρειες, Κέντρα Κοινωνικής Πρόνοιας Περιφερειών (ΚΚΠΠ)/συναφείς φορείς, Υπηρεσίες Υπουργείων και άλλων φορέων», για 36.500 θέσεις εργασίας θέσεις πλήρους απασχόλησης, καθώς και ο Οριστικός Πίνακας Αποκλειομένων.  
 								</p>
+								<a href="#">Περισσότερα...</a>
 							</div>
 						</div>
 						</li>
 						<!--featured-projects 4-->
 						<li>
 						<div class="featured-projects">
-							<div class="featured-projects-image">
-								<a href="#"><img src="http://placehold.it/275x180" class="imgOpa" alt=""></a>
-							</div>
 							<div class="featured-projects-content">
-								<h1><a href="#">Dapibus facilisis</a></h1>
+								<h1><a href="#">ΈΚΤΑΚΤΗ ΑΝΑΚΟΙΝΩΣΗ - ΝΕΕΣ ΑΝΑΣΤΟΛΕΣ (DT_2020-08-03_01)</a></h1>
 								<p>
-									porta acean pulvinar
+								Το Υπουργείο Εργασίας και Κοινωνικών Υποθέσεων σε συνεργασία με το Υπουργείο Οικονομικών, στο πλαίσιο της κλιμάκωσης των μέτρων προστασίας από την πανδημία που έλαβε πριν λίγο η Πολιτική Προστασία, δίνει ξανά τη δυνατότητα στις επιχειρήσεις της εστίασης, του πολιτισμού και του αθλητισμού να θέτουν σε αναστολή τις συμβάσεις εργασίας των εργαζομένων τους από 1.8.2020 μέχρι και 31.8.2020.    
 								</p>
+								<a href="#">Περισσότερα...</a>
 							</div>
 						</div>
 						</li>
 						<!--featured-projects 5-->
 						<li>
 						<div class="featured-projects">
-							<div class="featured-projects-image">
-								<a href="#"><img src="http://placehold.it/275x180" class="imgOpa" alt=""></a>
-							</div>
 							<div class="featured-projects-content">
-								<h1><a href="#">Nunc elementum</a></h1>
+								<h1><a href="#">ΟΜΙΛΙΑ ΥΦΥΠΟΥΡΓΟΥ ΕΡΓΑΣΙΑΣ ΚΑΙ ΚΟΙΝΩΝΙΚΩΝ ΥΠΟΘΕΣΕΩΝ Κ. ΔΟΜΝΑΣ ΜΙΧΑΗΛΙΔΟΥ ΓΙΑ ΤΗΝ ΠΑΓΚΟΣΜΙΑ ΗΜΕΡΑ ΚΑΤΑ ΤΗΣ ΕΜΠΟΡΙΑΣ ΑΝΘΡΩΠΩΝ ΣΤΗΝ ΕΙΔΙΚΗ ΣΥΝΕΔΡΙΑΣΗ ΣΤΗ ΒΟΥΛΗ (DT_2020-07-31_01)</a></h1>
 								<p>
-									porta acean pulvinar
+								Για ένα έγκλημα κατά της ανθρώπινης αξιοπρέπειας και του πολιτισμού έκανε λόγο σήμερα η Υφυπουργός Εργασίας και Κοινωνικών Υποθέσεων κ. Δόμνα Μιχαηλίδου, στην ειδική εκδήλωση της Βουλής των Ελλήνων για την Παγκόσμια Ημέρα κατά της Εμπορίας Ανθρώπων, ενώπιον της Προέδρου της Δημοκρατίας και του Πρωθυπουργού.    
 								</p>
+								<a href="#">Περισσότερα...</a>
 							</div>
 						</div>
 						</li>
 						<!--featured-projects 6-->
-						<li>
-						<div class="featured-projects">
-							<div class="featured-projects-image">
-								<a href="#"><img src="http://placehold.it/275x180" class="imgOpa" alt=""></a>
-							</div>
-							<div class="featured-projects-content">
-								<h1><a href="#">Dolor sit amet</a></h1>
-								<p>
-									porta acean pulvinar
-								</p>
-							</div>
-						</div>
-						</li>
-						<!--featured-projects 7-->
-						<li>
-						<div class="featured-projects">
-							<div class="featured-projects-image">
-								<a href="#"><img src="http://placehold.it/275x180" class="imgOpa" alt=""></a>
-							</div>
-							<div class="featured-projects-content">
-								<h1><a href="#">HTML Theme</a></h1>
-								<p>
-									porta acean pulvinar
-								</p>
-							</div>
-						</div>
-						</li>
-						<!--featured-projects 8-->
-						<li>
-						<div class="featured-projects">
-							<div class="featured-projects-image">
-								<a href="#"><img src="http://placehold.it/275x180" class="imgOpa" alt=""></a>
-							</div>
-							<div class="featured-projects-content">
-								<h1><a href="#">Salique bedroom</a></h1>
-								<p>
-									porta acean pulvinar
-								</p>
-							</div>
-						</div>
-						</li>
 					</ul>
 					<div class="clearfix">
 					</div>
