@@ -105,29 +105,29 @@
 						<div class="vuzz-pricing-header">
 							<h5>Εργοδότες</h5>
 						</div>
-						<div class="button">
-							<a class="button" href="#">
+						<div class="toolbutton">
+							<a class="toolbutton" href="#">
 								<i class="icon-cog">Δήλωση εξ αποστασεως εργασιας</i>			
 							</a>
 						</div>
-						<div class="button">
-							<a class="button" href="#">
+						<div class="toolbutton">
+							<a class="toolbutton" href="#">
 								<i class="icon-cog">Κρατική Επιχορηγηση</i>			
 							</a>
 						</div>
-						<div class="button">
-							<a class="button" href="#">
-								<i class="icon-cog">Κρατική Επιχορηγηση</i>			
+						<div class="toolbutton">
+							<a class="toolbutton" href="#">
+								<i class="icon-cog">Δήλωση εξ αποστασεως εργασιας</i>			
 							</a>
 						</div>
-						<div class="button">
-							<a class="button" href="#">
-								<i class="icon-cog">Κρατική Επιχορηγηση</i>			
+						<div class="toolbutton">
+							<a class="toolbutton" href="#">
+								<i class="icon-cog">Δήλωση εξ αποστασεως εργασιας</i>			
 							</a>
 						</div>
-						<div class="button">
-							<a class="button" href="#">
-								<i class="icon-cog">Κρατική Επιχορηγηση</i>			
+						<div class="toolbutton">
+							<a class="toolbutton" href="#">
+								<i class="icon-cog">Δήλωση εξ αποστασεως εργασιας</i>			
 							</a>
 						</div>
 					</div>
@@ -136,31 +136,31 @@
 				<div class="vuzz-pricing-table c4">
 					<div class="vuzz-pricing-content">
 						<div class="vuzz-pricing-header">
-							<h5>Εργαζόμενους</h5>
+							<h5>Εργοδότες</h5>
 						</div>
-						<div class="button">
-							<a class="button" href="#">
+						<div class="toolbutton">
+							<a class="toolbutton" href="#">
 								<i class="icon-cog">Δήλωση εξ αποστασεως εργασιας</i>			
 							</a>
 						</div>
-						<div class="button">
-							<a class="button" href="#">
+						<div class="toolbutton">
+							<a class="toolbutton" href="#">
 								<i class="icon-cog">Κρατική Επιχορηγηση</i>			
 							</a>
 						</div>
-						<div class="button">
-							<a class="button" href="#">
-								<i class="icon-cog">Κρατική Επιχορηγηση</i>			
+						<div class="toolbutton">
+							<a class="toolbutton" href="#">
+								<i class="icon-cog">Δήλωση εξ αποστασεως εργασιας</i>			
 							</a>
 						</div>
-						<div class="button">
-							<a class="button" href="#">
-								<i class="icon-cog">Κρατική Επιχορηγηση</i>			
+						<div class="toolbutton">
+							<a class="toolbutton" href="#">
+								<i class="icon-cog">Δήλωση εξ αποστασεως εργασιας</i>			
 							</a>
 						</div>
-						<div class="button">
-							<a class="button" href="#">
-								<i class="icon-cog">Κρατική Επιχορηγηση</i>			
+						<div class="toolbutton">
+							<a class="toolbutton" href="#">
+								<i class="icon-cog">Δήλωση εξ αποστασεως εργασιας</i>			
 							</a>
 						</div>
 					</div>
@@ -169,31 +169,31 @@
 				<div class="vuzz-pricing-table c4">
 					<div class="vuzz-pricing-content">
 						<div class="vuzz-pricing-header">
-							<h5>Ανέργους</h5>
+							<h5>Εργοδότες</h5>
 						</div>
-						<div class="button">
-							<a class="button" href="#">
+						<div class="toolbutton">
+							<a class="toolbutton" href="#">
 								<i class="icon-cog">Δήλωση εξ αποστασεως εργασιας</i>			
 							</a>
 						</div>
-						<div class="button">
-							<a class="button" href="#">
+						<div class="toolbutton">
+							<a class="toolbutton" href="#">
 								<i class="icon-cog">Κρατική Επιχορηγηση</i>			
 							</a>
 						</div>
-						<div class="button">
-							<a class="button" href="#">
-								<i class="icon-cog">Κρατική Επιχορηγηση</i>			
+						<div class="toolbutton">
+							<a class="toolbutton" href="#">
+								<i class="icon-cog">Δήλωση εξ αποστασεως εργασιας</i>			
 							</a>
 						</div>
-						<div class="button">
-							<a class="button" href="#">
-								<i class="icon-cog">Κρατική Επιχορηγηση</i>			
+						<div class="toolbutton">
+							<a class="toolbutton" href="#">
+								<i class="icon-cog">Δήλωση εξ αποστασεως εργασιας</i>			
 							</a>
 						</div>
-						<div class="button">
-							<a class="button" href="#">
-								<i class="icon-cog">Κρατική Επιχορηγηση</i>			
+						<div class="toolbutton">
+							<a class="toolbutton" href="#">
+								<i class="icon-cog">Δήλωση εξ αποστασεως εργασιας</i>			
 							</a>
 						</div>
 					</div>
