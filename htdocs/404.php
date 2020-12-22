@@ -23,11 +23,8 @@
 		</div>
 		<div class="grid">
 			<div class="row">
-				<div class="c8">
-					<h1 class="titlehead">Oops...</h1>
-				</div>
 				<div class="c4">
-					<h1 class="titlehead rightareaheader"><i class="icon-map-marker"></i> Call Us Now 1-318-107-432</h1>
+					<h1 class="titlehead rightareaheader"><i class="icon-map-marker smallrightmargin"></i>Καλέστε μας στο 2131516649</h1>
 				</div>
 			</div>
 		</div>
@@ -40,16 +37,15 @@
 				<div class="c1">
 				</div>
 				<div class="c10" style="text-align:center;margin-top:90px;margin-bottom:190px;">
-					<h1>SORRY, PAGE NOT FOUND</h1>
+					<h1>Η σελίδα δεν βρέθηκε</h1>
 					<div class="pageline">
 					</div>
-					<p>
+					<!--<p>
 						We've recently updated our site and the page you requested cannot be found. <br/>If you tried to load a previously bookmarked page, or followed a link from another web site, it is possible that the URL has been moved.
-					</p>
+					</p> -->
 					<br/>
-					<div class="actionbutton">
-						<a href="index.html"><i class=" icon-link"></i> VISIT OUR HOMEPAGE</a>
-					</div>
+					<a class="actionbutton" href="/"><i class="icon-link smallrightmargin"></i>ΕΠΙΣΤΡΟΦΗ ΣΤΗΝ ΑΡΧΙΚΗ</a>
+					<img style="position: relative; z-index: -1; margin-top: -60px" src="/images/404.jpg" alt="Αστροναύτης χαμένος στο κενό του διαστήματος">
 				</div>
 				<div class="c1">
 				</div>
