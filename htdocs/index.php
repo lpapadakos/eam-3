@@ -102,29 +102,29 @@
 			</div>
 			<!--Persona 1-->
 			<div class="c4">
-			<h2 class="title hometitlebg">ΕΡΓΟΔΟΤΕΣ</h2>
+			<h2 class="title hometitlebg"><a href="#">ΕΡΓΟΔΟΤΕΣ</a></h2>
 				<ul class="noshadowbox">
-					<li><a href="#"><i class="icon-cog smallrightmargin"></i>Δήλωση εξ αποστασεως εργασιας</a></li>
-					<li><a href="#"><i class="icon-cog smallrightmargin"></i>Δήλωση εξ αποστασεως εργασιας</a></li>
-					<li><a href="#"><i class="icon-cog smallrightmargin"></i>Δήλωση εξ αποστασεως εργασιας</a></li>
+					<li><a href="#"><i class="icon-cog smallrightmargin"></i>Αρχείο Κατάστασης Εργαζομένων</a></li>
+					<li><a href="#"><i class="icon-cog smallrightmargin"></i>Έκπτωση Εισφορών</a></li>
+					<li><a href="#"><i class="icon-cog smallrightmargin"></i>Κρατική Επιχορήγηση</a></li>
 				</ul>
 			</div>
 			<!--Persona 2-->
 			<div class="c4">
-				<h2 class="title hometitlebg" style="background-color: #257539">ΕΡΓΑΖΟΜΕΝΟΙ</h2>
+				<h2 class="title hometitlebg">ΕΡΓΑΖΟΜΕΝΟΙ</h2>
 				<ul class="noshadowbox">
-					<li><a href="#"><i class="icon-cog smallrightmargin"></i>Δήλωση εξ αποστασεως εργασιας</a></li>
-					<li><a href="#"><i class="icon-cog smallrightmargin"></i>Δήλωση εξ αποστασεως εργασιας</a></li>
-					<li><a href="#"><i class="icon-cog smallrightmargin"></i>Δήλωση εξ αποστασεως εργασιας</a></li>
+					<li><a href="#"><i class="icon-cog smallrightmargin"></i>Άδεια Ειδικού σκοπού</a></li>
+					<li><a href="#"><i class="icon-cog smallrightmargin"></i>Προβολή Ενσήμων</a></li>
+					<li><a href="#"><i class="icon-cog smallrightmargin"></i>Καταγγελία στο Σ.ΕΠ.Ε</a></li>
 				</ul>
 			</div>
 			<!--Persona 3-->
 			<div class="c4">
 				<h2 class="title hometitlebg" background-color: #257469>ΑΝΕΡΓΟΙ</h2>
 				<ul class="noshadowbox">
-					<li><a href="#"><i class="icon-cog smallrightmargin"></i>Δήλωση εξ αποστασεως εργασιας</a></li>
-					<li><a href="#"><i class="icon-cog smallrightmargin"></i>Δήλωση εξ αποστασεως εργασιας</a></li>
-					<li><a href="#"><i class="icon-cog smallrightmargin"></i>Δήλωση εξ αποστασεως εργασιας</a></li>
+					<li><a href="#"><i class="icon-cog smallrightmargin"></i>Αίτηση Επιδόματος Ανεργίας </a></li>
+					<li><a href="#"><i class="icon-cog smallrightmargin"></i>Αίτηση Χορήγησης Παροχών Μητρότητας </a></li>
+					<li><a href="#"><i class="icon-cog smallrightmargin"></i>Αναζήτηση Θέσεων Εργασίας </a></li>
 				</ul>
 			</div>
 		</div>
