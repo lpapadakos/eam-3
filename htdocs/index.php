@@ -92,39 +92,39 @@
 	================================================== -->
 	<!--ΕΡΓΑΛΕΙΑ-->
 	<div class="grid">
-		<div class="row space-bot">
-			<!--INTRO-->
-			<div class="c12">
-				<div class="royalcontent">
-					<h1 class="royalheader">ΣΥΧΝΕΣ ΛΕΙΤΟΥΡΓΙΕΣ</h1>
-					<!-- <h1 class="title" style="text-transform:none;">νβσφκηβεξκ</h1> -->
-				</div>
+		<!--INTRO-->
+		<div class="c12">
+			<div class="royalcontent">
+				<h1 class="royalheader"><i class="icon-wrench smallrightmargin"></i>ΣΥΧΝΕΣ ΛΕΙΤΟΥΡΓΙΕΣ</h1>
+				<!-- <h1 class="title" style="text-transform:none;">νβσφκηβεξκ</h1> -->
 			</div>
+		</div>
+		<div id="tools" class="row space-bot">
 			<!--Persona 1-->
 			<div class="c4">
-			<h2 class="title hometitlebg"><a href="#">ΕΡΓΟΔΟΤΕΣ</a></h2>
+				<h2 class="title hometitlebg"><a href="/employers/tools">ΕΡΓΟΔΟΤΕΣ</a></h2>
 				<ul class="noshadowbox">
-					<li><a href="#"><i class="icon-cog smallrightmargin"></i>Αρχείο Κατάστασης Εργαζομένων</a></li>
-					<li><a href="#"><i class="icon-cog smallrightmargin"></i>Έκπτωση Εισφορών</a></li>
-					<li><a href="#"><i class="icon-cog smallrightmargin"></i>Κρατική Επιχορήγηση</a></li>
+					<li><a href="#"><i class="icon-large icon-cog smallrightmargin"></i>Αρχείο Κατάστασης Εργαζομένων</a></li>
+					<li><a href="#"><i class="icon-large icon-money smallrightmargin"></i>Έκπτωση Εισφορών</a></li>
+					<li><a href="#"><i class="icon-large icon-cog smallrightmargin"></i>Κρατική Επιχορήγηση</a></li>
 				</ul>
 			</div>
 			<!--Persona 2-->
 			<div class="c4">
-				<h2 class="title hometitlebg">ΕΡΓΑΖΟΜΕΝΟΙ</h2>
+				<h2 class="title hometitlebg"><a href="/employees/tools">ΕΡΓΑΖΟΜΕΝΟΙ</a></h2>
 				<ul class="noshadowbox">
-					<li><a href="#"><i class="icon-cog smallrightmargin"></i>Άδεια Ειδικού σκοπού</a></li>
-					<li><a href="#"><i class="icon-cog smallrightmargin"></i>Προβολή Ενσήμων</a></li>
-					<li><a href="#"><i class="icon-cog smallrightmargin"></i>Καταγγελία στο Σ.ΕΠ.Ε</a></li>
+					<li><a href="#"><i class="icon-large icon-home smallrightmargin"></i>Άδεια Ειδικού σκοπού</a></li>
+					<li><a href="#"><i class="icon-large icon-cog smallrightmargin"></i>Προβολή Ενσήμων</a></li>
+					<li><a href="#"><i class="icon-large icon-file smallrightmargin"></i>Καταγγελία στο Σ.ΕΠ.Ε</a></li>
 				</ul>
 			</div>
 			<!--Persona 3-->
 			<div class="c4">
-				<h2 class="title hometitlebg" background-color: #257469>ΑΝΕΡΓΟΙ</h2>
+				<h2 class="title hometitlebg">ΑΝΕΡΓΟΙ</h2>
 				<ul class="noshadowbox">
-					<li><a href="#"><i class="icon-cog smallrightmargin"></i>Αίτηση Επιδόματος Ανεργίας </a></li>
-					<li><a href="#"><i class="icon-cog smallrightmargin"></i>Αίτηση Χορήγησης Παροχών Μητρότητας </a></li>
-					<li><a href="#"><i class="icon-cog smallrightmargin"></i>Αναζήτηση Θέσεων Εργασίας </a></li>
+					<li><a href="#"><i class="icon-large icon-cog smallrightmargin"></i>Αίτηση Επιδόματος Ανεργίας </a></li>
+					<li><a href="#"><i class="icon-large icon-cog smallrightmargin"></i>Αίτηση Χορήγησης Παροχών Μητρότητας </a></li>
+					<li><a href="#"><i class="icon-large icon-cog smallrightmargin"></i>Αναζήτηση Θέσεων Εργασίας </a></li>
 				</ul>
 			</div>
 		</div>
