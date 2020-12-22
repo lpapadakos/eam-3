@@ -33,7 +33,7 @@
 				<p>
 				Οι επισκέπτες δύνανται να κλείσουν ηλεκτρονικό ραντεβού μέσω της σχετικής πλατφόρμας μόνο για συγκεκριμένες κατηγορίες αιτήματος.
 				</p>
-				<a href="#" class="da-link" style="width:202px;">Δηλωση</a>
+				<a href="#" class="da-link" style="width:202px;">Δήλωση</a>
 				<div class="da-img">
 					<img src="https://startpage.com/av/proxy-image?piurl=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcQBCZg0SSoZ6yIbH0HAdnbtmr8mQZjwVq-RDX0KX8RA29vIT1-A%26s&sp=1607880060T47965a34d0579d1357f31a1346a5945936fbaa85d125c087fb098af21e000b28" alt="">
 				</div>
@@ -44,9 +44,9 @@
 				<p>
 					Οδηγιες για την ασφαλεια στην εργασια απο τον Covid-19
 				</p>
-				<a href="#" class="da-link" style="width:192px;">Οδηγιες</a>
+				<a href="#" class="da-link" style="width:192px;">Οδηγίες</a>
 				<div class="da-img">
-					<img src="https://startpage.com/av/proxy-image?piurl=https%3A%2F%2Fwww.coe.int%2Fdocuments%2F21202288%2F62129062%2Flanguages-COVID-19_used%2Bby%2BCoE%2Bmain%2Bportal.jpg%2Fb9882ed7-9e7b-caf8-c6e4-9cec0f125baa%3Ft%3D1585837178000&sp=1607880025T589d4d0b0432c04b95fa6188ff2e9de50c40c940d32aa108b5a02debe7b6ff2b" alt="">
+					<img src="https://frtntech.com/wp-content/uploads/2020/03/covid-banner.jpg" alt="">
 				</div>
 			</div>
 		</div>

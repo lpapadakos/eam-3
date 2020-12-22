@@ -3,7 +3,7 @@
 		<div class="row" id="footer">
 			<!-- to top button  -->
 			<p class="back-top floatright">
-				<a href="#top"><span></span></a>
+				<a href="#top" aria-label="top of page"></a>
 			</p>
 			<!-- 1st column -->
 			<div class="c3">
@@ -32,14 +32,8 @@
 					<li class="facebook-link smallrightmargin">
 					<a href="#" class="facebook has-tip" target="_blank" title="Join us on Facebook">Facebook</a>
 					</li>
-					<li class="google-link smallrightmargin">
-					<a href="#" class="google has-tip" title="Google +" target="_blank">Google</a>
-					</li>
 					<li class="linkedin-link smallrightmargin">
-					<a href="#" class="linkedin has-tip" title="Linkedin" target="_blank">Linkedin</a>
-					</li>
-					<li class="pinterest-link smallrightmargin">
-					<a href="#" class="pinterest has-tip" title="Pinterest" target="_blank">Pinterest</a>
+					<a href="#" class="linkedin has-tip" target="_blank">Linkedin</a>
 					</li>
 				</ul>
 			</div>
