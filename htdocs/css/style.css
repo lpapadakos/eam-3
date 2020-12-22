@@ -259,7 +259,7 @@ a.prev span, a.next span { display: none }
 .timer { background-color: #999; height: 6px; width: 0px; }
 .testimonials .list_carousel li { width: 330px }
 .carousel-content { float: left; width: 100%; }
-.featured-projects { background: #fff; font-size: 12px; -moz-box-shadow: 0 1px 3px rgba(34,25,25,0.4); text-align: center; overflow: hidden; position: relative; -webkit-transition: all 1s ease-in-out; -moz-transition: all 1s ease-in-out; -o-transition: all 1s ease-in-out; transition: all 1s ease-in-out; border: 1px solid #eee; border-bottom: double #ddd; }
+.featured-projects { height: 300px; background: #fff; font-size: 12px; -moz-box-shadow: 0 1px 3px rgba(34,25,25,0.4); text-align: center; overflow: hidden; position: relative; -webkit-transition: all 1s ease-in-out; -moz-transition: all 1s ease-in-out; -o-transition: all 1s ease-in-out; transition: all 1s ease-in-out; border: 1px solid #eee; }
 .featured-projects:hover { }
 .featured-projects-image { padding: 0px }
 .featured-projects-image img { -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; }
