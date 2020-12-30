@@ -53,35 +53,42 @@
 </div>
 <!-- UNDER SLIDER - BLACK AREA
 ================================================== -->
-<div class="undersliderblack">
+<div class="undersliderblack" id="covid-area">
 	<div class="grid">
 		<div class="row space-bot">
 			<div class="c12">
-				<!--Box 1-->
-				<div class="c4 introbox introboxfirst">
+				<div class="c3 introbox">
+					<div class="introboxinner">
+						<a href="/health-and-safety/covid-19"><h2><i class="icon-medkit smallrightmargin"></i>COVID-19</h2></a>
+						<p>Γρήγοροι σύνδεσμοι</p>
+					</div>
+				</div>
+				<a href="#" class="c3 introbox introboxfirst">
 					<div class="introboxinner">
 						<span class="homeicone">
 						<i class="icon-bolt"></i>
-						</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+						</span>
+						<h3>Ηλεκτρονικό Ραντεβού</h3>
+						<p>Μπορείτε να ορίσετε ημερομηνία για εξυπηρέτηση δια ζώσης</p>
 					</div>
-				</div>
+				</a>
 				<!--Box 2-->
-				<div class="c4 introbox introboxmiddle">
+				<a href="#"class="c3 introbox introboxmiddle">
 					<div class="introboxinner">
 						<span class="homeicone">
 						<i class="icon-cog"></i>
 						</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 					</div>
-				</div>
+				</a>
 				<!--Box 3-->
-				<div class="c4 introbox introboxlast">
+				<a href="#" class="c3 introbox introboxlast">
 					<div class="introboxinner">
 						<span class="homeicone">
 						<i class="icon-lightbulb"></i>
 						</span>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 					</div>
-				</div>
+</a>
 			</div>
 		</div>
 	</div>

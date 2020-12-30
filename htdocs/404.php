@@ -50,7 +50,7 @@
 					</p> -->
 					<br/>
 					<a class="actionbutton" href="/"><i class="icon-link smallrightmargin"></i>ΕΠΙΣΤΡΟΦΗ ΣΤΗΝ ΑΡΧΙΚΗ</a>
-					<img style="position: relative; z-index: -1; margin-top: -60px" src="/images/404.jpg" alt="Αστροναύτης χαμένος στο κενό του διαστήματος">
+					<img style="position: relative; z-index: -1; margin-top: -1em" src="/images/404.jpg" alt="Αστροναύτης χαμένος στο κενό του διαστήματος">
 				</div>
 				<div class="c1">
 				</div>
@@ -63,15 +63,15 @@
 	<!-- JAVASCRIPTS
 	================================================== -->
 	<!-- all -->
-	<script src="js/modernizr-latest.js"></script>
+	<script src="/js/modernizr-latest.js"></script>
 
 	<!-- menu & scroll to top -->
-	<script src="js/common.js"></script>
+	<script src="/js/common.js"></script>
 
 	<!-- twitter -->
 	<!-- <script src="js/jquery.tweet.js"></script> -->
 
 	<!-- cycle -->
-	<script src="js/jquery.cycle.js"></script>
+	<script src="/js/jquery.cycle.js"></script>
 </body>
 </html>

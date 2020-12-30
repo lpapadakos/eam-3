@@ -205,7 +205,7 @@ nav li a { display: block; padding: 10px; color: #111; text-decoration: none; }
 #top-nav ul ul a { text-transform: none; padding: 5px 10px; border-left: none; border-right: none; font-size: 14px; color: #fff; margin-left: -5px; }
 #top-nav ul ul a:hover { margin-left: 0px; background: rgba(0,0,0,0.1); margin-left: -5px; }
 nav ul>li:hover>a { color: #fff }
-#breadcrumbs {font-size: 15px; padding: 5px; margin-bottom: 20px; color: #222;}
+#breadcrumbs {font-size: 15px; padding: 10px; margin-bottom: 20px; color: #222;}
 #breadcrumbs a:first-child {font-size: 20px;}
 #breadcrumbs > p {margin: 0}
 #breadcrumbs a {color: inherit;}
@@ -587,6 +587,12 @@ ul.teambox { padding-left: 25px }
 .shadowundertop { background: url(../images/undersharea.png) no-repeat 50% 0; height: 40px; margin-top: 1px; }
 .undermenuarea { background: #0E8FAB url(../images/pat.png) repeat;}
 .undersliderblack { background: #2c2c2c; color: #999; }
+#covid-area * {color: #ccc}
+#covid-area h3 {margin: 0; font-size: 17px; font-weight: bold;}
+#covid-area p {margin: 0;}
+#covid-area a:hover {background: #3b3b3b;}
+#covid-area .c3 {min-height: 130px;}
+#covid-area .c3:first-child {padding: 6px 0px;}
 .wrapcontentarea { background: #f8f8f8; margin-top: -40px; border-top: medium double #eee; padding: 0px 15px; }
 .introboxfirst { padding: 20px 0px; border-right: 1px solid #111; }
 .introboxmiddle { padding: 20px 0px; border-left: 1px solid #555; border-right: 1px solid #111; }

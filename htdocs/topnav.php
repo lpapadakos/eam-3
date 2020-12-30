@@ -46,7 +46,7 @@
 				</li>
 				<li <?php if (substr($_SERVER["PHP_SELF"], 0, 18) == "/health-and-safety") echo 'class="active"'; ?>><a href="/health-and-safety">ΑΣΦΑΛΕΙΑ</a>
 				<ul>
-					<li><a href="/health-and-safety/covid-19/">COVID-19</a></li>
+					<li><a href="/health-and-safety/covid-19">COVID-19</a></li>
 					<li><a href="/health-and-safety/legal">Νομοθεσία</a></li>
 				</ul>
 				</li>
