@@ -2,7 +2,7 @@
 <html lang="el">
 <head><meta name="viewport" content="width=device-width"/>
 <title>Η σελίδα δεν βρέθηκε - Υπουργείο Εργασίας &amp; Κοινωνικών Υποθέσεων</title>
-<link rel="icon" href="/favicon.ico"/>
+<link rel="shortcut icon" href="/favicon.ico"/>
 <!-- STYLES & JQUERY
 ================================================== -->
 <link rel="stylesheet" type="text/css" href="/css/style.css"/>
@@ -32,8 +32,13 @@
 	<!-- CONTENT
 	================================================== -->
 	<div class="grid">
-			<div class="shadowundertop"></div>
-			<div class="row space-top space-bot">
+			<nav id="breadcrumbs" class="c12">
+				<p>
+					<a href="/" rel="index" aria-label="Αρχική" class="icon-home"></a> /
+					<span>Η ΣΕΛΙΔΑ ΔΕΝ ΒΡΕΘΗΚΕ</span>
+				</p>
+			</nav>
+			<div class="row space-bot">
 				<div class="c1">
 				</div>
 				<div class="c10" style="text-align:center;margin-top:90px;margin-bottom:190px;">

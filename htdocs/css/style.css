@@ -186,25 +186,31 @@ th { background-color: #d9edf0; background-image: -webkit-gradient(linear,left t
 @font-face { font-family: 'OpenSansExtraboldItalic'; src: url('fonts/OpenSans-ExtraBoldItalic-webfont.eot'); src: url('fonts/OpenSans-ExtraBoldItalic-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/OpenSans-ExtraBoldItalic-webfont.woff') format('woff'), url('fonts/OpenSans-ExtraBoldItalic-webfont.ttf') format('truetype'), url('fonts/OpenSans-ExtraBoldItalic-webfont.svg#OpenSansExtraboldItalic') format('svg'); font-weight: normal; font-style: normal; }
 /* MENUS ================================================== */
 /* JS disabled styles */
-.no-js nav li:hover > ul { display: block }
+.no-js #top-nav li:hover > ul { display: block}
 /* base nav styles */
-nav { float: right; display: block; margin: 0px 0px 20px 0px; position: relative; color: #666; text-transform: uppercase; font-family: OpenSansRegular; }
-nav ul { padding: 0; margin: 0; }
-nav ul ul li { height: auto }
-nav li { position: relative; float: left; list-style-type: none; z-index: 1; font-size: 15px; margin-left: 5px; line-height: 67px; }
+#top-nav { float: right; display: block; margin: 0px 0px 20px 0px; position: relative; color: #666; text-transform: uppercase; font-family: OpenSansRegular; }
+#top-nav ul { padding: 0; margin: 0; }
+#top-nav ul ul li { height: auto }
+#top-nav li { position: relative; float: left; list-style-type: none; z-index: 1; font-size: 15px; margin-left: 5px; line-height: 67px; }
 nav li:hover, nav li a:hover { background: #555; color: #fff; }
 nav li.active > a { font-weight: bold; }
-nav ul:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
-nav li a { display: block; padding: 10px 13px 10px 10px; color: #111; text-decoration: none; }
-nav li a:focus { outline: none; text-decoration: none; }
-nav li:first-child a { border-left: none }
-nav li.last a { border-right: none }
-nav a span { display: block; float: right; margin-left: 5px; }
-nav ul ul { display: none; position: absolute; background: #555; left: 0px; min-width: 170px; }
-nav ul ul li { float: none; line-height: 30px; }
-nav ul ul a { text-transform: none; padding: 5px 10px; border-left: none; border-right: none; font-size: 14px; color: #fff; margin-left: -5px; }
-nav ul ul a:hover { margin-left: 0px; background: rgba(0,0,0,0.1); margin-left: -5px; }
+#top-nav ul:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+nav li a { display: block; padding: 10px; color: #111; text-decoration: none; }
+#top-nav li a:focus { outline: none; text-decoration: none; }
+#top-nav li:first-child a { border-left: none }
+#top-nav li.last a { border-right: none }
+#top-nav a span { display: block; float: right; margin-left: 5px; }
+#top-nav ul ul { display: none; position: absolute; background: #555; left: 0px; min-width: 170px; }
+#top-nav ul ul li { float: none; line-height: 30px; }
+#top-nav ul ul a { text-transform: none; padding: 5px 10px; border-left: none; border-right: none; font-size: 14px; color: #fff; margin-left: -5px; }
+#top-nav ul ul a:hover { margin-left: 0px; background: rgba(0,0,0,0.1); margin-left: -5px; }
 nav ul>li:hover>a { color: #fff }
+#breadcrumbs {font-size: 15px; padding: 5px; margin-bottom: 20px; color: #222;}
+#breadcrumbs a:first-child {font-size: 20px;}
+#breadcrumbs > p {margin: 0}
+#breadcrumbs a {color: inherit;}
+#breadcrumbs a:not(:first-child) {font-weight: bold;}
+#sidebar-nav ul {padding-top: 10px; font-size: 15px;}
 div.slide img { float: left; margin: 8px 5px 30px; }
 blockquote.testimonial-wrap.testimonial { position: relative; display: table; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; padding: 15px; -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.4); -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.4); box-shadow: 0 1px 3px rgba(0,0,0,0.4); font-size: 15px; line-height: 22px; background: #ebebeb; color: #545454; text-shadow: 0 1px 0 #fff; margin-bottom: 22px; }
 blockquote.testimonial-wrap .testimonialdiv.valign { display: table-cell; vertical-align: middle; }
@@ -437,7 +443,8 @@ ul.accordion>li.active .content { background: white; display: block; border-left
 #tools .c4 h2 a {display: block; color: inherit; font-weight: medium;}
 #tools .c4 .noshadowbox {padding: 0;}
 #tools .c4 li a {padding: 10px; color: black; display: block; font-size: 1.2em; color: #444}
-#tools .c4 li a:hover {background: #555; color: #fff;}
+#tools .c4 li a:hover {background: #555; color: #fff; }
+#tools .c4 li:hover { border-left-color: #555; border-right-color: #555; }
 
 .noshadowbox h5 { font-size: 20px; line-height: 35px; margin-top: 0px; padding-top: 20px; font-family: OpenSansLight; }
 .bottomlink { margin-bottom: -12px; text-align: right; margin-right: -15px; }
