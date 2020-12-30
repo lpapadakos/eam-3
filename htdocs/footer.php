@@ -5,55 +5,48 @@
 			<p class="back-top floatright">
 				<a href="#top" aria-label="top of page"></a>
 			</p>
-			<!-- 1st column -->
+			<!-- 1st column
 			<div class="c3">
 				<img src="images/logo-footer.png" style="padding-top: 70px;" alt="">
-			</div>
-			<!-- 2nd column -->
+			</div> -->
+			<!-- 2nd column
 			<div class="c3">
 				<h2 class="title"><i class="icon-twitter"></i> Follow us</h2>
 				<hr class="footerstress">
 				<div id="ticker" class="query">
 				</div>
-			</div>
-			<!-- 3rd column -->
-			<div class="c3">
-				<h2 class="title"><i class="icon-envelope-alt"></i> Contact</h2>
-				<hr class="footerstress">
-				<dl>
-					<dt>2536 Zamora Road, Missisipi, 74C</dt>
-					<dd><span>Telephone:</span>+1 348 271 9483</dd>
-					<dd>E-mail: <a href="more.html">mail@yourweb.com</a></dd>
-				</dl>
-				<ul class="social-links" style="margin-top:15px;">
-					<li class="twitter-link smallrightmargin">
-					<a href="#" class="twitter has-tip" target="_blank" title="Follow Us on Twitter">Twitter</a>
-					</li>
-					<li class="facebook-link smallrightmargin">
-					<a href="#" class="facebook has-tip" target="_blank" title="Join us on Facebook">Facebook</a>
-					</li>
-					<li class="linkedin-link smallrightmargin">
-					<a href="#" class="linkedin has-tip" target="_blank">Linkedin</a>
-					</li>
-				</ul>
-			</div>
+			</div> -->
 			<!-- 4th column -->
-			<div class="c3">
-				<h2 class="title"><i class="icon-link"></i> Links</h2>
+			<div class="c6">
+				<h2 class="title"><i class="icon-link smallrightmargin"></i>ΣΥΝΔΕΣΜΟΙ</h2>
 				<hr class="footerstress">
 				<ul>
-					<li>Services</li>
-					<li>Privacy Policy</li>
-					<li>Shortcodes</li>
-					<li>Columns</li>
-					<li>Portfolio</li>
-					<li>Blog</li>
-					<li>Contact</li>
-					<li>Font Awesome</li>
-					<li>Single Project</li>
-					<li>Home</li>
+					<li><a href="/">Αρχική</a></li>
+					<li><a href="/employees">Εργαζόμενοι</a></li>
+					<li><a href="/employers">Εργοδότες</a></li>
+					<li><a href="/health-and-safety/covid-19">COVID-19</a></li>
 				</ul>
 			</div>
+			<!-- <div class="c3"></div> -->
+			<!-- 3rd column -->
+			<div class="c3">
+				<h2 class="title"><i class="icon-envelope-alt smallrightmargin"></i>ΕΠΙΚΟΙΝΩΝΙΑ</h2>
+				<hr class="footerstress">
+				<dl>
+					<dt>Σταδίου 29, Αθήνα 105 59</dt>
+					<dd><span>Telephone:</span>213-1516649, 213-1516651</dd>
+					<dd>E-mail: <a href="mailto:pliroforisi-politi@ypakp.gr">pliroforisi-politi@ypakp.gr</a></dd>
+				</dl>
+				<ul class="social-links" style="margin-top:15px;">
+					<li class="facebook-link smallrightmargin">
+					<a href="https://www.facebook.com/labourgovgr/" class="facebook has-tip" target="_blank" title="Επισκεφθείτε μας στο Facebook">Facebook</a>
+					</li>
+					<li class="twitter-link smallrightmargin">
+					<a href="https://twitter.com/labourgovgr/" class="twitter has-tip" target="_blank" title="Ακολουθήστε μας στο Twitter">Twitter</a>
+					</li>
+				</ul>
+			</div>
+			<iframe class="c3" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12579.43641904405!2d23.7310797!3d37.9804173!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6db1fc0cbb58a00a!2zzqXPgM6_z4XPgc6zzrXOr86_IM6Vz4HOs86xz4POr86xz4IgzrrOsc65IM6azr_Ouc69z4nOvc65zrrPjs69IM6lz4DOv864zq3Pg861z4nOvQ!5e0!3m2!1sel!2sgr!4v1609353638687!5m2!1sel!2sgr" height="200" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 			<!-- end 4th column -->
 		</div>
 	</div>

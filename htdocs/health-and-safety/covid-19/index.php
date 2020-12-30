@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="el">
 <head><meta name="viewport" content="width=device-width"/>
 <title>COVID-19 - Υπουργείο Εργασίας &amp; Κοινωνικών Υποθέσεων</title>
 <link rel="shortcut icon" href="/favicon.ico"/>
@@ -110,6 +110,6 @@
 <script src="/js/jquery.cycle.js"></script>
 
 <!-- twitter -->
-<script src="/js/jquery.tweet.js"></script>
+<!-- <script src="/js/jquery.tweet.js"></script> -->
 </body>
 </html>

@@ -69,7 +69,7 @@
 	<script src="js/common.js"></script>
 
 	<!-- twitter -->
-	<script src="js/jquery.tweet.js"></script>
+	<!-- <script src="js/jquery.tweet.js"></script> -->
 
 	<!-- cycle -->
 	<script src="js/jquery.cycle.js"></script>

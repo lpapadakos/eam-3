@@ -234,7 +234,7 @@
 <script src="/js/jquery.carouFredSel-6.0.3-packed.js"></script>
 
 <!-- twitter -->
-<script src="/js/jquery.tweet.js"></script>
+<!-- <script src="/js/jquery.tweet.js"></script> -->
 
 <!-- Call Showcase - change 4 from min:4 and max:4 to the number of items you want visible -->
 <script type="text/javascript">
