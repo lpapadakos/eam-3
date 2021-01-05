@@ -105,7 +105,7 @@
 			<!-- <h1 class="title" style="text-transform:none;">νβσφκηβεξκ</h1> -->
 		</div>
 	</div>
-	<div id="tools" class="row space-bot">
+	<div id="tools" class="row space-bot flex">
 		<!--Persona 1-->
 		<div class="c4">
 			<h2 class="title hometitlebg"><a href="/employers/tools">ΕΡΓΟΔΟΤΕΣ</a></h2>

@@ -7,7 +7,7 @@
 			</a>
 		</div>
 		<!--Menu-->
-		<div class="c8 no-js">
+		<div id="menu" class="c8 no-js flex">
 			<nav id="top-nav">
 			<ul id="responsivemenu">
 				<li <?php if ($_SERVER["PHP_SELF"] == "/index.php") echo 'class="active"'; ?>><a href="/"><i class="icon-home homeicon"></i>ΑΡΧΙΚΗ</a></li>
@@ -52,6 +52,10 @@
 				</li>
 			</ul>
 			</nav>
+			<div id="login-area">
+				<button class="blue">ΣΥΝΔΕΣΗ</button>
+				<button>Εγγραφή</button>
+			</div>
 		</div>
 	</div>
 </div>
