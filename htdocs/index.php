@@ -60,35 +60,34 @@
 				<div class="c3 introbox">
 					<div class="introboxinner">
 						<a href="/health-and-safety/covid-19"><h2><i class="icon-medkit smallrightmargin"></i>COVID-19</h2></a>
-						<p>Γρήγοροι σύνδεσμοι</p>
+						<p>Γρήγοροι σύνδεσμοι για το κοινό</p>
 					</div>
 				</div>
-				<a href="#" class="c3 introbox introboxfirst">
+				<!--Box 2-->
+				<a href="#"class="c3 introbox introboxfirst">
 					<div class="introboxinner">
-						<span class="homeicone">
-						<i class="icon-bolt"></i>
-						</span>
+						<i class="icon-file-alt homeicone"></i>
+						<h3>Οδηγίες</h3>
+						<p>Πρόληψη και Αντιμετώπιση στο χώρο εργασίας</p>
+					</div>
+				</a>
+				<!--Box 3-->
+				<a href="#" class="c3 introbox introboxmiddle">
+					<div class="introboxinner">
+						<i class="icon-suitcase homeicone"></i>
+						<h3>Επιλογές Εργασίας</h3>
+						<p>Ενημερωθείτε για τις επιλογές σας ως εργαζόμενοι</p>
+					</div>
+				</a>
+				<!--Box 1-->
+				<a href="#" class="c3 introbox introboxlast">
+					<div class="introboxinner">
+						<i class="icon-bolt homeicone"></i>
 						<h3>Ηλεκτρονικό Ραντεβού</h3>
 						<p>Μπορείτε να ορίσετε ημερομηνία για εξυπηρέτηση δια ζώσης</p>
 					</div>
 				</a>
-				<!--Box 2-->
-				<a href="#"class="c3 introbox introboxmiddle">
-					<div class="introboxinner">
-						<span class="homeicone">
-						<i class="icon-cog"></i>
-						</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					</div>
-				</a>
-				<!--Box 3-->
-				<a href="#" class="c3 introbox introboxlast">
-					<div class="introboxinner">
-						<span class="homeicone">
-						<i class="icon-lightbulb"></i>
-						</span>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					</div>
-</a>
+
 			</div>
 		</div>
 	</div>
