@@ -57,7 +57,7 @@
 	<div class="grid">
 		<div class="row">
 			<div class="c6">
-				Totally το Υπουργείο Εργασίας &amp; &copy; 2015. All Rights Reserved.
+				&copy; 2020 Totally το Υπουργείο Εργασίας &amp; Κοινωνικών Υποθέσεων
 			</div>
 			<div class="c6">
 				<span class="right">
