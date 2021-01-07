@@ -98,7 +98,7 @@ ul { list-style: none }
 /* --------------------------------------- Form Elements ------------------------------------- */
 img { border: 0px }
 form { margin-bottom: 20px; font: 14px "HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif; color: #777; }
-#login-form { float: none; margin: 20px auto; }
+#login-form, #register-form { float: none; margin: 20px auto; }
 #login-form #login { margin-top: 10px; width: 100%; }
 #login-logo {display: block; margin: 50px auto; height: 150%}
 fieldset { margin-bottom: 20px }
@@ -550,6 +550,7 @@ ul.teambox { padding-left: 25px }
 #social-menu li a { color: #fff }
 #social-menu li:hover { opacity: 1 }
 .noleftmargin { padding-left: 0px }
+.norightmargin { padding-right: 0px }
 .grayimage { -webkit-filter: grayscale(100%) }
 .hometitlebg { background: #0E8FAB; color: #fff; margin-top: 0px; text-align: center; margin-bottom: 0px; font-family: OpenSansLight !Important; }
 .homeicone { padding: 10px 10px; color: #f8f8f8; margin-right: 4px; font-size: 45px; float: left; margin-right: 10px; }

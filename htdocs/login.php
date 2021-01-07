@@ -2,7 +2,7 @@
 // Initialize the session
 session_start();
 
-// Check if the user is already logged in, if yes then redirect him to homepage
+// Check if the user is already logged in, if yes then redirect to homepage
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 	header("location: /");
 	exit;
@@ -18,31 +18,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	require_once "config.php";
 
 	// Check if email is empty
-	if (empty(trim($_POST["email"]))) {
-		$email_err = "Παρακαλώ εισάγετε έγκυρη διεύθυνση email!";
-	} else {
-		$email = trim($_POST["email"]);
+	$email = trim($_POST["email"]);
+	if (empty($email)) {
+		$email_err = "Παρακαλώ εισάγετε έγκυρη διεύθυνση email.";
 	}
 
 	// Check if password is empty
-	if (empty($_POST["password"])) {
-		$password_err = "Παρακαλώ εισάγετε τον κωδικό πρόσβασής σας!";
-	} else {
-		$password = $_POST["password"];
+	$password = $_POST["password"];
+	if (empty($password)) {
+		$password_err = "Παρακαλώ εισάγετε τον κωδικό πρόσβασής σας.";
 	}
 
 	// Validate credentials
-	if(empty($email_err) && empty($password_err)) {
+	if (empty($email_err) && empty($password_err)) {
 		// Prepare a select statement
 		$sql = "SELECT password, name FROM users WHERE email = ?";
 
 		if ($stmt = mysqli_prepare($link, $sql)) {
-			//TODO: SQL injection?
 			// Bind variables to the prepared statement as parameters
 			mysqli_stmt_bind_param($stmt, "s", $email);
 
 			// Attempt to execute the prepared statement
 			if (mysqli_stmt_execute($stmt)) {
+				// Assume wrong information entered
+				$email_err = "Λανθασμένο email ή κωδικός πρόσβασης.";
+
 				// Store result
 				mysqli_stmt_store_result($stmt);
 
@@ -61,17 +61,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 							$_SESSION["email"] = $email;
 							$_SESSION["name"] = $name;
 
-							// Redirect user to home page
+							// SUCCESS. Redirect user to home page and clear error
+							$email_err = "";
 							header("location: /");
-							exit;
 						}
 					}
 				}
-
-				// Display an error message if user doesn't exist
-				$email_err = "Λανθασμένο email ή κωδικός πρόσβασης.";
 			} else {
-				$email_err = "Κάτι πήγε στραβα. Παρακαλώ δοκιμάστε ξανα αργότερα";
+				$email_err = "Κάτι πήγε στραβά. Παρακαλώ δοκιμάστε ξανά αργότερα.";
 			}
 
 			// Close statement
@@ -103,7 +100,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	<div class="grid">
 		<header class="royalcontent">
 			<img id="login-logo" src="/images/logo.gif" class="logo" alt="Λογότυπο Υπουργείου">
-			<h1 class="title stresstitle">Σύνδεση Χρήστη</h1>
+			<h1 class="title stresstitle">Σύνδεση Χρήστη</h1><br>
+			<span>(ας υποθέσουμε ότι αυτό γίνεται μέσω taxisNET)</span>
 		</header>
 		<section>
 		<form id="login-form" class="form c8" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
@@ -115,7 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				}
 			?>
 			<label for="email">Email:</label>
-			<input type="email" name="email" id="email">
+			<input type="email" name="email" id="email" required>
 
 			<?php
 				if (!empty($password_err)) {
@@ -125,8 +123,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				}
 			?>
 			<label for="password">Κωδικός πρόσβασης:</label>
-			<input type="password" name="password" id="password">
-			<input type="submit" id="login" class="actionbutton" value="ΣΥΝΔΕΣΗ">
+			<input type="password" name="password" id="password" required>
+			<input type="submit" id="login" class="actionbutton" value="Σύνδεση">
 		</form>
 		<p class="royalcontent">
 			Δεν έχετε λογαριασμό; <a href="register.php">Δημιουργήστε έναν</a>.
