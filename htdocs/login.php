@@ -8,15 +8,15 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 	exit;
 }
 
-// Include config file
-require_once "config.php";
-
 // Define variables and initialize with empty values
 $email = $password = "";
 $email_err = $password_err = "";
 
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	// Include config file
+	require_once "config.php";
+
 	// Check if email is empty
 	if (empty(trim($_POST["email"]))) {
 		$email_err = "Παρακαλώ εισάγετε έγκυρη διεύθυνση email!";
@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	// Check if password is empty
 	if (empty($_POST["password"])) {
 		$password_err = "Παρακαλώ εισάγετε τον κωδικό πρόσβασής σας!";
-	} else{
+	} else {
 		$password = $_POST["password"];
 	}
 
@@ -71,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				// Display an error message if user doesn't exist
 				$email_err = "Λανθασμένο email ή κωδικός πρόσβασης.";
 			} else {
-				echo "Κάτι πήγε στραβα. Παρακαλώ δοκιμάστε ξανα αργότερα";
+				$email_err = "Κάτι πήγε στραβα. Παρακαλώ δοκιμάστε ξανα αργότερα";
 			}
 
 			// Close statement
@@ -101,16 +101,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
 	<div class="grid">
-		<div class="royalcontent">
+		<header class="royalcontent">
 			<img id="login-logo" src="/images/logo.gif" class="logo" alt="Λογότυπο Υπουργείου">
 			<h1 class="title stresstitle">Σύνδεση Χρήστη</h1>
-		</div>
+		</header>
+		<section>
 		<form id="login-form" class="form c8" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-			<label for="email">Email: <?php echo $email_err ?></label>
+			<?php
+				if (!empty($email_err)) {
+					echo '<p class="alert error">';
+					echo '<i class="icon-warning-sign smallrightmargin"></i>' . $email_err;
+					echo '</p>';
+				}
+			?>
+			<label for="email">Email:</label>
 			<input type="email" name="email" id="email">
-			<label for="password">Κωδικός πρόσβασης: <?php echo $password_err ?></label>
+
+			<?php
+				if (!empty($password_err)) {
+					echo '<p class="alert error">';
+					echo '<i class="icon-warning-sign smallrightmargin"></i>' . $password_err;
+					echo '</p>';
+				}
+			?>
+			<label for="password">Κωδικός πρόσβασης:</label>
 			<input type="password" name="password" id="password">
 			<input type="submit" id="login" class="actionbutton" value="ΣΥΝΔΕΣΗ">
 		</form>
+		<p class="royalcontent">
+			Δεν έχετε λογαριασμό; <a href="register.php">Δημιουργήστε έναν</a>.
+		</p>
+		</section>
 	</div>
 </body>
