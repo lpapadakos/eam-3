@@ -44,7 +44,7 @@
 			<div id="nav">
 				<ul class="option-set">
 					<li><a href="" data-filter="*" class="selected">Προβολή όλων</a></li>
-					<li><a href="" data-filter=".cat1">Απασχόληση</a></li>
+					<li><a href="" data-filter=".cat1">Εργασιακά</a></li>
 					<li><a href="" data-filter=".cat2">Ασφάλιση</a></li>
 					<li><a href="" data-filter=".cat3">COVID-19</a></li>
 				</ul>
@@ -66,71 +66,67 @@
 							<p>
 								Η άδεια ειδικού σκοπού για τους γονείς με παιδιά έως 15 ετών, παραμένει σε ισχύ ανάλογα με την πορεία ανοίγματος των σχολικών μονάδων, των παιδικών και βρεφικών σταθμών.
 							</p>
-							<i class="icon-link mosaiclink"></i>
+							<i class="icon-cog mosaiclink"></i>
 						</div>
 						</div>
 					</div>
-					<h2>Άδεια ειδικού σκοπού</h2>
+					<h2><i class="icon-large icon-home smallrightmargin"></i>Άδεια Ειδικού Σκοπού</h2>
 					</a>
 				</div>
 			</div>
-			<div class="boxfourcolumns cat3">
+			<div class="boxfourcolumns cat1 cat3">
 				<div class="boxcontainer">
-					<a href="adeia-eidikou-skopou.php">
+					<a href="hlektroniko-randezvous.php">
 					<div class="mosaic-block cover mosaicover4col">
 						<div class="mosaic-overlay">
-							<img src="http://placehold.it/278x180" alt="">
+							<img src="/images/ypoyrgeio_ergasias.jpg" alt="Το Υπουργείο Εργασίας">
 						</div>
-						<div class="mosaic-backdrop blue details">
+						<div class="mosaic-backdrop green details">
 						<div class="details">
 							<p>
-								Η άδεια ειδικού σκοπού για τους γονείς με παιδιά έως 15 ετών, παραμένει σε ισχύ ανάλογα με την πορεία ανοίγματος των σχολικών μονάδων, των παιδικών και βρεφικών σταθμών.
+								Μπορείτε να ορίσετε ημερομηνία και ώρα συνάτησης, σε περίπτωση που είναι απαραίτητη η εξυπηρέτηση με φυσική παρουσία.
 							</p>
-							<i class="icon-link mosaiclink"></i>
+							<i class="icon-cog mosaiclink"></i>
 						</div>
 						</div>
 					</div>
-					<h2>Άδεια ειδικού σκοπού</h2>
+					<h2><i class="icon-large icon-bolt smallrightmargin"></i>Ηλεκτρονικό Ραντεβού</h2>
 					</a>
 				</div>
 			</div>
 			<div class="boxfourcolumns cat2">
 				<div class="boxcontainer">
-					<a href="adeia-eidikou-skopou.php">
+					<a href="#">
 					<div class="mosaic-block cover mosaicover4col">
 						<div class="mosaic-overlay">
 							<img src="http://placehold.it/278x180" alt="">
 						</div>
-						<div class="mosaic-backdrop blue details">
+						<div class="mosaic-backdrop red details">
 						<div class="details">
-							<p>
-								Η άδεια ειδικού σκοπού για τους γονείς με παιδιά έως 15 ετών, παραμένει σε ισχύ ανάλογα με την πορεία ανοίγματος των σχολικών μονάδων, των παιδικών και βρεφικών σταθμών.
-							</p>
-							<i class="icon-link mosaiclink"></i>
+							<p></p>
+							<i class="icon-cog mosaiclink"></i>
 						</div>
 						</div>
 					</div>
-					<h2>Άδεια ειδικού σκοπού</h2>
+					<h2><i class="icon-large icon-cog smallrightmargin"></i>Εργαλείο 3</h2>
 					</a>
 				</div>
 			</div>
 			<div class="boxfourcolumns cat1 cat2">
 				<div class="boxcontainer">
-					<a href="adeia-eidikou-skopou.php">
+					<a href="#">
 					<div class="mosaic-block cover mosaicover4col">
 						<div class="mosaic-overlay">
 							<img src="http://placehold.it/278x180" alt="">
 						</div>
-						<div class="mosaic-backdrop blue details">
+						<div class="mosaic-backdrop green details">
 						<div class="details">
-							<p>
-								Η άδεια ειδικού σκοπού για τους γονείς με παιδιά έως 15 ετών, παραμένει σε ισχύ ανάλογα με την πορεία ανοίγματος των σχολικών μονάδων, των παιδικών και βρεφικών σταθμών.
-							</p>
-							<i class="icon-link mosaiclink"></i>
+							<p></p>
+							<i class="icon-cog mosaiclink"></i>
 						</div>
 						</div>
 					</div>
-					<h2>Άδεια ειδικού σκοπού</h2>
+					<h2><i class="icon-large icon-cog smallrightmargin"></i>Εργαλείο 4</h2>
 					</a>
 				</div>
 			</div>

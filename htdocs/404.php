@@ -41,7 +41,7 @@
 			<div class="row space-bot">
 				<div class="c1">
 				</div>
-				<div class="c10" style="text-align:center;margin-top:90px;margin-bottom:190px;">
+				<div class="c10" style="text-align: center;">
 					<h1>Η σελίδα δεν βρέθηκε</h1>
 					<div class="pageline">
 					</div>
@@ -60,6 +60,7 @@
 	<!-- FOOTER
 	================================================== -->
 	<?php include 'footer.php' ?>
+
 	<!-- JAVASCRIPTS
 	================================================== -->
 	<!-- all -->

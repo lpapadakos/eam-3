@@ -108,25 +108,25 @@
 	<div id="tools" class="row space-bot flex">
 		<!--Persona 1-->
 		<div class="c4">
-			<h2 class="title hometitlebg"><a href="/employers/tools">ΕΡΓΟΔΟΤΕΣ</a></h2>
+			<h2 class="title hometitlebg"><a href="employers/tools">ΕΡΓΟΔΟΤΕΣ</a></h2>
 			<ul class="noshadowbox">
-				<li><a href="#"><i class="icon-large icon-cog smallrightmargin"></i>Αρχείο Κατάστασης Εργαζομένων</a></li>
+				<li><a href="#"><i class="icon-large icon-file-alt smallrightmargin"></i>Αρχείο Κατάστασης Εργαζομένων</a></li>
 				<li><a href="#"><i class="icon-large icon-money smallrightmargin"></i>Έκπτωση Εισφορών</a></li>
 				<li><a href="#"><i class="icon-large icon-cog smallrightmargin"></i>Κρατική Επιχορήγηση</a></li>
 			</ul>
 		</div>
 		<!--Persona 2-->
 		<div class="c4">
-			<h2 class="title hometitlebg"><a href="/employees/tools">ΕΡΓΑΖΟΜΕΝΟΙ</a></h2>
+			<h2 class="title hometitlebg"><a href="employees/tools">ΕΡΓΑΖΟΜΕΝΟΙ</a></h2>
 			<ul class="noshadowbox">
-				<li><a href="#"><i class="icon-large icon-home smallrightmargin"></i>Άδεια Ειδικού Σκοπού</a></li>
+				<li><a href="employers/tools/adeia-eidikou-skopou.php"><i class="icon-large icon-home smallrightmargin"></i>Άδεια Ειδικού Σκοπού</a></li>
 				<li><a href="#"><i class="icon-large icon-cog smallrightmargin"></i>Προβολή Ενσήμων</a></li>
 				<li><a href="#"><i class="icon-large icon-file smallrightmargin"></i>Καταγγελία στο Σ.ΕΠ.Ε</a></li>
 			</ul>
 		</div>
 		<!--Persona 3-->
 		<div class="c4">
-			<h2 class="title hometitlebg"><a href="/unemployed/tools">ΑΝΕΡΓΟΙ</a></h2>
+			<h2 class="title hometitlebg"><a href="unemployed/tools">ΑΝΕΡΓΟΙ</a></h2>
 			<ul class="noshadowbox">
 				<li><a href="#"><i class="icon-large icon-cog smallrightmargin"></i>Αίτηση Επιδόματος Ανεργίας</a></li>
 				<li><a href="#"><i class="icon-large icon-cog smallrightmargin"></i>Αίτηση Χορήγησης Παροχών Μητρότητας</a></li>
