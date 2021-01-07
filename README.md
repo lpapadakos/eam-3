@@ -9,6 +9,14 @@
 | Παναγιωτόπουλος Γεώργιος | 1115201700113 |
 | Παπαδάκος Λεωνίδας-Παναγιώτης | 1115201700117 |
 
-### Σημειώσεις
+### Δοκιμαστικοί Χρήστες
+
+email: haruhisuzu@yahoo.com
+pw: sosbrigade
+
+email: spilios@gmail.com
+pw: jimmy
+
+### Σημειώσεις:
 
 * Χρησιμοποιούμε το θέμα [Salique](https://www.free-css.com/free-css-templates/page214/salique-v1.0) ως βάση για το σχεδιασμό μας.

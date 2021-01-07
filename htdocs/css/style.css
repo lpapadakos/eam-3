@@ -98,6 +98,9 @@ ul { list-style: none }
 /* --------------------------------------- Form Elements ------------------------------------- */
 img { border: 0px }
 form { margin-bottom: 20px; font: 14px "HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif; color: #777; }
+#login-form { float: none; margin: 20px auto; }
+#login-form #login { margin-top: 10px; width: 100%; }
+#login-logo {display: block; margin: 50px auto; height: 150%}
 fieldset { margin-bottom: 20px }
 textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], select { background: #ffffff; border: 1px solid #ddd; padding: 8px 8px; vertical-align: middle; outline: none; border-radius: 2px; -moz-border-radius: 2px; -webkit-border-radius: 2px; transition: border linear 0.4s,box-shadow linear 0.4s; -o-transition: border linear 0.4s,box-shadow linear 0.4s; -moz-transition: border linear 0.4s,box-shadow linear 0.4s; -webkit-transition: border linear 0.4s,box-shadow linear 0.4s; margin: 0; width: 100%; display: block; margin-bottom: 20px; }
 input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, textarea:focus { border: 1px solid; border-color: rgba(82,168,236,0.8); color: #444; box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(81,168,236,0.5); -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(81,168,236,0.5); -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(81,168,236,0.5); }
@@ -207,9 +210,8 @@ nav li a { display: block; padding: 10px; color: #111; text-decoration: none; }
 #top-nav ul ul a { text-transform: none; padding: 5px 10px; border-left: none; border-right: none; font-size: 14px; color: #fff; margin-left: -5px; }
 #top-nav ul ul a:hover { margin-left: 0px; background: rgba(0,0,0,0.1); margin-left: -5px; }
 nav ul>li:hover>a { color: #fff }
-#login-area {padding: 0 10px; height: auto}
-#login-area button {display:block; margin: 5px auto; padding: 5px 10px; width: 100px}
-
+#login-area {padding: 0 10px; height: auto; margin-top: 5px; }
+#login-area a {display: block; text-align: center; margin: 5px auto; padding: 5px 10px; width: 100%; font-size: 13px; font-weight: bold; }
 #breadcrumbs {font-size: 15px; padding: 10px; margin-bottom: 20px; color: #222;}
 #breadcrumbs a:first-child {font-size: 20px;}
 #breadcrumbs > p {margin: 0}

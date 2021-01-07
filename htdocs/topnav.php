@@ -53,8 +53,26 @@
 			</ul>
 			</nav>
 			<div id="login-area">
-				<button class="blue">ΣΥΝΔΕΣΗ</button>
-				<button>Εγγραφή</button>
+				<?php
+				session_start();
+
+				$label1 = "ΣΥΝΔΕΣΗ";
+				$href1 = "/login.php";
+
+				$label2 = "ΕΓΓΡΑΦΗ";
+				$href2 = "/register.php";
+
+				if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+					$label1 = '<i class="icon-user smallrightmargin"></i>' . $_SESSION["name"];
+					$href1 = "/profile.php";
+
+					$label2 = "Αποσύνδεση";
+					$href2 = "/logout.php";
+				}
+
+				echo '<a id="login-top" class="actionbutton" href="' . $href1 . '">' . $label1 . '</a>';
+				echo '<a id="login-bottom" href="' . $href2 . '">' . $label2 . '</a>';
+				?>
 			</div>
 		</div>
 	</div>
