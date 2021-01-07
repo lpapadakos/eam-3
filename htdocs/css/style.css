@@ -490,9 +490,9 @@ ul.accordion>li.active .content { background: white; display: block; border-left
 .mosaicover2col { height: 260px }
 .mosaicover4col { height: 180px }
 .mosaicover5col { height: 140px }
+.boxcontainer img { width: 100%; }
 .boxcontainer p { margin-bottom: 10px }
-.boxcontainer h1 { font-size: 13px; line-height: 1; font-family: OpenSansRegular; font-weight: bold; padding-left: 10px; padding-right: 10px; }
-.boxcontainer h1 a { padding-bottom: 10px; border-bottom: 1px solid #eee; display: block; color: #222; }
+.boxcontainer h2 { font-size: 15px; line-height: 1; font-family: OpenSansRegular; font-weight: bold; padding: 20px 10px; margin: 0; color: #222; }
 #content { width: 100%; margin-top: 10px; z-index: 0; }
 #nav ul li a { float: left; margin-right: 15px; padding: 6px 10px; color: #333; border-radius: 3px; box-shadow: 1px 2px 5px #ccc; }
 .selected { background: #444; color: #fff !Important; box-shadow: 2px 3px 5px #999 !Important; }
