@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="el">
+<htm lang="el">
 <head><meta name="viewport" content="width=device-width"/>
 <title>COVID-19 - Υπουργείο Εργασίας &amp; Κοινωνικών Υποθέσεων</title>
 <link rel="shortcut icon" href="/favicon.ico"/>
@@ -43,7 +43,7 @@
 		<div class="c3">
 			<div class="leftsidebar">
 				<nav id="sidebar-nav">
-				<h2 class="title stresstitle">COVID-19</h2>
+				<h2 class="stresstitle">COVID-19</h2>
 				<ul>
 					<li><a href="employees.php">Εργαζόμενοι</a></li>
 					<li><a href="employers.php">Εργοδότες</a></li>
@@ -53,47 +53,114 @@
 		</div>
 		<!-- end sidebar -->
 		<!-- MAIN CONTENT -->
-		<article class="c9">
-			<article>
-				<h1 class="maintitle space-top">
-				<span>VIVAMUS ADIPISCING, SAPIEN</span>
-				</h1>
+		<div class="c9">
+			<h1 class="maintitle">Σχετικά με τον COVID-19</h1>
+			<div class="c5">
+				<img src="/images/covid.png">
+			</div>
+			<div class="c7">
+				<ul class="tickboxes">
+					<li>
+						<i class="icon-ok-circle"></i>
+						Φοράμε μάσκα
+					</li>
+					<li>
+					<i class="icon-ok-circle"></i>
+						Τηρούμε αποστάσεις ασφαλείας 
+					</li>
+					<li>
+					<i class="icon-ok-circle"></i>
+						Αποφεύγουμε την πολυκοσμία
+					</li>
+					<i class="icon-ok-circle"></i>
+						Απολυμαίνουμε συχνά τα χέρια μας
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="c3">
+		</div>	
+		<div class="c9" >
+			<h4 class="stresstitle">
+				Τι χρειάζεται να γνωρίζετε;
+			</h4>
+				<!-- service 1-->
+			<div class="c4" style="margin-top:10px">
+				<a class="subtitles" h`r`ef="#">
+				<span class="serviceicon" ><i class="icon-pushpin rotate"></i></span>
+				Συμπτώματα
 				<p>
-					<span class="dropcap">S</span>ed sit amet nibh cursus libero bibendum vestibulum sed sit amet sem. Mauris dolor mauris, ultrices ac tincidunt ac, mollis sed ante. Nunc egestas augue non augue facilisis laoreet facilisis orci auctor. Nullam vulputate dui non ante fermentum laoreet. In hac habitasse platea dictumst. Aliquam eu urna arcu. Etiam nec justo urna, vel cursus lorem. Sed blandit purus faucibus neque sollicitudin facilisis vel eget purus. In tincidunt eros nec leo varius imperdiet. Vivamus non nulla vitae justo rutrum mattis. Etiam vehicula, velit nec eleifend eleifend, velit tellus adipiscing nunc, nec ornare purus odio at diam. Sed dictum purus at risus laoreet eget venenatis neque sodales. Mauris at ligula urna.
+				Ποια είναι τα συμπτώματα της COVID-19 λοίμωξης;
 				</p>
-				<p class="justabox" style="text-align:left;padding:20px;">
-					Led sit amet nibh cursus libero bibendum vestibulum sed sit amet sem. Mauris dolor mauris, ultrices ac tincidunt ac, mollis sed ante. Nunc egestas augue non augue facilisis laoreet facilisis orci auctor. Nullam vulputate dui non ante fermentum laoreet. In hac habitasse platea dictumst. Aliquam eu urna arcu. Etiam nec justo urna, vel cursus lorem. Sed blandit purus faucibus neque sollicitudin facilisis vel eget purus. In tincidunt eros nec leo varius imperdiet. Vivamus non nulla vitae justo rutrum mattis. Etiam vehicula, velit nec eleifend eleifend, velit tellus adipiscing nunc, nec ornare purus odio at diam. Sed dictum purus at risus laoreet eget venenatis neque sodales. Mauris at ligula urna.
-				</p>
+				</a>
+			</div>
+			<!-- service 2-->
+			<div class="c4" style="margin-top:10px">
+				<a class="subtitles" href="#">
+				<span class="serviceicon" ><i class="icon-pushpin rotate"></i></span>
+				Ελεγχος  
 				<p>
-					<i>
-					Aliquam vehicula justo et nibh malesuada mollis. Mauris commodo odio sit amet felis condimentum at luctus erat ornare. Proin fermentum libero malesuada nisi laoreet sit amet scelerisque lacus pellentesque. Proin elementum eleifend orci in venenatis. Morbi dapibus faucibus sollicitudin. Donec pharetra, elit et luctus aliquetla lectus in nibh. Quisque tempus mollis hendrerit. Cras et ligula malesuada urna aliquam sodales nec vel erat. Pellentesque iaculis ante id leo congue vel vulputate ipsum fermentum. </i>
+				Πότε πρέπει κάποιος να ελεγχθεί για COVID-19;
 				</p>
-				<p class="simplebox">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam hendrerit lacus mattis orci fermentum mollis iaculis purus lobortis. In et purus ut nunc elementum dapibus facilisis in quam. Phasellus porta porta eleifend. Praesent elit nulla, consectetur fringilla dignissim eu, scelerisque et tellus. Maecenas hendrerit enim sed nulla euismod id feugiat neque bibendum. Maecenas mattis dictum purus aliquam faucibus. Maecenas at lacus in lectus aliquam condimentum vitae eleifend dolor.
-				</p>
-			</article>
-			<article>
-				<h1 class="maintitle space-top">
-				<span>VIVAMUS ADIPISCING, SAPIEN</span>
-				</h1>
+				</a>
+			</div>
+			<!-- service 3-->
+			<div class="c4" style="margin-top:10px">
+				<a class="subtitles" href="#">
+				<span class="serviceicon" ><i class="icon-pushpin rotate"></i></span>
+				Εμβολιασμος  
 				<p>
-					<span class="dropcap">S</span>ed sit amet nibh cursus libero bibendum vestibulum sed sit amet sem. Mauris dolor mauris, ultrices ac tincidunt ac, mollis sed ante. Nunc egestas augue non augue facilisis laoreet facilisis orci auctor. Nullam vulputate dui non ante fermentum laoreet. In hac habitasse platea dictumst. Aliquam eu urna arcu. Etiam nec justo urna, vel cursus lorem. Sed blandit purus faucibus neque sollicitudin facilisis vel eget purus. In tincidunt eros nec leo varius imperdiet. Vivamus non nulla vitae justo rutrum mattis. Etiam vehicula, velit nec eleifend eleifend, velit tellus adipiscing nunc, nec ornare purus odio at diam. Sed dictum purus at risus laoreet eget venenatis neque sodales. Mauris at ligula urna.
+				Πότε να εμβολιαστώ κατα της νόσου;
 				</p>
-				<p class="justabox" style="text-align:left;padding:20px;">
-					Led sit amet nibh cursus libero bibendum vestibulum sed sit amet sem. Mauris dolor mauris, ultrices ac tincidunt ac, mollis sed ante. Nunc egestas augue non augue facilisis laoreet facilisis orci auctor. Nullam vulputate dui non ante fermentum laoreet. In hac habitasse platea dictumst. Aliquam eu urna arcu. Etiam nec justo urna, vel cursus lorem. Sed blandit purus faucibus neque sollicitudin facilisis vel eget purus. In tincidunt eros nec leo varius imperdiet. Vivamus non nulla vitae justo rutrum mattis. Etiam vehicula, velit nec eleifend eleifend, velit tellus adipiscing nunc, nec ornare purus odio at diam. Sed dictum purus at risus laoreet eget venenatis neque sodales. Mauris at ligula urna.
-				</p>
-				<p>
-					<i>
-					Aliquam vehicula justo et nibh malesuada mollis. Mauris commodo odio sit amet felis condimentum at luctus erat ornare. Proin fermentum libero malesuada nisi laoreet sit amet scelerisque lacus pellentesque. Proin elementum eleifend orci in venenatis. Morbi dapibus faucibus sollicitudin. Donec pharetra, elit et luctus aliquetla lectus in nibh. Quisque tempus mollis hendrerit. Cras et ligula malesuada urna aliquam sodales nec vel erat. Pellentesque iaculis ante id leo congue vel vulputate ipsum fermentum. </i>
-				</p>
-				<p class="simplebox">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam hendrerit lacus mattis orci fermentum mollis iaculis purus lobortis. In et purus ut nunc elementum dapibus facilisis in quam. Phasellus porta porta eleifend. Praesent elit nulla, consectetur fringilla dignissim eu, scelerisque et tellus. Maecenas hendrerit enim sed nulla euismod id feugiat neque bibendum. Maecenas mattis dictum purus aliquam faucibus. Maecenas at lacus in lectus aliquam condimentum vitae eleifend dolor.
-				</p>
-			</article>
-		</section>
-		<!-- end main content -->
-	</div>
+				</a>
+			</div>
+			<!-- end service 3-->	
+		</div>
+		<h4 class="stresstitle">
+			Είστε άρρωστος;
+		</h4>
+		<ul class="linelist">
+			<li><i class="icon-home"></i>
+				Μείνεται σπιτι
+			</li>
+			<li><i class="icon-plus-sign"></i>
+				Ενημερώσετε τον ιατρό σας
+				</li>
+			<li><i class="icon-group"></i>
+				Αποφύγετε την επαφή με άλλα άτομα
+			</li>
+			<li><i class="icon-ok"></i>
+				Παρακολουθήστε τα συμπτώματα
+			</li>
+		</ul>
+		<div>
+			<div class="c7  wrapaction" style="margin-top:40px">
+				<h5 class="title">
+				Αναζητηστε αμεση ιατρικη βοηθεια σε περιπτωση που:
+				</h5>
+				<ul class="reglist">
+					<li>
+						Αντιμετώπιζετε προβλήματα αναπνοής
+					</li>
+					<li>
+						Αισθάνεστε επίμονο πόνο στο στήθος
+						<a href="https://eody.gov.gr/" class="actionbutton" style="margin-left:200px">
+						Καλεστε στο 1135
+						</a>
+					</li>
+					<li>
+						Δυσκολεύεστε να παραμείνετε ξύπνιος
+					</li>
+					<li>
+						Παρατηρήσετε μπλε απόχρωση στα χείλια ή το πρόσωπο
+					</li>
+				</ul>	
+			</div><!-- end wrap action-->
+			<img class="c5" src="/images/1135.jpg" style="margin-top:40px"></img>
+		</div>
+	</div><!-- end main content -->
 </div><!-- end grid -->
+
 <!-- FOOTER
 ================================================== -->
 <?php include '../../footer.php' ?>
@@ -110,6 +177,6 @@
 <script src="/js/jquery.cycle.js"></script>
 
 <!-- twitter -->
-<!-- <script src="/js/jquery.tweet.js"></script> -->
+<script src="/js/jquery.tweet.js"></script>
 </body>
 </html>
