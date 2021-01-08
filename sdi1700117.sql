@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Φιλοξενητής: localhost
--- Χρόνος δημιουργίας: 07 Ιαν 2021 στις 15:53:00
+-- Χρόνος δημιουργίας: 08 Ιαν 2021 στις 22:25:01
 -- Έκδοση διακομιστή: 10.4.16-MariaDB
 -- Έκδοση PHP: 7.4.12
 
@@ -28,20 +28,21 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `email` varchar(64) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  `afm` int(9) NOT NULL,
+  `amka` int(11) DEFAULT NULL,
   `name` varchar(64) NOT NULL,
-  `surname` varchar(64) NOT NULL
+  `surname` varchar(64) NOT NULL,
+  `email` varchar(64) NOT NULL,
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Άδειασμα δεδομένων του πίνακα `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `password`, `name`, `surname`) VALUES
-(1, 'haruhisuzu@yahoo.com', '$2y$10$.RVuwu.qqyqb2B.tEtpUx.CRawLWj76PKlbOw6By3p94eM9/anR0S', 'Haruhi', 'Suzumiya'),
-(2, 'spilios@gmail.com', '$2y$10$IDSGenNkkfLmugqgohhZ2ez0DBEjIbpVFv38S0lNrO3CKSa4J9GCe', 'Αθανάσιος', 'Σπηλιωτόπουλος');
+INSERT INTO `users` (`afm`, `amka`, `name`, `surname`, `email`, `password`) VALUES
+(240741129, NULL, 'Αθανάσιος', 'Σπηλιωτόπουλος', 'spilios@gmail.com', '$2y$10$IDSGenNkkfLmugqgohhZ2ez0DBEjIbpVFv38S0lNrO3CKSa4J9GCe'),
+(304696340, NULL, 'Haruhi', 'Suzumiya', 'haruhisuzu@yahoo.com', '$2y$10$.RVuwu.qqyqb2B.tEtpUx.CRawLWj76PKlbOw6By3p94eM9/anR0S');
 
 --
 -- Ευρετήρια για άχρηστους πίνακες
@@ -51,18 +52,8 @@ INSERT INTO `users` (`id`, `email`, `password`, `name`, `surname`) VALUES
 -- Ευρετήρια για πίνακα `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`afm`),
   ADD UNIQUE KEY `email` (`email`);
-
---
--- AUTO_INCREMENT για άχρηστους πίνακες
---
-
---
--- AUTO_INCREMENT για πίνακα `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
