@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 				// Check if user exists, if yes then verify password
 				if (mysqli_stmt_num_rows($stmt) == 1) {
-					$email_err = "Υπάρχει ήδη χρήστης με αυτή τη διεύθυνση email!";
+					$email_err = "Υπάρχει ήδη χρήστης με αυτή τη διεύθυνση email.";
 				}
 			} else {
 				$email_err = "Κάτι πήγε στραβά. Παρακαλώ δοκιμάστε ξανά αργότερα.";
@@ -107,6 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html lang="el">
 <head>
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width"/>
 	<title>Εγγραφή - Υπουργείο Εργασίας &amp; Κοινωνικών Υποθέσεων</title>
 	<link rel="shortcut icon" href="/favicon.ico"/>
@@ -117,7 +118,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	<link rel="stylesheet" type="text/css" href="/css/slider.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/skinblue.css"/><!-- change skin color -->
 	<link rel="stylesheet" type="text/css" href="/css/responsive.css"/>
-	<script src="/js/jquery-1.9.0.min.js"></script><!-- the rest of the scripts at the bottom of the document -->
 </head>
 <body>
 	<div class="grid">
@@ -134,7 +134,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					echo '</p>';
 				}
 			?>
-			<label for="email">Email:</label>
+			<label for="email" class="required">Email:</label>
 			<input type="email" name="email" id="email" required>
 
 			<?php
@@ -145,11 +145,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				}
 			?>
 			<div class="c6 noleftmargin">
-				<label for="name">Όνομα:</label>
+				<label for="name" class="required">Όνομα:</label>
 				<input type="text" name="name" id="name" required>
 			</div>
 			<div class="c6 norightmargin">
-				<label for="surname">Επώνυμο:</label>
+				<label for="surname" class="required">Επώνυμο:</label>
 				<input type="text" name="surname" id="surname" required>
 			</div>
 
@@ -160,17 +160,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					echo '</p>';
 				}
 			?>
-			<label for="password">Κωδικός πρόσβασης:</label>
+			<label for="password" class="required">Κωδικός πρόσβασης:</label>
 			<input type="password" name="password" id="password" required>
-			<label for="confirm-password">Επανάληψη κωδικού πρόσβασης:</label>
+			<label for="confirm-password" class="required">Επανάληψη κωδικού πρόσβασης:</label>
 			<input type="password" name="confirm-password" id="confirm-password" required>
 
 			<input type="checkbox" name="consent" id="consent" required>
-			<label for="consent" style="display: inline-block">Συμφωνώ να <del>απολέσω τα νεφρά μου</del> στους <a href="#">Όρους Χρήσης</a> και την <a href="#">Πολιτική Απορρήτου</a></label>
+			<label for="consent" class="required" style="display: inline-block">Συμφωνώ να <del>απολέσω τα νεφρά μου</del> με τους <a href="#">Όρους Χρήσης</a> και την <a href="#">Πολιτική Απορρήτου</a></label>
 
-
-			<div class="right">
-				<input type="reset" value="Καθαρισμός">
+			<div  class="buttons space-top">
+				<input type="reset" value="Καθαρισμός"> |
 				<input type="submit" class="actionbutton" value="Υποβολή">
 			</div>
 		</form>
