@@ -1,15 +1,17 @@
 <!DOCTYPE HTML>
 <html lang="el">
-<head><meta name="viewport" content="width=device-width"/>
-<title>COVID-19 - Υπουργείο Εργασίας &amp; Κοινωνικών Υποθέσεων</title>
-<link rel="shortcut icon" href="/favicon.ico"/>
-<!-- STYLES & JQUERY
-================================================== -->
-<link rel="stylesheet" type="text/css" href="/css/style.css"/>
-<link rel="stylesheet" type="text/css" href="/css/icons.css"/>
-<link rel="stylesheet" type="text/css" href="/css/skinblue.css"/><!-- change skin color -->
-<link rel="stylesheet" type="text/css" href="/css/responsive.css"/>
-<script src="/js/jquery-1.9.0.min.js"></script><!-- the rest of the scripts at the bottom of the document -->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width"/>
+	<title>COVID-19 - Υπουργείο Εργασίας &amp; Κοινωνικών Υποθέσεων</title>
+	<link rel="shortcut icon" href="/favicon.ico"/>
+	<!-- STYLES & JQUERY
+	================================================== -->
+	<link rel="stylesheet" type="text/css" href="/css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/icons.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/skinblue.css"/><!-- change skin color -->
+	<link rel="stylesheet" type="text/css" href="/css/responsive.css"/>
+	<script src="/js/jquery-1.9.0.min.js"></script><!-- the rest of the scripts at the bottom of the document -->
 </head>
 <body>
 <!-- TOP LOGO & MENU

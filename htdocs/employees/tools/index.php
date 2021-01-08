@@ -1,15 +1,17 @@
 <!DOCTYPE HTML>
 <html lang="el">
-<head><meta name="viewport" content="width=device-width"/>
-<title>Εργαλεία Εργαζόμενων - Υπουργείο Εργασίας &amp; Κοινωνικών Υποθέσεων</title>
-<link rel="shortcut icon" href="/favicon.ico"/>
-<!-- STYLES & JQUERY
-================================================== -->
-<link rel="stylesheet" type="text/css" href="/css/style.css"/>
-<link rel="stylesheet" type="text/css" href="/css/icons.css"/>
-<link rel="stylesheet" type="text/css" href="/css/skinblue.css"/><!-- change skin color -->
-<link rel="stylesheet" type="text/css" href="/css/responsive.css"/>
-<script src="/js/jquery-1.9.0.min.js"></script><!-- the rest of the scripts at the bottom of the document -->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width"/>
+	<title>Εργαλεία Εργαζόμενων - Υπουργείο Εργασίας &amp; Κοινωνικών Υποθέσεων</title>
+	<link rel="shortcut icon" href="/favicon.ico"/>
+	<!-- STYLES & JQUERY
+	================================================== -->
+	<link rel="stylesheet" type="text/css" href="/css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/icons.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/skinblue.css"/><!-- change skin color -->
+	<link rel="stylesheet" type="text/css" href="/css/responsive.css"/>
+	<script src="/js/jquery-1.9.0.min.js"></script><!-- the rest of the scripts at the bottom of the document -->
 </head>
 <body>
 <!-- TOP LOGO & MENU
@@ -61,7 +63,7 @@
 						<div class="mosaic-overlay">
 							<img src="/images/adeia-eidikou-skopou.jpg" alt="Εργαζόμενη μητέρα με το παιδί της">
 						</div>
-						<div class="mosaic-backdrop blue details">
+						<div class="mosaic-backdrop blue">
 						<div class="details">
 							<p>
 								Η άδεια ειδικού σκοπού για τους γονείς με παιδιά έως 15 ετών, παραμένει σε ισχύ ανάλογα με την πορεία ανοίγματος των σχολικών μονάδων, των παιδικών και βρεφικών σταθμών.
@@ -76,12 +78,12 @@
 			</div>
 			<div class="boxfourcolumns cat1 cat3">
 				<div class="boxcontainer">
-					<a href="hlektroniko-randezvous.php">
+					<a href="e-rendezvous.php">
 					<div class="mosaic-block cover mosaicover4col">
 						<div class="mosaic-overlay">
 							<img src="/images/ypoyrgeio_ergasias.jpg" alt="Το Υπουργείο Εργασίας">
 						</div>
-						<div class="mosaic-backdrop green details">
+						<div class="mosaic-backdrop green">
 						<div class="details">
 							<p>
 								Μπορείτε να ορίσετε ημερομηνία και ώρα συνάτησης, σε περίπτωση που είναι απαραίτητη η εξυπηρέτηση με φυσική παρουσία.
@@ -101,7 +103,7 @@
 						<div class="mosaic-overlay">
 							<img src="http://placehold.it/278x180" alt="">
 						</div>
-						<div class="mosaic-backdrop red details">
+						<div class="mosaic-backdrop yellow">
 						<div class="details">
 							<p></p>
 							<i class="icon-cog mosaiclink"></i>
@@ -119,7 +121,7 @@
 						<div class="mosaic-overlay">
 							<img src="http://placehold.it/278x180" alt="">
 						</div>
-						<div class="mosaic-backdrop green details">
+						<div class="mosaic-backdrop red">
 						<div class="details">
 							<p></p>
 							<i class="icon-cog mosaiclink"></i>

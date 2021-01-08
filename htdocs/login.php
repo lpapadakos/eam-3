@@ -84,6 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html lang="el">
 <head>
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width"/>
 	<title>Σύνδεση - Υπουργείο Εργασίας &amp; Κοινωνικών Υποθέσεων</title>
 	<link rel="shortcut icon" href="/favicon.ico"/>
@@ -94,7 +95,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	<link rel="stylesheet" type="text/css" href="/css/slider.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/skinblue.css"/><!-- change skin color -->
 	<link rel="stylesheet" type="text/css" href="/css/responsive.css"/>
-	<script src="/js/jquery-1.9.0.min.js"></script><!-- the rest of the scripts at the bottom of the document -->
 </head>
 <body>
 	<div class="grid">
@@ -112,7 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					echo '</p>';
 				}
 			?>
-			<label for="email">Email:</label>
+			<label for="email" class="required">Email:</label>
 			<input type="email" name="email" id="email" required>
 
 			<?php
@@ -122,7 +122,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					echo '</p>';
 				}
 			?>
-			<label for="password">Κωδικός πρόσβασης:</label>
+			<label for="password" class="required">Κωδικός πρόσβασης:</label>
 			<input type="password" name="password" id="password" required>
 			<input type="submit" id="login" class="actionbutton" value="Σύνδεση">
 		</form>
