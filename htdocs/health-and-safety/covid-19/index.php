@@ -51,113 +51,57 @@
 				</nav>
 			</div>
 		</div>
-		<!-- end sidebar -->
-		<!-- MAIN CONTENT -->
-		<div class="c9">
-			<h1 class="maintitle">Σχετικά με τον COVID-19</h1>
-			<div class="c5">
-				<img src="/images/covid.png">
+		<!-- END SIDEBAR -->
+		<!-- CONTENT -->	
+		<div class ="c9">
+			<h2 class="stresstitle">Αντιμετώπιση πανδημίας COVID-19</h2>
+			
+			<div class="c8">
+				<h1 class="maintitle">Οδηγίες και μέτρα πρόληψης σε εργασιακούς χώρους</h1>
+				<p id="bigparagraph">Οι κατευθυντήριες οδηγίες βασίζονται σε αντίστοιχες  οδηγίες  και  συστάσεις  του  Εθνικού  Οργανι-σμού Δημόσιας Υγείας (Ε.Ο.Δ.Υ.), της Γενικής Γραμ-ματείας Πολιτικής Προστασίας (ΓΓΠΠ) και του Πα-γκόσμιου Οργανισμού Υγείας (ΠΟΥ), καθώς και τις προβλέψεις της εθνικής και κοινοτικής νομοθεσίας για την υγεία και ασφάλεια στην εργασία. Ο σκοπός αυτών των οδηγιών είναι η ενίσχυση της αποτελεσματικότητας   των   προτεινόμενων   από   τον  ΕΟΔΥ  μέτρων  για  την  αντιμετώπιση  και  τον  περιορισμό περιπτώσεων λοίμωξης από το νέο κο-ρωνοϊό-2019 SARS-CoV-2 σε εργασιακούς χώρους εν γένει, με την επιφύλαξη ειδικότερων προβλέψε-ων  για  συγκεκριμένα  περιβάλλοντα  εργασίας  (π.χ.  νοσοκομεία).</p>
 			</div>
-			<div class="c7">
-				<ul class="tickboxes">
-					<li>
-						<i class="icon-ok-circle"></i>
-						Φοράμε μάσκα
-					</li>
-					<li>
-					<i class="icon-ok-circle"></i>
-						Τηρούμε αποστάσεις ασφαλείας 
-					</li>
-					<li>
-					<i class="icon-ok-circle"></i>
-						Αποφεύγουμε την πολυκοσμία
-					</li>
-					<i class="icon-ok-circle"></i>
-						Απολυμαίνουμε συχνά τα χέρια μας
-					</li>
+			<div class="c4 reglist">
+				<h1 class="maintitle">Γενικές Οδηγίες</h1>
+				<ul class ="reglist" id="titlemargin1">
+					<li>Φοράμε μάσκα</li>
+					<li>Τηρούμε αποστάσεις ασφαλείας</li>
+					<li>Αποφεύγουμε την πολυκοσμία</li>
+					<li>Απολυμαίνουμε συχνά τα χέρια μας</li>
 				</ul>
 			</div>
-		</div>
-		<div class="c3">
-		</div>	
-		<div class="c9" >
-			<h4 class="stresstitle">
-				Τι χρειάζεται να γνωρίζετε;
-			</h4>
-				<!-- service 1-->
-			<div class="c4" style="margin-top:10px">
-				<a class="subtitles" h`r`ef="#">
-				<span class="serviceicon" ><i class="icon-pushpin rotate"></i></span>
-				Συμπτώματα
-				<p>
-				Ποια είναι τα συμπτώματα της COVID-19 λοίμωξης;
-				</p>
-				</a>
+			<div class="c8">
+				<h1 class="maintitle">Εξυπηρέτηση κοινού </h1>
+				<p id="bigparagraph"> Όσοι  πολίτες επιθυμούν να προσέλθουν  στις Υπηρεσίες του υπουργείου,θα πρέπει να υποβάλλουν το αίτημά τους για ραντεβού στην δηλώνοντας τον λόγο προσέλευσης και το αρμόδιο Κέντρο Προώθησης Απασχόλησης.</p>
 			</div>
-			<!-- service 2-->
-			<div class="c4" style="margin-top:10px">
-				<a class="subtitles" href="#">
-				<span class="serviceicon" ><i class="icon-pushpin rotate"></i></span>
-				Ελεγχος  
-				<p>
-				Πότε πρέπει κάποιος να ελεγχθεί για COVID-19;
-				</p>
-				</a>
+			<div class="c4">
+				<h1 class="maintitle">Στοιχεία Επικοινωνίας</h1>
+				<ul>
+					<li><i class="icon-phone" id="listiconmargin"></i>Τηλέφωνο Επικοινωνίας:210-3311676</li>
+					<br>
+					<li><i class="icon-inbox"  id="listiconmargin"></i>email: pliroforisi-politi@ypakp.gr</li>
+				</ul>
 			</div>
-			<!-- service 3-->
-			<div class="c4" style="margin-top:10px">
-				<a class="subtitles" href="#">
-				<span class="serviceicon" ><i class="icon-pushpin rotate"></i></span>
-				Εμβολιασμος  
-				<p>
-				Πότε να εμβολιαστώ κατα της νόσου;
-				</p>
-				</a>
+			<div class="c12">
+				<div class="wrapaction">
+					<h1 class="maintitle">ΩΡΑΡΙΟ ΕΠΙΣΚΕΨΕΩΝ</h1>
+					<div class="c8" >
+						<ul style="float:inline-start; margin-right:5%; font-size:15px" >
+							<li >Δευτερα-Παρασκευη</li>
+							<li>0:00-0:00</li>
+						</ul>
+						<ul style="float:inline-start; margin-right:5%; font-size:15px">
+							<li>Σαββατο-Κυριακη</li>
+							<li>0:00-0:00</li>
+						</ul>
+					</div>
+					<div class="c4">
+						<div class="actionbutton">
+							Κλείστε Ραντεβού
+						</div>
+					</div>
+				</div>
 			</div>
-			<!-- end service 3-->	
-		</div>
-		<h4 class="stresstitle">
-			Είστε άρρωστος;
-		</h4>
-		<ul class="linelist">
-			<li><i class="icon-home"></i>
-				Μείνεται σπιτι
-			</li>
-			<li><i class="icon-plus-sign"></i>
-				Ενημερώσετε τον ιατρό σας
-				</li>
-			<li><i class="icon-group"></i>
-				Αποφύγετε την επαφή με άλλα άτομα
-			</li>
-			<li><i class="icon-ok"></i>
-				Παρακολουθήστε τα συμπτώματα
-			</li>
-		</ul>
-		<div>
-			<div class="c7  wrapaction" style="margin-top:40px">
-				<h5 class="title">
-				Αναζητηστε αμεση ιατρικη βοηθεια σε περιπτωση που:
-				</h5>
-				<ul class="reglist">
-					<li>
-						Αντιμετώπιζετε προβλήματα αναπνοής
-					</li>
-					<li>
-						Αισθάνεστε επίμονο πόνο στο στήθος
-						<a href="https://eody.gov.gr/" class="actionbutton" style="margin-left:200px">
-						Καλεστε στο 1135
-						</a>
-					</li>
-					<li>
-						Δυσκολεύεστε να παραμείνετε ξύπνιος
-					</li>
-					<li>
-						Παρατηρήσετε μπλε απόχρωση στα χείλια ή το πρόσωπο
-					</li>
-				</ul>	
-			</div><!-- end wrap action-->
-			<img class="c5" src="/images/1135.jpg" style="margin-top:40px"></img>
-		</div>
+		</div><!-- END CONTENT -->
 	</div><!-- end main content -->
 </div><!-- end grid -->
 
