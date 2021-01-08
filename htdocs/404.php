@@ -1,3 +1,5 @@
+<?php require_once "common.php"; ?>
+
 <!DOCTYPE HTML>
 <html lang="el">
 <head>

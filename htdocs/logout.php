@@ -1,6 +1,7 @@
 <?php
+
 // Initialize the session
-session_start();
+require_once "common.php";
 
 // Unset all of the session variables
 $_SESSION = array();
@@ -10,5 +11,5 @@ session_destroy();
 
 // Redirect to homepage
 header("location: /");
-exit;
+
 ?>

@@ -1,3 +1,5 @@
+<?php require_once "../../common.php"; ?>
+
 <!DOCTYPE HTML>
 <html lang="el">
 <head>
@@ -55,7 +57,7 @@
 		</div>
 		<!-- end sidebar -->
 		<!-- MAIN CONTENT -->
-		<article class="c9">
+		<section class="c9">
 			<article>
 				<h1 class="maintitle space-top">
 				<span>VIVAMUS ADIPISCING, SAPIEN</span>

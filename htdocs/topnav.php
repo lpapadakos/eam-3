@@ -55,8 +55,6 @@
 			<div id="login-area">
 				<?php
 
-				require_once "common.php";
-
 				$label1 = "ΣΥΝΔΕΣΗ";
 				$href1 = "/login.php";
 

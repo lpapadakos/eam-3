@@ -9,7 +9,7 @@ if (loggedin()) {
 }
 
 // Define variables and initialize with empty values
-$email = $password = "";
+$afm = $name = $email = $password = "";
 $email_err = $password_err = "";
 
 // Processing form data when form is submitted
@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	// Validate credentials
 	if (empty($email_err) && empty($password_err)) {
 		// Prepare a select statement
-		$sql = "SELECT password, name FROM users WHERE email = ?";
+		$sql = "SELECT afm, name, password FROM users WHERE email = ?";
 
 		if ($stmt = mysqli_prepare($link, $sql)) {
 			// Bind variables to the prepared statement as parameters
@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				// Check if user exists, if yes then verify password
 				if (mysqli_stmt_num_rows($stmt) == 1) {
 					// Bind result variables
-					mysqli_stmt_bind_result($stmt, $hashed_password, $name);
+					mysqli_stmt_bind_result($stmt, $afm, $name, $hashed_password);
 
 					if (mysqli_stmt_fetch($stmt)) {
 						if (password_verify($password, $hashed_password)) {
@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 							// Store data in session variables
 							$_SESSION["loggedin"] = true;
-							$_SESSION["email"] = $email;
+							$_SESSION["afm"] = $afm;
 							$_SESSION["name"] = $name;
 
 							// SUCCESS. Redirect user to home page and clear error
@@ -79,6 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	// Close connection
 	mysqli_close($link);
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -112,7 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				}
 			?>
 			<label for="email" class="required">Email:</label>
-			<input type="email" name="email" id="email" required>
+			<input type="email" name="email" id="email" maxlength="64" required>
 
 			<?php
 				if (!empty($password_err)) {
@@ -122,11 +123,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				}
 			?>
 			<label for="password" class="required">Κωδικός πρόσβασης:</label>
-			<input type="password" name="password" id="password" required>
+			<input type="password" name="password" id="password" maxlength="16" required>
 			<input type="submit" id="login" class="actionbutton" value="Σύνδεση">
 		</form>
 		<p class="royalcontent">
-			Δεν έχετε λογαριασμό; <a href="register.php">Δημιουργήστε έναν</a>.
+			Δεν έχετε λογαριασμό; <a href="register.php">Δημιουργήστε έναν!</a>.
+			Έτσι θα φτάνετε στους στόχους σας πιο εύκολα και γρήγορα.
 		</p>
 	</section>
 </body>

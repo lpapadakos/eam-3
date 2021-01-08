@@ -1,8 +1,8 @@
 <?php
 
 // Define variables and initialize with empty values
-$email = $password = $name = $surname = "";
-$email_err = $password_err = $name_err = "";
+$afm = $amka = $name = $surname = $email = $password = "";
+$email_err = $name_err = $password_err = "";
 
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -38,6 +38,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		}
 	}
 
+	// Validate AFM
+	$afm = trim($_POST["afm"]);
+	if (empty($afm)) {
+		$name_err = "Παρακαλώ εισάγετε τον ΑΦΜ σας.";
+	}
+
+	// AMKA can be empty for now
+	$amka = trim($_POST["amka"]);
+	if (empty($amka)) {
+		$amka = NULL;
+	}
+
 	// Validate name
 	$name = trim($_POST["name"]);
 	if (empty($name)) {
@@ -67,31 +79,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	}
 
 	// If no errors, proceed to insert values
-	if (empty($email_err) && empty($password_err) && empty($name_err)) {
+	if (empty($email_err) && empty($name_err) && empty($password_err)) {
 		// Prepare an insert statement
-		$sql = "INSERT INTO users (email, password, name, surname) VALUES (?, ?, ?, ?)";
+		$sql = "INSERT INTO users (afm, amka, name, surname, email, password) VALUES (?, ?, ?, ?, ?, ?)";
 
 		if ($stmt = mysqli_prepare($link, $sql)) {
 			// Bind variables to the prepared statement as parameters
-			mysqli_stmt_bind_param($stmt, "ssss", $email, $password, $name, $surname);
+			mysqli_stmt_bind_param($stmt, "ssssss", $afm, $amka, $name, $surname, $email, $password);
 
 			// Hash password before insert
 			$password = password_hash($password, PASSWORD_DEFAULT);
 
-			//echo $email . $password . $name . $surname;
 			// Attempt to execute the prepared statement
 			if (mysqli_stmt_execute($stmt)) {
 				session_start();
 
 				// Store data in session variables
 				$_SESSION["loggedin"] = true;
-				$_SESSION["email"] = $email;
+				$_SESSION["afm"] = $afm;
 				$_SESSION["name"] = $name;
 
 				// SUCCESS. Redirect user to home page
 				header("location: /");
 			} else {
-				$email_err = "Κάτι πήγε στραβά. Παρακαλώ δοκιμάστε ξανά αργότερα";
+				$email_err = "Σφάλμα: [" . mysqli_error($link) . "]. Παρακαλώ δοκιμάστε ξανά αργότερα.";
 			}
 
 			// Close statement
@@ -102,6 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	// Close connection
 	mysqli_close($link);
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -134,7 +146,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				}
 			?>
 			<label for="email" class="required">Email:</label>
-			<input type="email" name="email" id="email" required>
+			<input type="email" name="email" id="email" maxlength="64" required>
 
 			<?php
 				if (!empty($name_err)) {
@@ -144,12 +156,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				}
 			?>
 			<div class="c6 noleftmargin">
+				<label for="afm" class="required">ΑΦΜ:</label>
+				<input type="text" name="afm" id="afm" pattern="\d*" minlength="9" maxlength="9" required >
+			</div>
+			<div class="c6 norightmargin">
+				<label for="amka">ΑΜΚΑ:</label>
+				<input type="text" name="amka" id="amka" pattern="\d*" minlength="11" maxlength="11">
+			</div>
+
+			<div class="c6 noleftmargin">
 				<label for="name" class="required">Όνομα:</label>
-				<input type="text" name="name" id="name" required>
+				<input type="text" name="name" id="name" maxlength="64" required>
 			</div>
 			<div class="c6 norightmargin">
 				<label for="surname" class="required">Επώνυμο:</label>
-				<input type="text" name="surname" id="surname" required>
+				<input type="text" name="surname" id="surname" maxlength="64" required>
 			</div>
 
 			<?php
@@ -160,9 +181,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				}
 			?>
 			<label for="password" class="required">Κωδικός πρόσβασης:</label>
-			<input type="password" name="password" id="password" required>
+			<input type="password" name="password" id="password" maxlength="16" required>
+
 			<label for="confirm-password" class="required">Επανάληψη κωδικού πρόσβασης:</label>
-			<input type="password" name="confirm-password" id="confirm-password" required>
+			<input type="password" name="confirm-password" id="confirm-password" maxlength="16" required>
 
 			<input type="checkbox" name="consent" id="consent" required>
 			<label for="consent" class="required" style="display: inline-block">Συμφωνώ να <del>απολέσω τα νεφρά μου</del> με τους <a href="#">Όρους Χρήσης</a> και την <a href="#">Πολιτική Απορρήτου</a></label>

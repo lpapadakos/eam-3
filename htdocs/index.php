@@ -1,3 +1,5 @@
+<?php require_once "common.php"; ?>
+
 <!DOCTYPE html>
 <html lang="el">
 <head>
@@ -93,9 +95,8 @@
 </div>
 <!-- START content area
 ================================================== -->
-<!--ΕΡΓΑΛΕΙΑ-->
-<div class="grid">
-	<!--INTRO-->
+<section class="grid">
+	<!--ΕΡΓΑΛΕΙΑ-->
 	<div class="c12">
 		<div class="royalcontent">
 			<h1 class="royalheader"><i class="icon-wrench smallrightmargin"></i>ΣΥΧΝΕΣ ΛΕΙΤΟΥΡΓΙΕΣ</h1>
@@ -116,7 +117,7 @@
 		<div class="c4">
 			<h2 class="title hometitlebg"><a href="employees/tools">ΕΡΓΑΖΟΜΕΝΟΙ</a></h2>
 			<ul class="noshadowbox">
-				<li><a href="employers/tools/adeia-eidikou-skopou.php"><i class="icon-large icon-home smallrightmargin"></i>Άδεια Ειδικού Σκοπού</a></li>
+				<li><a href="employees/tools/adeia-eidikou-skopou.php"><i class="icon-large icon-home smallrightmargin"></i>Άδεια Ειδικού Σκοπού</a></li>
 				<li><a href="#"><i class="icon-large icon-h-sign smallrightmargin"></i>Προβολή Ενσήμων</a></li>
 				<li><a href="#"><i class="icon-large icon-file smallrightmargin"></i>Καταγγελία στο Σ.ΕΠ.Ε</a></li>
 			</ul>
@@ -125,8 +126,8 @@
 		<div class="c4">
 			<h2 class="title hometitlebg"><a href="unemployed/tools">ΑΝΕΡΓΟΙ</a></h2>
 			<ul class="noshadowbox">
-				<li><a href="#"><i class="icon-large icon-money smallrightmargin"></i>Αίτηση Επιδόματος Ανεργίας</a></li>
-				<li><a href="#"><i class="icon-large icon-cog smallrightmargin"></i>Αίτηση Χορήγησης Παροχών Μητρότητας</a></li>
+				<li><a href="#"><i class="icon-large icon-money smallrightmargin"></i>Επίδομα Ανεργίας</a></li>
+				<li><a href="#"><i class="icon-large icon-cog smallrightmargin"></i>Χορήγηση Παροχών Μητρότητας</a></li>
 				<li><a href="#"><i class="icon-large icon-suitcase smallrightmargin"></i>Αναζήτηση Θέσεων Εργασίας</a></li>
 			</ul>
 		</div>
@@ -213,7 +214,7 @@
 			</div>
 		</div>
 	</div>
-</div><!-- end grid -->
+</section><!-- end grid -->
 
 <!-- FOOTER
 ================================================== -->
