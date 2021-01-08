@@ -1,6 +1,6 @@
 /* * IVORY Framework * * A simple,flexible,powerful and fully responsive grid based front-end web framework * makes your web development faster and easier,& it takes you all the way from 1200px on down to 320px. * * Developed by Lakshmikanth Vallampati - kanth.vallampati@gmail.com * Licensed under GPLv2 * http://weice.in/ivory * */
 /* ---------------------------------------- HTML RESET ----------------------------------------- */
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; font-family: OpenSansRegular; }
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; font-family: OpenSansRegular; }
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, label, legend { display: block }
 body { background: #fff; font: 13px/22px OpenSansRegular, "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; color: #555; }
 blockquote, q { quotes: none }
@@ -101,7 +101,7 @@ form { margin-bottom: 20px; font: 14px "HelveticaNeue","Helvetica Neue",Helvetic
 #login-form, #register-form { float: none; margin: 60px auto 20px; }
 #login-logo { margin-top: 50px; height: auto; }
 #login-form #login { margin-top: 10px; width: 100%; }
-fieldset { margin-bottom: 20px }
+fieldset { margin-bottom: 20px; border: 1px solid #777; padding: 5px; }
 textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], select { background: #ffffff; border: 1px solid #ddd; padding: 8px 8px; vertical-align: middle; outline: none; border-radius: 2px; -moz-border-radius: 2px; -webkit-border-radius: 2px; transition: border linear 0.4s,box-shadow linear 0.4s; -o-transition: border linear 0.4s,box-shadow linear 0.4s; -moz-transition: border linear 0.4s,box-shadow linear 0.4s; -webkit-transition: border linear 0.4s,box-shadow linear 0.4s; margin: 0; width: 100%; display: block; margin-bottom: 20px; }
 input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, textarea:focus { border: 1px solid; border-color: rgba(82,168,236,0.8); color: #444; box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(81,168,236,0.5); -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(81,168,236,0.5); -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(81,168,236,0.5); }
 textarea { min-height: 120px }
@@ -110,6 +110,7 @@ label span, legend span { font-size: 12px; color: #444; }
 label.required:after { content: " *"; color: red; }
 input[type="reset"] { background-color: inherit; cursor: pointer; }
 input[type="reset"]:hover { text-decoration: underline; }
+input[disabled] { background: #eee; }
 form .buttons { text-align: right; }
 form .buttons > input { display: inline; }
 /* ---- Alerts ---- */
