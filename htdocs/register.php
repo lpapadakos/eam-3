@@ -120,12 +120,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	<link rel="stylesheet" type="text/css" href="/css/responsive.css"/>
 </head>
 <body>
-	<div class="grid">
+	<section class="grid">
 		<header class="royalcontent">
-			<img id="login-logo" src="/images/logo.gif" class="logo" alt="Λογότυπο Υπουργείου">
+			<a href="/"><img id="login-logo" src="/images/logo.gif" class="logo" alt="Λογότυπο Υπουργείου"></a><br>
 			<h1 class="title stresstitle">Εγγραφή Χρήστη</h1>
 		</header>
-		<section>
 		<form id="register-form" class="form c8" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 			<?php
 				if (!empty($email_err)) {
@@ -173,6 +172,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				<input type="submit" class="actionbutton" value="Υποβολή">
 			</div>
 		</form>
-		</section>
-	</div>
+	</section>
 </body>
