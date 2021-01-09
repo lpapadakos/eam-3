@@ -619,8 +619,8 @@ ul.teambox { padding-left: 25px }
 .toolbutton{ font-size: 16px; background: rgb(255, 255, 255); color: rgba(0, 0, 0, 0.678); border: 0px; line-height: 30px; padding-left: 15px; padding-right: 15px; padding-top: 5px; padding-bottom: 5px; cursor: pointer; }
 .tickboxes{font-size: 35px; color: #279118; }
 .tickboxes li {margin-bottom: 45px;}
-.linelist{font-size: 20px;}
-.linelist li{margin-right: 15px ; float:inline-start}
+.linelist{font-size: 15px; }
+.linelist li{width:35%; margin-right: 3% ; margin-left: 3%; margin-top: 2%; margin-bottom: 2%;float:inline-start; list-style:inside decimal}
 .reglist{font-size: 15px; color: #555; list-style:inside}
 .reglist li {margin-bottom: 10px;}
 #bigparagraph{font-size: 16px;}
