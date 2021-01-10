@@ -1,5 +1,7 @@
 <?php
 
+// TODO: Logout user?
+
 // Define variables and initialize with empty values
 $afm = $amka = $name = $surname = $email = $password = "";
 $email_err = $name_err = $password_err = "";
@@ -7,18 +9,22 @@ $email_err = $name_err = $password_err = "";
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	// Include config file
-	require_once "config.php";
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/include/common.php';
 
-	// Validate email
+	// Make sure this is a new user
 	$email = trim($_POST["email"]);
+	$afm = trim($_POST["afm"]);
+
 	if (empty($email)) {
 		$email_err = "Παρακαλώ εισάγετε έγκυρη διεύθυνση email.";
+	} else if (empty($afm)) {
+		$name_err = "Παρακαλώ εισάγετε τον ΑΦΜ σας.";
 	} else {
-		$sql = "SELECT id FROM users WHERE email = ?";
+		$sql = "SELECT id FROM users WHERE registered = TRUE AND email = ? OR afm = ?;";
 
 		if ($stmt = mysqli_prepare($link, $sql)) {
 			// Bind variables to the prepared statement as parameters
-			mysqli_stmt_bind_param($stmt, "s", $email);
+			mysqli_stmt_bind_param($stmt, "ss", $email, $afm);
 
 			// Attempt to execute the prepared statement
 			if (mysqli_stmt_execute($stmt)) {
@@ -26,11 +32,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				mysqli_stmt_store_result($stmt);
 
 				// Check if user exists, if yes then verify password
-				if (mysqli_stmt_num_rows($stmt) == 1) {
-					$email_err = "Υπάρχει ήδη χρήστης με αυτή τη διεύθυνση email.";
+				if (mysqli_stmt_num_rows($stmt) > 0) {
+					$email_err = "Υπάρχει ήδη εγγεγραμμένος χρήστης με αυτή τη διεύθυνση email ή το AΦΜ.";
 				}
 			} else {
-				$email_err = "Κάτι πήγε στραβά. Παρακαλώ δοκιμάστε ξανά αργότερα.";
+				// DEBUG: show the actual error
+				$email_err = "Σφάλμα: [" . mysqli_error($link) . "]. Παρακαλώ δοκιμάστε ξανά αργότερα.";
 			}
 
 			// Close statement
@@ -38,13 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		}
 	}
 
-	// Validate AFM
-	$afm = trim($_POST["afm"]);
-	if (empty($afm)) {
-		$name_err = "Παρακαλώ εισάγετε τον ΑΦΜ σας.";
-	}
-
-	// AMKA can be empty for now
+	// AMKA can be empty for now, just make it NULL for MySQL
 	$amka = trim($_POST["amka"]);
 	if (empty($amka)) {
 		$amka = NULL;
@@ -80,8 +81,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	// If no errors, proceed to insert values
 	if (empty($email_err) && empty($name_err) && empty($password_err)) {
-		// Prepare an insert statement
-		$sql = "INSERT INTO users (afm, amka, name, surname, email, password) VALUES (?, ?, ?, ?, ?, ?)";
+		// Prepare an insert statement. Update previously unregistered user's info
+		$sql = "INSERT INTO users (afm, amka, name, surname, registered, email, password) VALUES (?, ?, ?, ?, TRUE, ?, ?)
+			ON DUPLICATE KEY UPDATE
+				amka = VALUES(amka),
+				name = VALUES(name),
+				surname = VALUES(surname),
+				registered = VALUES(registered),
+				email = VALUES(email),
+				password = VALUES(password);";
 
 		if ($stmt = mysqli_prepare($link, $sql)) {
 			// Bind variables to the prepared statement as parameters
@@ -157,11 +165,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			?>
 			<div class="c6 noleftmargin">
 				<label for="afm" class="required">ΑΦΜ:</label>
-				<input type="text" name="afm" id="afm" pattern="\d*" minlength="9" maxlength="9" required >
+				<input type="text" name="afm" id="afm" pattern="[0-9]+" minlength="9" maxlength="9" required >
 			</div>
 			<div class="c6 norightmargin">
 				<label for="amka">ΑΜΚΑ:</label>
-				<input type="text" name="amka" id="amka" pattern="\d*" minlength="11" maxlength="11">
+				<input type="text" name="amka" id="amka" pattern="[0-9]+" minlength="11" maxlength="11">
 			</div>
 
 			<div class="c6 noleftmargin">
