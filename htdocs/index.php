@@ -1,10 +1,9 @@
-<!-- TODO BOIII
-	include_path = ".${_SERVER['DOCUMENT_ROOT']}";
--->
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . '/include/common.php'; ?>
 
 <!DOCTYPE html>
 <html lang="el">
 <head>
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width"/>
 	<title>Υπουργείο Εργασίας &amp; Κοινωνικών Υποθέσεων</title>
 	<link rel="shortcut icon" href="/favicon.ico"/>
@@ -20,7 +19,7 @@
 <body>
 <!-- TOP LOGO & MENU
 ================================================== -->
-<?php include 'topnav.php'; ?>
+<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/include/topnav.php'; ?>
 <div class="undermenuarea">
 	<div class="boxedshadow">
 	</div>
@@ -80,7 +79,7 @@
 					</div>
 				</a>
 				<!--Box 1-->
-				<a href="#" class="c3 introbox introboxlast">
+				<a href="employees/tools/e-rendezvous.php" class="c3 introbox introboxlast">
 					<div class="introboxinner">
 						<i class="icon-bolt homeicone"></i>
 						<h3>Ηλεκτρονικό Ραντεβού</h3>
@@ -96,9 +95,8 @@
 </div>
 <!-- START content area
 ================================================== -->
-<!--ΕΡΓΑΛΕΙΑ-->
-<div class="grid">
-	<!--INTRO-->
+<section class="grid">
+	<!--ΕΡΓΑΛΕΙΑ-->
 	<div class="c12">
 		<div class="royalcontent">
 			<h1 class="royalheader"><i class="icon-wrench smallrightmargin"></i>ΣΥΧΝΕΣ ΛΕΙΤΟΥΡΓΙΕΣ</h1>
@@ -108,29 +106,29 @@
 	<div id="tools" class="row space-bot flex">
 		<!--Persona 1-->
 		<div class="c4">
-			<h2 class="title hometitlebg"><a href="/employers/tools">ΕΡΓΟΔΟΤΕΣ</a></h2>
+			<h2 class="title hometitlebg"><a href="employers/tools">ΕΡΓΟΔΟΤΕΣ</a></h2>
 			<ul class="noshadowbox">
-				<li><a href="#"><i class="icon-large icon-cog smallrightmargin"></i>Αρχείο Κατάστασης Εργαζομένων</a></li>
+				<li><a href="#"><i class="icon-large icon-file-alt smallrightmargin"></i>Αρχείο Κατάστασης Εργαζομένων</a></li>
 				<li><a href="#"><i class="icon-large icon-money smallrightmargin"></i>Έκπτωση Εισφορών</a></li>
-				<li><a href="#"><i class="icon-large icon-cog smallrightmargin"></i>Κρατική Επιχορήγηση</a></li>
+				<li><a href="#"><i class="icon-large icon-money smallrightmargin"></i>Κρατική Επιχορήγηση</a></li>
 			</ul>
 		</div>
 		<!--Persona 2-->
 		<div class="c4">
-			<h2 class="title hometitlebg"><a href="/employees/tools">ΕΡΓΑΖΟΜΕΝΟΙ</a></h2>
+			<h2 class="title hometitlebg"><a href="employees/tools">ΕΡΓΑΖΟΜΕΝΟΙ</a></h2>
 			<ul class="noshadowbox">
-				<li><a href="#"><i class="icon-large icon-home smallrightmargin"></i>Άδεια Ειδικού Σκοπού</a></li>
-				<li><a href="#"><i class="icon-large icon-cog smallrightmargin"></i>Προβολή Ενσήμων</a></li>
+				<li><a href="employees/tools/adeia-eidikou-skopou.php"><i class="icon-large icon-home smallrightmargin"></i>Άδεια Ειδικού Σκοπού</a></li>
+				<li><a href="#"><i class="icon-large icon-h-sign smallrightmargin"></i>Προβολή Ενσήμων</a></li>
 				<li><a href="#"><i class="icon-large icon-file smallrightmargin"></i>Καταγγελία στο Σ.ΕΠ.Ε</a></li>
 			</ul>
 		</div>
 		<!--Persona 3-->
 		<div class="c4">
-			<h2 class="title hometitlebg"><a href="/unemployed/tools">ΑΝΕΡΓΟΙ</a></h2>
+			<h2 class="title hometitlebg"><a href="unemployed/tools">ΑΝΕΡΓΟΙ</a></h2>
 			<ul class="noshadowbox">
-				<li><a href="#"><i class="icon-large icon-cog smallrightmargin"></i>Αίτηση Επιδόματος Ανεργίας</a></li>
-				<li><a href="#"><i class="icon-large icon-cog smallrightmargin"></i>Αίτηση Χορήγησης Παροχών Μητρότητας</a></li>
-				<li><a href="#"><i class="icon-large icon-cog smallrightmargin"></i>Αναζήτηση Θέσεων Εργασίας</a></li>
+				<li><a href="#"><i class="icon-large icon-money smallrightmargin"></i>Επίδομα Ανεργίας</a></li>
+				<li><a href="#"><i class="icon-large icon-cog smallrightmargin"></i>Χορήγηση Παροχών Μητρότητας</a></li>
+				<li><a href="#"><i class="icon-large icon-suitcase smallrightmargin"></i>Αναζήτηση Θέσεων Εργασίας</a></li>
 			</ul>
 		</div>
 	</div>
@@ -216,11 +214,11 @@
 			</div>
 		</div>
 	</div>
-</div><!-- end grid -->
+</section><!-- end grid -->
 
 <!-- FOOTER
 ================================================== -->
-<?php include 'footer.php' ?>
+<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/include/footer.php' ?>
 <!-- END CONTENT AREA -->
 <!-- JAVASCRIPTS
 ================================================== -->

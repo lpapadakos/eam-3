@@ -1,21 +1,25 @@
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . '/include/common.php'; ?>
+
 <!DOCTYPE HTML>
 <html lang="el">
-<head><meta name="viewport" content="width=device-width"/>
-<title>Η σελίδα δεν βρέθηκε - Υπουργείο Εργασίας &amp; Κοινωνικών Υποθέσεων</title>
-<link rel="shortcut icon" href="/favicon.ico"/>
-<!-- STYLES & JQUERY
-================================================== -->
-<link rel="stylesheet" type="text/css" href="/css/style.css"/>
-<link rel="stylesheet" type="text/css" href="/css/icons.css"/>
-<link rel="stylesheet" type="text/css" href="/css/slider.css"/>
-<link rel="stylesheet" type="text/css" href="/css/skinblue.css"/><!-- change skin color -->
-<link rel="stylesheet" type="text/css" href="/css/responsive.css"/>
-<script src="js/jquery-1.9.0.min.js"></script><!-- scripts are at the bottom of the document -->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width"/>
+	<title>Η σελίδα δεν βρέθηκε - Υπουργείο Εργασίας &amp; Κοινωνικών Υποθέσεων</title>
+	<link rel="shortcut icon" href="/favicon.ico"/>
+	<!-- STYLES & JQUERY
+	================================================== -->
+	<link rel="stylesheet" type="text/css" href="/css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/icons.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/slider.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/skinblue.css"/><!-- change skin color -->
+	<link rel="stylesheet" type="text/css" href="/css/responsive.css"/>
+	<script src="js/jquery-1.9.0.min.js"></script><!-- scripts are at the bottom of the document -->
 </head>
 <body>
 	<!-- TOP LOGO & MENU
 	================================================== -->
-	<?php include 'topnav.php'; ?>
+	<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/include/topnav.php'; ?>
 	<!-- HEADER
 	================================================== -->
 	<div class="undermenuarea">
@@ -41,7 +45,7 @@
 			<div class="row space-bot">
 				<div class="c1">
 				</div>
-				<div class="c10" style="text-align:center;margin-top:90px;margin-bottom:190px;">
+				<div class="c10" style="text-align: center;">
 					<h1>Η σελίδα δεν βρέθηκε</h1>
 					<div class="pageline">
 					</div>
@@ -59,7 +63,8 @@
 
 	<!-- FOOTER
 	================================================== -->
-	<?php include 'footer.php' ?>
+	<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/include/footer.php' ?>
+
 	<!-- JAVASCRIPTS
 	================================================== -->
 	<!-- all -->

@@ -1,6 +1,6 @@
 /* * IVORY Framework * * A simple,flexible,powerful and fully responsive grid based front-end web framework * makes your web development faster and easier,& it takes you all the way from 1200px on down to 320px. * * Developed by Lakshmikanth Vallampati - kanth.vallampati@gmail.com * Licensed under GPLv2 * http://weice.in/ivory * */
 /* ---------------------------------------- HTML RESET ----------------------------------------- */
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; font-family: OpenSansRegular; }
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; font-family: OpenSansRegular; }
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, label, legend { display: block }
 body { background: #fff; font: 13px/22px OpenSansRegular, "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; color: #555; }
 blockquote, q { quotes: none }
@@ -98,12 +98,21 @@ ul { list-style: none }
 /* --------------------------------------- Form Elements ------------------------------------- */
 img { border: 0px }
 form { margin-bottom: 20px; font: 14px "HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif; color: #777; }
-fieldset { margin-bottom: 20px }
+#login-form, #register-form { float: none; margin: 60px auto 20px; }
+#login-logo { margin-top: 50px; height: auto; }
+#login-form #login { margin-top: 10px; width: 100%; }
+fieldset { margin-bottom: 20px; border: 1px solid #777; padding: 5px; }
 textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], select { background: #ffffff; border: 1px solid #ddd; padding: 8px 8px; vertical-align: middle; outline: none; border-radius: 2px; -moz-border-radius: 2px; -webkit-border-radius: 2px; transition: border linear 0.4s,box-shadow linear 0.4s; -o-transition: border linear 0.4s,box-shadow linear 0.4s; -moz-transition: border linear 0.4s,box-shadow linear 0.4s; -webkit-transition: border linear 0.4s,box-shadow linear 0.4s; margin: 0; width: 100%; display: block; margin-bottom: 20px; }
 input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, textarea:focus { border: 1px solid; border-color: rgba(82,168,236,0.8); color: #444; box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(81,168,236,0.5); -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(81,168,236,0.5); -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(81,168,236,0.5); }
 textarea { min-height: 120px }
 input[type="checkbox"] { display: inline }
 label span, legend span { font-size: 12px; color: #444; }
+label.required:after { content: " *"; color: red; }
+input[type="reset"] { background-color: inherit; cursor: pointer; }
+input[type="reset"]:hover { text-decoration: underline; }
+input[disabled] { background: #eee; }
+form .buttons { text-align: right; }
+form .buttons > input { display: inline; }
 /* ---- Alerts ---- */
 .alert { padding: 10px; margin-bottom: 18px; color: #c09853; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); background-color: #fcf8e3; border: 1px solid #fbeee0; border-radius: 4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; }
 .success { color: #468847;background-color: #dff0d8;border-color: #d6e9c6;padding: 10px;font-weight: bold;margin-bottom: 10px;}
@@ -114,7 +123,7 @@ label span, legend span { font-size: 12px; color: #444; }
 .accordion { width: 100%; background: #fff; font-size: 14px; font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 0 1px 3px rgba(0,0,0,.3); -moz-box-shadow: 0 1px 3px rgba(0,0,0,.3); -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.3); }
 .accordion p { height: 0; margin-bottom: 0px; padding: 0; color: #888; overflow: hidden; }
 .accordion a { display: block; height: auto; padding: 5px; line-height: 24px; background-color: #eee; color: #333; text-decoration: none; text-align: center; border-bottom: 1px solid #aaa; }
-.accordion a:hover, .accordion a:focus { opacity: .9; color: #ooo; }
+.accordion a:hover, .accordion a:focus { opacity: .9; color: #000; }
 .accordion a:active { color: #000 }
 .accordion :target + p { padding: 10px 15px; border-bottom: 1px solid #ccc; height: auto; }
 .accordion { }
@@ -205,7 +214,9 @@ nav li a { display: block; padding: 10px; color: #111; text-decoration: none; }
 #top-nav ul ul a { text-transform: none; padding: 5px 10px; border-left: none; border-right: none; font-size: 14px; color: #fff; margin-left: -5px; }
 #top-nav ul ul a:hover { margin-left: 0px; background: rgba(0,0,0,0.1); margin-left: -5px; }
 nav ul>li:hover>a { color: #fff }
-#breadcrumbs {font-size: 15px; padding: 5px; margin-bottom: 20px; color: #222;}
+#login-area {padding: 0 10px; height: auto; margin-top: 5px; }
+#login-area a {display: block; text-align: center; margin: 5px auto; padding: 5px 10px; width: 100%; font-size: 13px; font-weight: bold; }
+#breadcrumbs {font-size: 15px; padding: 10px; margin-bottom: 20px; color: #222;}
 #breadcrumbs a:first-child {font-size: 20px;}
 #breadcrumbs > p {margin: 0}
 #breadcrumbs a {color: inherit;}
@@ -484,9 +495,9 @@ ul.accordion>li.active .content { background: white; display: block; border-left
 .mosaicover2col { height: 260px }
 .mosaicover4col { height: 180px }
 .mosaicover5col { height: 140px }
+.boxcontainer img { width: 100%; }
 .boxcontainer p { margin-bottom: 10px }
-.boxcontainer h1 { font-size: 13px; line-height: 1; font-family: OpenSansRegular; font-weight: bold; padding-left: 10px; padding-right: 10px; }
-.boxcontainer h1 a { padding-bottom: 10px; border-bottom: 1px solid #eee; display: block; color: #222; }
+.boxcontainer h2 { font-size: 15px; line-height: 1; font-family: OpenSansRegular; font-weight: bold; padding: 20px 10px; margin: 0; color: #222; }
 #content { width: 100%; margin-top: 10px; z-index: 0; }
 #nav ul li a { float: left; margin-right: 15px; padding: 6px 10px; color: #333; border-radius: 3px; box-shadow: 1px 2px 5px #ccc; }
 .selected { background: #444; color: #fff !Important; box-shadow: 2px 3px 5px #999 !Important; }
@@ -544,6 +555,7 @@ ul.teambox { padding-left: 25px }
 #social-menu li a { color: #fff }
 #social-menu li:hover { opacity: 1 }
 .noleftmargin { padding-left: 0px }
+.norightmargin { padding-right: 0px }
 .grayimage { -webkit-filter: grayscale(100%) }
 .hometitlebg { background: #0E8FAB; color: #fff; margin-top: 0px; text-align: center; margin-bottom: 0px; font-family: OpenSansLight !Important; }
 .homeicone { padding: 10px 10px; color: #f8f8f8; margin-right: 4px; font-size: 45px; float: left; margin-right: 10px; }
