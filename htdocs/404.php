@@ -1,4 +1,4 @@
-<?php require_once "common.php"; ?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . '/include/common.php'; ?>
 
 <!DOCTYPE HTML>
 <html lang="el">
@@ -19,7 +19,7 @@
 <body>
 	<!-- TOP LOGO & MENU
 	================================================== -->
-	<?php include 'topnav.php'; ?>
+	<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/include/topnav.php'; ?>
 	<!-- HEADER
 	================================================== -->
 	<div class="undermenuarea">
@@ -63,7 +63,7 @@
 
 	<!-- FOOTER
 	================================================== -->
-	<?php include 'footer.php' ?>
+	<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/include/footer.php' ?>
 
 	<!-- JAVASCRIPTS
 	================================================== -->

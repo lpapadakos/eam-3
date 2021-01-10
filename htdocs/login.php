@@ -1,6 +1,6 @@
 <?php
 
-require_once "common.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . '/include/common.php';
 
 // Check if the user is already logged in, if yes then redirect to homepage
 if (loggedin()) {
@@ -15,7 +15,7 @@ $email_err = $password_err = "";
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	// Include config file
-	require_once "config.php";
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/include/config.php';
 
 	// Check if email is empty
 	$email = trim($_POST["email"]);
@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	// Validate credentials
 	if (empty($email_err) && empty($password_err)) {
 		// Prepare a select statement
-		$sql = "SELECT afm, name, password FROM users WHERE email = ?";
+		$sql = "SELECT afm, name, password FROM users WHERE email = ?;";
 
 		if ($stmt = mysqli_prepare($link, $sql)) {
 			// Bind variables to the prepared statement as parameters
@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					}
 				}
 			} else {
-				$email_err = "Κάτι πήγε στραβά. Παρακαλώ δοκιμάστε ξανά αργότερα.";
+				$email_err = "Σφάλμα: [" . mysqli_error($link) . "]. Παρακαλώ δοκιμάστε ξανά αργότερα.";
 			}
 
 			// Close statement

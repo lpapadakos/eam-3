@@ -30,7 +30,7 @@
 				<dl>
 					<dt>Σταδίου 29, Αθήνα 105 59</dt>
 					<dd><i class="icon-phone smalltightmargin" aria-label="Τηλέφωνο"></i>213-1516649, 213-1516651</dd>
-					<dd><i class="icon-mail smalltightmargin" aria-label="Email"><a href="mailto:pliroforisi-politi@ypakp.gr">pliroforisi-politi@ypakp.gr</a></dd>
+					<dd><i class="icon-mail smalltightmargin" aria-label="Email"></i><a href="mailto:pliroforisi-politi@ypakp.gr">pliroforisi-politi@ypakp.gr</a></dd>
 				</dl>
 				<ul class="social-links" style="margin-top:15px;">
 					<li class="facebook-link smallrightmargin">

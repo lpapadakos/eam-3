@@ -1,7 +1,7 @@
 <?php
 
 // Initialize the session
-require_once "common.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . '/include/common.php';
 
 // Unset all of the session variables
 $_SESSION = array();

@@ -1,4 +1,4 @@
-<?php require_once "../../common.php"; ?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . '/include/common.php'; ?>
 
 <!DOCTYPE HTML>
 <html lang="el">
@@ -18,7 +18,7 @@
 <body>
 <!-- TOP LOGO & MENU
 ================================================== -->
-<?php include '../../topnav.php'; ?>
+<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/include/topnav.php'; ?>
 <!-- HEADER
 ================================================== -->
 <div class="undermenuarea">
@@ -88,7 +88,7 @@
 						<div class="mosaic-backdrop green">
 						<div class="details">
 							<p>
-								Μπορείτε να ορίσετε ημερομηνία και ώρα συνάτησης, σε περίπτωση που είναι απαραίτητη η εξυπηρέτηση με φυσική παρουσία.
+								Μπορείτε να ορίσετε ημερομηνία και ώρα συνάντησης, σε περίπτωση που είναι απαραίτητη η εξυπηρέτηση με φυσική παρουσία.
 							</p>
 							<i class="icon-cog mosaiclink"></i>
 						</div>
@@ -139,7 +139,7 @@
 </div><!-- end grid -->
 <!-- FOOTER
 ================================================== -->
-<?php include '../../footer.php' ?>
+<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/include/footer.php' ?>
 
 <!-- JAVASCRIPTS
 ================================================== -->
