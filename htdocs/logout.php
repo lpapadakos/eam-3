@@ -9,7 +9,13 @@ $_SESSION = array();
 // Destroy the session.
 session_destroy();
 
-// Redirect to homepage
-header("location: /");
+if (isset($_GET['url'])) {
+	$ret = $_GET['url'];
+} else {
+	$ret = "/";
+}
+
+// Redirect to referring page
+header("location: " . $ret);
 
 ?>

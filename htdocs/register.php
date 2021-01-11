@@ -1,15 +1,21 @@
 <?php
 
-// TODO: Logout user?
+require_once $_SERVER['DOCUMENT_ROOT'] . '/include/common.php';
 
 // Define variables and initialize with empty values
 $afm = $amka = $name = $surname = $email = $password = "";
 $email_err = $name_err = $password_err = "";
 
 // Processing form data when form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] != "POST") {
+	if (isset($_GET['url'])) {
+		$_SESSION['referrer'] = $_GET['url'];
+	} else {
+		$_SESSION['referrer'] = "/";
+	}
+} else {
 	// Include config file
-	require_once $_SERVER['DOCUMENT_ROOT'] . '/include/common.php';
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/include/config.php';
 
 	// Make sure this is a new user
 	$email = trim($_POST["email"]);
@@ -100,6 +106,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 			// Attempt to execute the prepared statement
 			if (mysqli_stmt_execute($stmt)) {
+				$referrer = $_SESSION['referrer'];
+
+				// Unset all of the session variables
+				$_SESSION = array();
+
+				// Destroy the session.
+				session_destroy();
+
+				// New session with this user
 				session_start();
 
 				// Store data in session variables
@@ -107,8 +122,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				$_SESSION["afm"] = $afm;
 				$_SESSION["name"] = $name;
 
-				// SUCCESS. Redirect user to home page
-				header("location: /");
+				// SUCCESS. Redirect user to referring page
+				header("location: " . $referrer);
 			} else {
 				$email_err = "Σφάλμα: [" . mysqli_error($link) . "]. Παρακαλώ δοκιμάστε ξανά αργότερα.";
 			}
@@ -123,7 +138,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="el">
 <head>
@@ -180,6 +194,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				<label for="surname" class="required">Επώνυμο:</label>
 				<input type="text" name="surname" id="surname" maxlength="64" required>
 			</div>
+
+			<label for="category" class="required">Ιδιότητα:</label>
+			<select name="category" id="category">
+				<!-- <option disabled selected> -- Επιλέξτε -- </option> -->
+				<option value="1">Εργαζόμενος/η</option>
+				<option value="2">Εργοδότης/τρια</option>
+				<option value="3">Άνεργος/η</option>
+			</select>
 
 			<?php
 				if (!empty($password_err)) {

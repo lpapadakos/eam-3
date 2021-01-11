@@ -2,18 +2,23 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/include/common.php';
 
-// Check if the user is already logged in, if yes then redirect to homepage
-if (loggedin()) {
-	header("location: /");
-	exit;
-}
-
 // Define variables and initialize with empty values
 $afm = $name = $email = $password = "";
 $email_err = $password_err = "";
 
-// Processing form data when form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] != "POST") {
+	if (isset($_GET['url'])) {
+		$_SESSION['referrer'] = $_GET['url'];
+	} else {
+		$_SESSION['referrer'] = "/";
+	}
+
+	// Check if the user is already logged in, if yes then redirect to homepage
+	if (loggedin()) {
+		header("location: /");
+		exit;
+	}
+} else { // Processing form data when form is submitted
 	// Include config file
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/include/config.php';
 
@@ -61,9 +66,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 							$_SESSION["afm"] = $afm;
 							$_SESSION["name"] = $name;
 
-							// SUCCESS. Redirect user to home page and clear error
+							// SUCCESS. Redirect user to referring page and clear error
 							$email_err = "";
-							header("location: /");
+							header("location: " . $_SESSION['referrer']);
+							unset($_SESSION['referrer']);
 						}
 					}
 				}
@@ -81,7 +87,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="el">
 <head>

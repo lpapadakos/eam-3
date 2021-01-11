@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Φιλοξενητής: localhost
--- Χρόνος δημιουργίας: 10 Ιαν 2021 στις 02:29:04
+-- Χρόνος δημιουργίας: 11 Ιαν 2021 στις 20:45:45
 -- Έκδοση διακομιστή: 10.4.16-MariaDB
 -- Έκδοση PHP: 7.4.12
 
@@ -28,9 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `children` (
-  `parent_id` int(9) NOT NULL,
+  `parent_id` varchar(9) NOT NULL,
   `age` tinyint(3) UNSIGNED NOT NULL,
-  `category` tinyint(3) UNSIGNED NOT NULL
+  `category` enum('daycare','kindergarten','primary','secondary','special_school','disabled') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -38,7 +38,8 @@ CREATE TABLE `children` (
 --
 
 INSERT INTO `children` (`parent_id`, `age`, `category`) VALUES
-(123456789, 12, 4);
+('123456789', 12, 'secondary'),
+('240741129', 12, 'secondary');
 
 -- --------------------------------------------------------
 
@@ -47,7 +48,7 @@ INSERT INTO `children` (`parent_id`, `age`, `category`) VALUES
 --
 
 CREATE TABLE `special_leave` (
-  `parent_id` int(9) NOT NULL,
+  `parent_id` varchar(9) NOT NULL,
   `from_date` date NOT NULL,
   `to_date` date NOT NULL,
   `special_notes` text DEFAULT NULL
@@ -58,7 +59,8 @@ CREATE TABLE `special_leave` (
 --
 
 INSERT INTO `special_leave` (`parent_id`, `from_date`, `to_date`, `special_notes`) VALUES
-(123456789, '2021-01-12', '2021-01-14', 'lmao');
+('123456789', '2021-01-12', '2021-01-14', 'lmao'),
+('240741129', '2021-01-14', '2021-01-20', 'Υπερωρίες...');
 
 -- --------------------------------------------------------
 
@@ -67,24 +69,25 @@ INSERT INTO `special_leave` (`parent_id`, `from_date`, `to_date`, `special_notes
 --
 
 CREATE TABLE `users` (
-  `afm` int(9) NOT NULL,
-  `amka` int(11) DEFAULT NULL,
+  `afm` varchar(9) NOT NULL,
+  `amka` varchar(11) DEFAULT NULL,
   `name` varchar(64) NOT NULL,
   `surname` varchar(64) NOT NULL,
   `registered` tinyint(1) NOT NULL,
   `email` varchar(64) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
-  `children` int(11) DEFAULT NULL
+  `category` enum('employer','employee','unemployed') DEFAULT NULL,
+  `children` tinyint(3) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Άδειασμα δεδομένων του πίνακα `users`
 --
 
-INSERT INTO `users` (`afm`, `amka`, `name`, `surname`, `registered`, `email`, `password`, `children`) VALUES
-(123456789, NULL, 'bruh', 'brotherhood', 0, NULL, NULL, 1),
-(240741129, NULL, 'Αθανάσιος', 'Σπηλιωτόπουλος', 1, 'spilios@gmail.com', '$2y$10$IDSGenNkkfLmugqgohhZ2ez0DBEjIbpVFv38S0lNrO3CKSa4J9GCe', 0),
-(304696340, NULL, 'Haruhi', 'Suzumiya', 1, 'haruhisuzu@yahoo.com', '$2y$10$.RVuwu.qqyqb2B.tEtpUx.CRawLWj76PKlbOw6By3p94eM9/anR0S', 0);
+INSERT INTO `users` (`afm`, `amka`, `name`, `surname`, `registered`, `email`, `password`, `category`, `children`) VALUES
+('123456789', '11111111111', 'bruh', 'brotherhood', 1, 'bruh@bruh.com', '$2y$10$rooF2g4j7zZnfSGNWGs0duaxF2FzmKDfaElHV5cT10AUMg5GIoxqW', NULL, 1),
+('240741129', NULL, 'Αθανάσιος', 'Σπηλιωτόπουλος', 1, 'spilios@gmail.com', '$2y$10$IDSGenNkkfLmugqgohhZ2ez0DBEjIbpVFv38S0lNrO3CKSa4J9GCe', 'employee', 1),
+('304696340', NULL, 'Haruhi', 'Suzumiya', 1, 'haruhisuzu@yahoo.com', '$2y$10$.RVuwu.qqyqb2B.tEtpUx.CRawLWj76PKlbOw6By3p94eM9/anR0S', 'employer', 0);
 
 --
 -- Ευρετήρια για άχρηστους πίνακες

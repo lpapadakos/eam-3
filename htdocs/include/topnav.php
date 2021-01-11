@@ -56,17 +56,17 @@
 				<?php
 
 				$label1 = "ΣΥΝΔΕΣΗ";
-				$href1 = "/login.php";
+				$href1 = "/login.php?url=" . $_SERVER['PHP_SELF'];
 
 				$label2 = "ΕΓΓΡΑΦΗ";
-				$href2 = "/register.php";
+				$href2 = "/register.php?url=" . $_SERVER['PHP_SELF'];
 
 				if (loggedin()) {
 					$label1 = '<i class="icon-user smallrightmargin"></i>' . $_SESSION["name"];
-					$href1 = "/profile.php";
+					$href1 = "/profile";
 
 					$label2 = "Αποσύνδεση";
-					$href2 = "/logout.php";
+					$href2 = "/logout.php?url=" . $_SERVER['PHP_SELF'];
 				}
 
 				echo '<a id="login-top" class="actionbutton" href="' . $href1 . '">' . $label1 . '</a>';
