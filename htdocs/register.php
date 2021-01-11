@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 	} else if (empty($afm)) {
 		$name_err = "Παρακαλώ εισάγετε τον ΑΦΜ σας.";
 	} else {
-		$sql = "SELECT id FROM users WHERE registered = TRUE AND email = ? OR afm = ?;";
+		$sql = "SELECT * FROM users WHERE registered = TRUE AND email = ? OR afm = ?;";
 
 		if ($stmt = mysqli_prepare($link, $sql)) {
 			// Bind variables to the prepared statement as parameters
