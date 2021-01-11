@@ -6,7 +6,6 @@
 <link rel="stylesheet" type="text/css" href="/css/skinblue.css"/><!-- change skin color -->
 <link rel="stylesheet" type="text/css" href="/css/responsive.css"/>
 <script src="/js/jquery-1.9.0.min.js"></script><!-- the rest of the scripts at the bottom of the document -->
-=======
 <html lang="el">
 <head>
 	<meta charset="utf-8">
@@ -82,7 +81,7 @@
 				<h1 class="maintitle">Άδεια ειδικού σκοπού</h1>
 				<div class="c4">
 					<div class="bigbutton" >
-						<a href="#">Αίτηση Άδειας ειδικού σκοπού</a>
+						<a href="..\..\employees\tools\adeia-eidikou-skopou.php">Αίτηση Άδειας ειδικού σκοπού</a>
 					</div>
 				</div>
 				<div class="c8">

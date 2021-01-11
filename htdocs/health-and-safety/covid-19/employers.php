@@ -6,7 +6,6 @@
 <link rel="stylesheet" type="text/css" href="/css/skinblue.css"/><!-- change skin color -->
 <link rel="stylesheet" type="text/css" href="/css/responsive.css"/>
 <script src="/js/jquery-1.9.0.min.js"></script><!-- the rest of the scripts at the bottom of the document -->
-=======
 <html lang="el">
 <head>
 	<meta charset="utf-8">
