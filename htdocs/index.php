@@ -63,7 +63,7 @@
 					</div>
 				</div>
 				<!--Box 2-->
-				<a href="#"class="c3 introbox introboxfirst">
+				<a href="/health-and-safety/covid-19/index.php" class="c3 introbox introboxfirst">
 					<div class="introboxinner">
 						<i class="icon-file-alt homeicone"></i>
 						<h3>Οδηγίες</h3>

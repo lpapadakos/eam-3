@@ -635,7 +635,9 @@ ul.teambox { padding-left: 25px }
 .linelist li{width:35%; margin-right: 3% ; margin-left: 3%; margin-top: 2%; margin-bottom: 2%;float:inline-start; list-style:inside decimal}
 .reglist{font-size: 15px; color: #555; list-style:inside}
 .reglist li {margin-bottom: 10px;}
-#bigparagraph{font-size: 16px;}
-#listiconmargin { margin:0 normal; padding-right: 3%; font-size: 18px;}
 .bigbutton { z-index: 50; display: inline-flex; margin: 0 auto ; font-weight: normal; text-transform: uppercase; letter-spacing: 1px; font-size: 15px; padding: 20px 20px; color: #fff; cursor: pointer; cursor: hand; background-color: #0E8FAB; -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5); -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5); text-shadow: 0 -1px 1px rgba(0,0,0,0.25); border-bottom: 1px solid rgba(0,0,0,0.25); -webkit-transition: all 0.5s ease-in-out; -moz-transition: all 0.5s ease-in-out; -o-transition: all 0.5s ease-in-out; -ms-transition: all 0.5s ease-in-out; transition: all 0.5s ease-in-out; }
 .bigbutton a {color: #FFF;}
+.smallheader { font-size: 17px; line-height: 27px; font-family: OpenSansRegular; font-weight: bold; }
+#thicklink {color:#333; font-family:OpenSansBold;}
+#bigparagraph{font-size: 16px;}
+#listiconmargin { margin:0 normal; padding-right: 3%; font-size: 18px;}
