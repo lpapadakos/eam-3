@@ -18,9 +18,10 @@ if (loggedin()) {
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/include/config.php';
 
 	$afm = $_SESSION["afm"];
+	$name = $_SESSION["name"];
 
 	// Prepare a select statement
-	$sql = "SELECT name, surname FROM users WHERE afm = ?;";
+	$sql = "SELECT surname FROM users WHERE afm = ?;";
 
 	if ($stmt = mysqli_prepare($link, $sql)) {
 		// Bind variables to the prepared statement as parameters
@@ -34,7 +35,7 @@ if (loggedin()) {
 			// Check if user exists, if yes then verify password
 			if (mysqli_stmt_num_rows($stmt) == 1) {
 				// Bind result variables
-				mysqli_stmt_bind_result($stmt, $name, $surname);
+				mysqli_stmt_bind_result($stmt, $surname);
 
 				if (!mysqli_stmt_fetch($stmt)) {
 					$user_err = "Σφάλμα: [" . mysqli_error($link) . "]. Παρακαλώ δοκιμάστε ξανά αργότερα.";
@@ -304,20 +305,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 				<div class="c6 noleftmargin">
 					<label for="name" class="required">Όνομα:</label>
-					<input type="text" name="name" id="name" maxlength="64" required <?php if (loggedin()) echo 'value="' . $name . '" disabled'; ?>>
+					<input type="text" name="name" id="name" maxlength="64" required <?php perk($name); ?>>
 				</div>
 				<div class="c6 norightmargin">
 					<label for="surname" class="required">Επώνυμο:</label>
-					<input type="text" name="surname" id="surname" maxlength="64" required <?php if (loggedin()) echo 'value="' . $surname . '" disabled'; ?>>
+					<input type="text" name="surname" id="surname" maxlength="64" required <?php perk($surname); ?>>
 				</div>
 
 				<div class="c6 noleftmargin">
 					<label for="afm" class="required">ΑΦΜ:</label>
-					<input type="text" name="afm" id="afm" pattern="[0-9]+" minlength="9" maxlength="9" required <?php if (loggedin()) echo 'value="' . $afm . '" disabled'; ?>>
+					<input type="text" name="afm" id="afm" pattern="[0-9]+" minlength="9" maxlength="9" required <?php perk($afm); ?>>
 				</div>
 				<!-- <div class="c6 norightmargin">
 					<label for="amka" class="required">ΑΜΚΑ:</label>
-					<input type="text" name="amka" id="amka" pattern="[0-9]+" minlength="11" maxlength="11" required <?php if (loggedin() && !empty($amka)) echo 'value="' . $amka . '" disabled'; ?>>
+					<input type="text" name="amka" id="amka" pattern="[0-9]+" minlength="11" maxlength="11" required <?php perk($amka); ?>>
 				</div> -->
 				</section>
 
@@ -365,7 +366,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 						<i class="icon-info-sign smallrightmargin"></i>Πατώντας <strong>Υποβολή</strong> δηλώνετε ότι τα παραπάνω στοιχεία είναι αληθή.
 					</p>
 				</div>
-				<div class="buttons c4">
+				<div class="buttons c4 norightmargin">
 					<input type="reset" value="Καθαρισμός"> |
 					<input type="submit" class="actionbutton" value="Υποβολή">
 				</div>

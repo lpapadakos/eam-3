@@ -132,8 +132,8 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 			<input type="submit" id="login" class="actionbutton" value="Σύνδεση">
 		</form>
 		<p class="royalcontent">
-			Δεν έχετε λογαριασμό; <a href="register.php">Δημιουργήστε έναν!</a>.
-			Έτσι θα φτάνετε στους στόχους σας πιο εύκολα και γρήγορα.
+			Δεν έχετε λογαριασμό; <a href="register.php<?php if (isset($_SESSION['referrer']) && $_SESSION['referrer'] != "/") echo "?url=" . $_SESSION['referrer']; ?>">Δημιουργήστε έναν!</a>.
+			Έτσι θα φτάνετε στους στόχους σας πιο εύκολα και γρήγορα, γλιτώνοντας χρόνο σε συμπλήρωση φορμών.
 		</p>
 	</section>
 </body>

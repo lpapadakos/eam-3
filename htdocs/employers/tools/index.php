@@ -1,5 +1,4 @@
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/include/common.php'; ?>
-
 <!DOCTYPE HTML>
 <html lang="el">
 <head>

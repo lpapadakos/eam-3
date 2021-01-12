@@ -498,7 +498,6 @@ ul.accordion>li.active .content { background: white; display: block; border-left
 .mosaicover2col { height: 260px }
 .mosaicover4col { height: 180px }
 .mosaicover5col { height: 140px }
-.boxcontainer img { width: 100%; }
 .boxcontainer p { margin-bottom: 10px }
 .boxcontainer h2 { font-size: 15px; line-height: 1; font-family: OpenSansRegular; font-weight: bold; padding: 20px 10px; margin: 0; color: #222; }
 #content { width: 100%; margin-top: 10px; z-index: 0; }

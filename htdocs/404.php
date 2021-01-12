@@ -1,5 +1,4 @@
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/include/common.php'; ?>
-
 <!DOCTYPE HTML>
 <html lang="el">
 <head>
@@ -60,11 +59,9 @@
 				</div>
 			</div>
 	</div><!-- end grid -->
-
 	<!-- FOOTER
 	================================================== -->
 	<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/include/footer.php' ?>
-
 	<!-- JAVASCRIPTS
 	================================================== -->
 	<!-- all -->
