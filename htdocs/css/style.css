@@ -641,3 +641,4 @@ ul.teambox { padding-left: 25px }
 #thicklink {color:#333; font-family:OpenSansBold;}
 #bigparagraph{font-size: 16px;}
 #listiconmargin { margin:0 normal; padding-right: 3%; font-size: 18px;}
+#nopadding.c12{padding-left:0}
