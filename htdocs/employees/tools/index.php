@@ -1,5 +1,4 @@
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/include/common.php'; ?>
-
 <!DOCTYPE HTML>
 <html lang="el">
 <head>
@@ -98,21 +97,23 @@
 					</a>
 				</div>
 			</div>
-			<div class="boxfourcolumns cat2">
+			<div class="boxfourcolumns cat1">
 				<div class="boxcontainer">
 					<a href="#">
 					<div class="mosaic-block cover mosaicover4col">
 						<div class="mosaic-overlay">
-							<img src="http://placehold.it/278x180" alt="">
+							<img src="/images/sepe-gen.jpg" alt="">
 						</div>
-						<div class="mosaic-backdrop yellow">
+						<div class="mosaic-backdrop orangered">
 						<div class="details">
-							<p></p>
+							<p>
+								Μπορεί να γίνει καταγγελία (και ανώνυμα) στο Σώμα Επιθεώρησης Εργασίας, σε περίπτωση που καταπαντόνται τα δικαιώματα εργαζομένων στο χώρο εργασίας σας.
+							</p>
 							<i class="icon-cog mosaiclink"></i>
 						</div>
 						</div>
 					</div>
-					<h2><i class="icon-large icon-cog smallrightmargin"></i>Εργαλείο 3</h2>
+					<h2><i class="icon-large icon-file-alt smallrightmargin"></i>Καταγγελία στο Σ.ΕΠ.Ε.</h2>
 					</a>
 				</div>
 			</div>
