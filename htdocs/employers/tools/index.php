@@ -58,7 +58,7 @@
 	<!-- end categories -->
 	<div class="row space-top">
 		<div id="content">
-			<div class="boxfourcolumns cat3">
+			<div class="boxfourcolumns cat1 cat3">
 				<div class="boxcontainer">
 					<a href="#">
 					<div class="mosaic-block cover mosaicover4col">
@@ -68,13 +68,13 @@
 						<div class="mosaic-backdrop blue">
 						<div class="details">
 							<p>
-								Anime.
+								Εδώ μπορείτε να δηλώσετε τα απαραίτητα στοιχεία για εργαζομένους. Επιπλέον, παρέχεται η δυνατότητα δημιουργίας, επεξεργασίας ή διαγραφής αναστολής/εξ αποστάσεως εργασίας ενός εργαζομένου.
 							</p>
 							<i class="icon-cog mosaiclink"></i>
 						</div>
 						</div>
 					</div>
-					<h2><i class="icon-large icon-home smallrightmargin"></i>Testing Εργαλείο 1</h2>
+					<h2><i class="icon-large icon-home smallrightmargin"></i>Εργαζόμενοι και Αναστολή/Εξ Αποστάσεως Εργασία</h2>
 					</a>
 				</div>
 			</div>
@@ -88,13 +88,13 @@
 						<div class="mosaic-backdrop green">
 						<div class="details">
 							<p>
-								Μπορείτε να ορίσετε ημερομηνία και ώρα συνάντησης, σε περίπτωση που είναι απαραίτητη η εξυπηρέτηση με φυσική παρουσία.
+								Εδώ είναι δυνατό να κάνετε αίτηση για κρατική επιχορήγηση.
 							</p>
 							<i class="icon-cog mosaiclink"></i>
 						</div>
 						</div>
 					</div>
-					<h2><i class="icon-large icon-bolt smallrightmargin"></i>Ηλεκτρονικό Ραντεβού</h2>
+					<h2><i class="icon-large icon-bolt smallrightmargin"></i>Κρατική Επιχορήγηση</h2>
 					</a>
 				</div>
 			</div>
