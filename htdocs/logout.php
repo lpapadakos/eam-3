@@ -9,8 +9,9 @@ $_SESSION = array();
 // Destroy the session.
 session_destroy();
 
-if (isset($_GET['url'])) {
-	$ret = $_GET['url'];
+// Redirect to original page, unless it's only accessible while logged in (e.g. profile page)
+if (isset($_GET['page']) && substr($_GET['page'], 0, 8) != "/profile") {
+	$ret = $_GET['page'];
 } else {
 	$ret = "/";
 }

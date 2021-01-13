@@ -8,8 +8,8 @@ $email_err = $name_err = $password_err = "";
 
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
-	if (isset($_GET['url'])) {
-		$_SESSION['referrer'] = $_GET['url'];
+	if (isset($_GET['page'])) {
+		$_SESSION['referrer'] = $_GET['page'];
 	} else {
 		$_SESSION['referrer'] = "/";
 	}
@@ -69,8 +69,14 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 		$name_err = "Παρακαλώ εισάγετε το επώνυμό σας.";
 	}
 
+	// Validate category
+	$category = trim($_POST["category"]);
+	if (empty($category)) {
+		$name_err = "Παρακαλώ επιλέξτε την κατηγορία σας (π.χ. Εργαζόμενος).";
+	}
+
 	// Validate password
-	$password = trim($_POST["password"]);
+	$password = $_POST["password"];
 	if (empty($password)) {
 		$password_err = "Παρακαλώ εισάγετε τον κωδικό πρόσβασής σας.";
 	} elseif (strlen($password) < 8) {
@@ -78,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 	}
 
 	// Validate confirm-password
-	$confirm_password = trim($_POST["confirm-password"]);
+	$confirm_password = $_POST["confirm-password"];
 	if (empty($confirm_password)) {
 		$password_err = "Παρακαλώ επαληθεύστε τον κωδικό πρόσβασής σας.";
 	} elseif (empty($password_err) & ($password != $confirm_password)) {
@@ -88,18 +94,19 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 	// If no errors, proceed to insert values
 	if (empty($email_err) && empty($name_err) && empty($password_err)) {
 		// Prepare an insert statement. Update previously unregistered user's info
-		$sql = "INSERT INTO users (afm, amka, name, surname, registered, email, password) VALUES (?, ?, ?, ?, TRUE, ?, ?)
+		$sql = "INSERT INTO users (afm, amka, name, surname, registered, email, password, category) VALUES (?, ?, ?, ?, TRUE, ?, ?, ?)
 			ON DUPLICATE KEY UPDATE
 				amka = VALUES(amka),
 				name = VALUES(name),
 				surname = VALUES(surname),
 				registered = VALUES(registered),
 				email = VALUES(email),
-				password = VALUES(password);";
+				password = VALUES(password),
+				category = VALUES(category);";
 
 		if ($stmt = mysqli_prepare($link, $sql)) {
 			// Bind variables to the prepared statement as parameters
-			mysqli_stmt_bind_param($stmt, "ssssss", $afm, $amka, $name, $surname, $email, $password);
+			mysqli_stmt_bind_param($stmt, "sssssss", $afm, $amka, $name, $surname, $email, $password, $category);
 
 			// Hash password before insert
 			$password = password_hash($password, PASSWORD_DEFAULT);
@@ -198,8 +205,8 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 			<label for="category" class="required">Ιδιότητα:</label>
 			<select name="category" id="category">
 				<!-- <option disabled selected> -- Επιλέξτε -- </option> -->
-				<option value="1">Εργαζόμενος/η</option>
-				<option value="2">Εργοδότης/τρια</option>
+				<option value="1">Εργοδότης/τρια</option>
+				<option value="2">Εργαζόμενος/η</option>
 				<option value="3">Άνεργος/η</option>
 			</select>
 
@@ -211,10 +218,10 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 				}
 			?>
 			<label for="password" class="required">Κωδικός πρόσβασης:</label>
-			<input type="password" name="password" id="password" maxlength="16" required>
+			<input type="password" name="password" id="password" minlength="8" maxlength="16" required>
 
 			<label for="confirm-password" class="required">Επανάληψη κωδικού πρόσβασης:</label>
-			<input type="password" name="confirm-password" id="confirm-password" maxlength="16" required>
+			<input type="password" name="confirm-password" id="confirm-password" minlength="8" maxlength="16" required>
 
 			<input type="checkbox" name="consent" id="consent" required>
 			<label for="consent" class="required" style="display: inline-block">Συμφωνώ να <del>απολέσω τα νεφρά μου</del> με τους <a href="#">Όρους Χρήσης</a> και την <a href="#">Πολιτική Απορρήτου</a></label>

@@ -178,6 +178,7 @@ th { background-color: #d9edf0; background-image: -webkit-gradient(linear,left t
 	.grid > #menu { justify-content: inherit; }
 	.grid > #tools { flex-direction: column; }
 	.grid > #tools .c4 {width: 90%; margin:auto; margin-top: 10px; margin-bottom: 10px}
+	#menu > #login-area { margin-top: -20px; }
 }
 /* =Media query for iPad and tablets-------------------------------------------------------------- */
 @media handheld,only screen and (max-width:768px),only screen and (max-device-width:768px) and (orientation:portrait) {
@@ -218,7 +219,7 @@ nav li a { display: block; padding: 10px; color: #111; text-decoration: none; }
 #top-nav ul ul a { text-transform: none; padding: 5px 10px; border-left: none; border-right: none; font-size: 14px; color: #fff; margin-left: -5px; }
 #top-nav ul ul a:hover { margin-left: 0px; background: rgba(0,0,0,0.1); margin-left: -5px; }
 nav ul>li:hover>a { color: #fff }
-#login-area {padding: 0 10px; height: auto; margin-top: 5px; }
+#login-area { padding: 0 10px; height: auto; margin-top: 5px; }
 #login-area a {display: block; text-align: center; margin: 5px auto; padding: 5px 10px; width: 100%; font-size: 13px; font-weight: bold; }
 #breadcrumbs {font-size: 15px; padding: 10px; margin-bottom: 20px; color: #222;}
 #breadcrumbs a:first-child {font-size: 20px;}

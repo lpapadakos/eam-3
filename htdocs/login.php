@@ -7,8 +7,8 @@ $afm = $name = $email = $password = "";
 $email_err = $password_err = "";
 
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
-	if (isset($_GET['url'])) {
-		$_SESSION['referrer'] = $_GET['url'];
+	if (isset($_GET['page'])) {
+		$_SESSION['referrer'] = $_GET['page'];
 	} else {
 		$_SESSION['referrer'] = "/";
 	}

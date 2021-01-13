@@ -1,12 +1,17 @@
 <?php
 
+function referrer() {
+	return "page=" . str_replace('index.php', '', $_SERVER["PHP_SELF"]);
+}
+
 function loggedin() {
 	return (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true);
 }
 
-function perk($input) {
-	if (loggedin() && isset($input)) {
-		echo 'value="' . $input . '" disabled';
+function perk($input, $hide = true) {
+	if (loggedin()) {
+		echo 'value="' . $input . '"';
+		if ($hide == true) echo 'disabled';
 	}
 }
 
