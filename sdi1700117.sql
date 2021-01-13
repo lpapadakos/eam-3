@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Φιλοξενητής: localhost
--- Χρόνος δημιουργίας: 13 Ιαν 2021 στις 00:42:49
+-- Χρόνος δημιουργίας: 13 Ιαν 2021 στις 23:01:56
 -- Έκδοση διακομιστή: 10.4.16-MariaDB
 -- Έκδοση PHP: 7.4.12
 
@@ -40,6 +40,25 @@ CREATE TABLE `children` (
 INSERT INTO `children` (`parent_id`, `age`, `category`) VALUES
 ('123456789', 12, 'secondary'),
 ('240741129', 12, 'secondary');
+
+-- --------------------------------------------------------
+
+--
+-- Δομή πίνακα για τον πίνακα `companies`
+--
+
+CREATE TABLE `companies` (
+  `afm` varchar(9) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `address` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Άδειασμα δεδομένων του πίνακα `companies`
+--
+
+INSERT INTO `companies` (`afm`, `name`, `address`) VALUES
+('048919395', 'SOS BRIGADE Α.Ε.', 'Παπαπάνου 8, Ηλιούπολη, Αττική, 76531');
 
 -- --------------------------------------------------------
 
@@ -97,6 +116,7 @@ CREATE TABLE `users` (
   `password` varchar(255) DEFAULT NULL,
   `phone` varchar(10) DEFAULT NULL,
   `category` enum('employer','employee','unemployed') DEFAULT NULL,
+  `company_id` varchar(9) DEFAULT NULL,
   `children` tinyint(3) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -104,10 +124,10 @@ CREATE TABLE `users` (
 -- Άδειασμα δεδομένων του πίνακα `users`
 --
 
-INSERT INTO `users` (`afm`, `amka`, `name`, `surname`, `registered`, `email`, `password`, `phone`, `category`, `children`) VALUES
-('123456789', NULL, 'John', 'Smith', 0, 'john@example.com', NULL, NULL, NULL, 1),
-('240741129', '01106100081', 'Αθανάσιος', 'Σπηλιωτόπουλος', 1, 'spilios@gmail.com', '$2y$10$IDSGenNkkfLmugqgohhZ2ez0DBEjIbpVFv38S0lNrO3CKSa4J9GCe', NULL, 'employee', 1),
-('304696340', NULL, 'Haruhi', 'Suzumiya', 1, 'haruhisuzu@yahoo.com', '$2y$10$.RVuwu.qqyqb2B.tEtpUx.CRawLWj76PKlbOw6By3p94eM9/anR0S', NULL, 'employer', 0);
+INSERT INTO `users` (`afm`, `amka`, `name`, `surname`, `registered`, `email`, `password`, `phone`, `category`, `company_id`, `children`) VALUES
+('123456789', NULL, 'John', 'Smith', 0, 'john@example.com', NULL, NULL, 'employee', '048919395', 1),
+('240741129', '01106100081', 'Αθανάσιος', 'Σπηλιωτόπουλος', 1, 'spilios@gmail.com', '$2y$10$IDSGenNkkfLmugqgohhZ2ez0DBEjIbpVFv38S0lNrO3CKSa4J9GCe', NULL, 'employee', NULL, 1),
+('304696340', '11111111111', 'Haruhi', 'Suzumiya', 1, 'haruhisuzu@yahoo.com', '$2y$10$.RVuwu.qqyqb2B.tEtpUx.CRawLWj76PKlbOw6By3p94eM9/anR0S', '', 'employer', '048919395', 0);
 
 --
 -- Ευρετήρια για άχρηστους πίνακες
@@ -118,6 +138,12 @@ INSERT INTO `users` (`afm`, `amka`, `name`, `surname`, `registered`, `email`, `p
 --
 ALTER TABLE `children`
   ADD PRIMARY KEY (`parent_id`,`age`,`category`);
+
+--
+-- Ευρετήρια για πίνακα `companies`
+--
+ALTER TABLE `companies`
+  ADD PRIMARY KEY (`afm`);
 
 --
 -- Ευρετήρια για πίνακα `e_rendezvous`
@@ -136,7 +162,8 @@ ALTER TABLE `special_leave`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`afm`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD UNIQUE KEY `email` (`email`),
+  ADD KEY `company_id` (`company_id`);
 
 --
 -- Περιορισμοί για άχρηστους πίνακες
@@ -159,6 +186,12 @@ ALTER TABLE `e_rendezvous`
 --
 ALTER TABLE `special_leave`
   ADD CONSTRAINT `special_leave_ibfk_1` FOREIGN KEY (`parent_id`) REFERENCES `users` (`afm`);
+
+--
+-- Περιορισμοί για πίνακα `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `companies` (`afm`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

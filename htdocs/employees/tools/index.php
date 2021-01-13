@@ -131,7 +131,7 @@
 						</div>
 						</div>
 					</div>
-					<h2><i class="icon-large icon-cog smallrightmargin"></i>Εργαλείο 4</h2>
+					<h2><i class="icon-large icon-cog smallrightmargin"></i>Προβολή Ενσήμων</h2>
 					</a>
 				</div>
 			</div>
