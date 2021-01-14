@@ -27,24 +27,24 @@
 	<div id="da-slider" class="da-slider">
 		<!--Slide 1-->
 		<div class="da-slide">
-			<h2> Ηλεκτρονικά Ραντεβού </h2>
+			<h2>Ηλεκτρονικά Ραντεβού</h2>
 			<p>
-			Οι επισκέπτες δύνανται να κλείσουν ηλεκτρονικό ραντεβού μέσω της σχετικής πλατφόρμας μόνο για συγκεκριμένες κατηγορίες αιτήματος.
+				Οι ενδιαφερόμενοι δύνανται να κλείσουν ηλεκτρονικό ραντεβού μέσω της σχετικής πλατφόρμας <strong>(μόνο για συγκεκριμένες κατηγορίες αιτήματος)</strong>
 			</p>
-			<a href="#" class="da-link" style="width:202px;">Δήλωση</a>
+			<a href="employees/tools/e-rendezvous.php" class="da-link actionbutton"><i class="icon-signin smallrightmargin"></i>ΔΗΛΩΣΗ</a>
 			<div class="da-img">
-				<img src="https://startpage.com/av/proxy-image?piurl=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcQBCZg0SSoZ6yIbH0HAdnbtmr8mQZjwVq-RDX0KX8RA29vIT1-A%26s&sp=1607880060T47965a34d0579d1357f31a1346a5945936fbaa85d125c087fb098af21e000b28" alt="">
+				<img src="images/ypoyrgeio_ergasias.jpg" alt="Το Υπουργείο Εργασίας">
 			</div>
 		</div>
 		<!--Slide 2-->
 		<div class="da-slide">
-			<h2>Covid-19</h2>
+			<h2>COVID-19</h2>
 			<p>
-				Οδηγιες για την ασφαλεια στην εργασια απο τον Covid-19
+				Οδηγίες για την ασφάλεια στο χώρο εργασίας την εποχή της πανδημίας
 			</p>
-			<a href="#" class="da-link" style="width:192px;">Οδηγίες</a>
+			<a href="health-and-safety/covid-19" class="da-link actionbutton"><i class="icon-file smallrightmargin"></i>Οδηγίες</a>
 			<div class="da-img">
-				<img src="https://frtntech.com/wp-content/uploads/2020/03/covid-banner.jpg" alt="">
+				<img src="images/covid-19-work-safety.jpg" alt="">
 			</div>
 		</div>
 	</div>
@@ -57,7 +57,7 @@
 			<div class="c12">
 				<div class="c3 introbox">
 					<div class="introboxinner">
-						<a href="/health-and-safety/covid-19"><h2><i class="icon-medkit smallrightmargin"></i>COVID-19</h2></a>
+						<a href="health-and-safety/covid-19"><h2><i class="icon-medkit smallrightmargin"></i>COVID-19</h2></a>
 						<p>Γρήγοροι σύνδεσμοι για το κοινό</p>
 					</div>
 				</div>
@@ -98,7 +98,7 @@
 	<!--ΕΡΓΑΛΕΙΑ-->
 	<div class="c12">
 		<div class="royalcontent">
-			<h1 class="royalheader"><i class="icon-wrench smallrightmargin"></i>ΣΥΧΝΕΣ ΛΕΙΤΟΥΡΓΙΕΣ</h1>
+			<h2 class="royalheader"><i class="icon-wrench smallrightmargin"></i>ΣΥΧΝΕΣ ΛΕΙΤΟΥΡΓΙΕΣ</h2>
 			<!-- <h1 class="title" style="text-transform:none;">νβσφκηβεξκ</h1> -->
 		</div>
 	</div>
@@ -149,7 +149,7 @@
 				</div>
 				<div class="clearfix">
 				</div>
-				<ul id="recent-projects">
+				<ul id="news">
 					<!--featured-projects 1-->
 					<li>
 					<div class="featured-projects">
@@ -242,7 +242,7 @@
 <!-- Call Showcase - change 4 from min:4 and max:4 to the number of items you want visible -->
 <script type="text/javascript">
 $(window).load(function(){
-			$('#recent-projects').carouFredSel({
+			$('#news').carouFredSel({
 				responsive: true,
 				width: '100%',
 				auto: true,
