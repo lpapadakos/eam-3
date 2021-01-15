@@ -8,9 +8,6 @@ if (!loggedin()) {
 	exit;
 }
 
-// Include MySQL config file
-require_once $_SERVER['DOCUMENT_ROOT'] . '/include/config.php';
-
 // Define variables and initialize with empty values
 $afm = $name = $surname = $email = $phone = $category = $contract = $role = $company_afm = $company_name = $company_address =  "";
 $err = "";
@@ -143,7 +140,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	<link rel="stylesheet" type="text/css" href="/css/icons.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/skinblue.css"/><!-- change skin color -->
 	<link rel="stylesheet" type="text/css" href="/css/responsive.css"/>
+	<link rel="stylesheet" href="/css/theme.blue.css">
 	<script src="/js/jquery-1.9.0.min.js"></script><!-- the rest of the scripts at the bottom of the document -->
+	<script type="text/javascript" src="/js/jquery.tablesorter.combined.js"></script>
 </head>
 <body>
 <!-- TOP LOGO & MENU
@@ -178,11 +177,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			<nav id="sidebar-nav">
 			<h2 class="title stresstitle">ΠΡΟΦΙΛ</h2>
 			<ul>
-				<?php if (isset($category) && $category == '1'): ?>
-				<li style="background: #efe188"><a href="employees-file.php"><i class="icon-file-alt smallrightmargin"></i>Αρχείο Εργαζομένων</a></li>
-				<?php else: ?>
-				<li style="background: #efe188"><a href="employee-view.php"><i class="icon-file-alt smallrightmargin"></i>Το Αρχείο Μου</a></li>
-				<?php endif; ?>
+				<li class="active" style="background: #efe188"><a href="employees-file.php"><i class="icon-file-alt smallrightmargin"></i>Αρχείο Εργαζομένων</a></li>
 				<li><a href="change-password.php">Αλλαγή κωδικού πρόσβασης</a></li>
 				<li><a href="#" class="alert error">Διαγραφή λογαριασμού</a></li>
 			</ul>
@@ -210,7 +205,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				};
 			?>
 
-			<table id="employees" class="space-bot">
+
+			<div class="c10 noleftmargin">
+				<input class="search" type="search" data-column="all" placeholder="Αναζήτηση σε όλες τις στήλες...">
+			</div>
+			<button type="button" class="reset c2">Καθαρισμός φίλτρου</button>
+			<table id="employees" class="tablesorter-blue">
+				<thead>
 				<tr>
 				<th>ΑΦΜ</th>
 				<th>Επώνυμο</th>
@@ -220,7 +221,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				<th>Email</th>
 				<th>Τηλέφωνο</th>
 				</tr>
-
+				</thead>
+				<tbody>
 			<?php
 
 			// Get employees
@@ -253,6 +255,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			mysqli_close($link);
 
 			?>
+			</tbody>
 			</table>
 
 			<form class="form" id="add-employee-form" method="post" action="<?php echo samepage(); ?>">
@@ -332,17 +335,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <script>
 
 $(document).ready(function(){
-	// Date validation
-	var today = new Date().toISOString().split('T')[0];
+	$("#employees").tablesorter({
+		//theme: 'blue',
+		widgets: ["filter"],
+		widgetOptions : {
+			// filter_anyMatch replaced! Instead use the filter_external option
+			// Set to use a jQuery selector (or jQuery object) pointing to the
+			// external filter (column specific or any match)
+			filter_external : '.search',
 
-	// Disallow dates before today
-	//$("#date").val(today);
-	$('#date').attr("min", today);
+			// add a default type search to the first name column
+			//filter_defaultFilter: { 1 : '~{query}' },
 
-	// Disallow "to" date, before "from" date
-	// $('#from, #to').on('change', function(){
-	// 	$('#to').attr('min', $('#from').val());
-	// });
+			// column filters
+			filter_columnFilters: false,
+			// filter_placeholder: { search : 'Search...' },
+			// filter_saveFilters : true,
+			filter_reset: '.reset'
+		}
+	});
 });
 
 </script>

@@ -164,6 +164,7 @@ th { background-color: #d9edf0; background-image: -webkit-gradient(linear,left t
 #employees { max-height: 10px; overflow: auto; }
 #employees tr[onclick] { cursor: pointer; }
 #employees tr:hover { background: #eee; }
+#employees th, #employees td { padding: 10px; }
 /* ----------------------------------------- Tabs ----------------------------------------- */
 .tab-page p { padding: 20px }
 .tab-container { position: relative }
