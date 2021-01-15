@@ -32,7 +32,7 @@
 			<!-- CONTACT FORM -->
 			<div class="c8 space-top">
 				<h1 class="maintitle">
-				<span><i class="icon-envelope-alt"></i> Ηλεκτρονικό Ραντεβού</span>
+				<span><i class="icon-envelope-alt"></i> Αίτημα Επικοινωνίας</span>
 				</h1>
 				<div class="wrapcontact">
 					<div class="done">
