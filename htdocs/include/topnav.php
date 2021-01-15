@@ -53,26 +53,13 @@
 			</ul>
 			</nav>
 			<div id="login-area">
-				<?php
-
-				$label1 = "ΣΥΝΔΕΣΗ";
-				$href1 = "/login.php";
-
-				$label2 = "ΕΓΓΡΑΦΗ";
-				$href2 = "/register.php";
-
-				if (loggedin()) {
-					$label1 = '<i class="icon-user smallrightmargin"></i>' . $_SESSION["name"];
-					$href1 = "/profile.php";
-
-					$label2 = "Αποσύνδεση";
-					$href2 = "/logout.php";
-				}
-
-				echo '<a id="login-top" class="actionbutton" href="' . $href1 . '">' . $label1 . '</a>';
-				echo '<a id="login-bottom" href="' . $href2 . '">' . $label2 . '</a>';
-
-				?>
+				<?php if (loggedin()): ?>
+				<a id="profile" class="actionbutton" title="Προφίλ" href="/profile"><i class="icon-user smallrightmargin"></i><?php echo $_SESSION["name"]; ?></a>
+				<a id="logout" href="<?php echo '/logout.php?' . referrer(); ?>">Αποσύνδεση <i class="icon-signout"></i></a>
+				<?php else: ?>
+				<a id="login" class="actionbutton" href="<?php echo '/login.php?' . referrer(); ?>"><i class="icon-signin"></i> ΣΥΝΔΕΣΗ</a>
+				<a id="register" href="<?php echo '/register.php?' . referrer(); ?>">ΕΓΓΡΑΦΗ</a>
+				<?php endif; ?>
 			</div>
 		</div>
 	</div>

@@ -12,9 +12,13 @@ if (loggedin()) {
 $afm = $name = $email = $password = "";
 $email_err = $password_err = "";
 
-// Processing form data when form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	// Include config file
+if ($_SERVER["REQUEST_METHOD"] != "POST") { // Save referrer on GET, to redirect on success
+	if (isset($_GET['page']))
+		$_SESSION['referrer'] = $_GET['page'];
+	else
+		$_SESSION['referrer'] = "/";
+} else { // Processing form data when form is submitted
+	// Include MySQL config file
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/include/config.php';
 
 	// Check if email is empty
@@ -31,49 +35,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	// Validate credentials
 	if (empty($email_err) && empty($password_err)) {
-		// Prepare a select statement
-		$sql = "SELECT afm, name, password FROM users WHERE email = ?;";
+		// Assume wrong information entered
+		$email_err = "Λανθασμένο email ή κωδικός πρόσβασης.";
 
-		if ($stmt = mysqli_prepare($link, $sql)) {
-			// Bind variables to the prepared statement as parameters
-			mysqli_stmt_bind_param($stmt, "s", $email);
+		$sql = "SELECT afm, name, password FROM users WHERE email = ?";
 
-			// Attempt to execute the prepared statement
-			if (mysqli_stmt_execute($stmt)) {
-				// Assume wrong information entered
-				$email_err = "Λανθασμένο email ή κωδικός πρόσβασης.";
+		$stmt = mysqli_prepare($link, $sql);
+		mysqli_stmt_bind_param($stmt, "s", $email);
 
-				// Store result
-				mysqli_stmt_store_result($stmt);
+		mysqli_stmt_execute($stmt);
 
-				// Check if user exists, if yes then verify password
-				if (mysqli_stmt_num_rows($stmt) == 1) {
-					// Bind result variables
-					mysqli_stmt_bind_result($stmt, $afm, $name, $hashed_password);
+		mysqli_stmt_store_result($stmt);
+		// Check if user exists, if yes then verify password
+		if (mysqli_stmt_num_rows($stmt) == 1) {
+			mysqli_stmt_bind_result($stmt, $afm, $name, $hashed_password);
 
-					if (mysqli_stmt_fetch($stmt)) {
-						if (password_verify($password, $hashed_password)) {
-							// Password is correct, so start a new session
-							session_start();
+			if (mysqli_stmt_fetch($stmt)) {
+				if (password_verify($password, $hashed_password)) {
+					// Password is correct, so start a new session
+					session_start();
 
-							// Store data in session variables
-							$_SESSION["loggedin"] = true;
-							$_SESSION["afm"] = $afm;
-							$_SESSION["name"] = $name;
+					// Store data in session variables
+					$_SESSION["loggedin"] = true;
+					$_SESSION["afm"] = $afm;
+					$_SESSION["name"] = $name;
 
-							// SUCCESS. Redirect user to home page and clear error
-							$email_err = "";
-							header("location: /");
-						}
-					}
+					// SUCCESS. Clear error and redirect user to referring page
+					$email_err = "";
+
+					header("location: " . $_SESSION['referrer']);
+					unset($_SESSION['referrer']);
 				}
-			} else {
-				$email_err = "Σφάλμα: [" . mysqli_error($link) . "]. Παρακαλώ δοκιμάστε ξανά αργότερα.";
 			}
-
-			// Close statement
-			mysqli_stmt_close($stmt);
 		}
+
+		mysqli_stmt_close($stmt);
 	}
 
 	// Close connection
@@ -81,7 +77,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="el">
 <head>
@@ -104,7 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			<h1 class="title stresstitle">Σύνδεση Χρήστη</h1><br>
 			<span>(ας υποθέσουμε ότι αυτό γίνεται μέσω taxisNET)</span>
 		</header>
-		<form id="login-form" class="form c8" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+		<form id="login-form" class="form c8" method="post" action="<?php echo samepage(); ?>">
 			<?php
 				if (!empty($email_err)) {
 					echo '<p class="alert error">';
@@ -127,8 +122,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			<input type="submit" id="login" class="actionbutton" value="Σύνδεση">
 		</form>
 		<p class="royalcontent">
-			Δεν έχετε λογαριασμό; <a href="register.php">Δημιουργήστε έναν!</a>.
-			Έτσι θα φτάνετε στους στόχους σας πιο εύκολα και γρήγορα.
+			Δεν έχετε λογαριασμό; <a href="register.php<?php if (isset($_SESSION['referrer']) && $_SESSION['referrer'] != "/") echo "?url=" . $_SESSION['referrer']; ?>">Δημιουργήστε έναν!</a>.
+			Έτσι θα φτάνετε στους στόχους σας πιο εύκολα και γρήγορα, γλιτώνοντας χρόνο σε συμπλήρωση φορμών.
 		</p>
 	</section>
 </body>

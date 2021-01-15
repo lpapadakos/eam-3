@@ -1,15 +1,19 @@
 <?php
 
-// TODO: Logout user?
+require_once $_SERVER['DOCUMENT_ROOT'] . '/include/common.php';
 
 // Define variables and initialize with empty values
 $afm = $amka = $name = $surname = $email = $password = "";
 $email_err = $name_err = $password_err = "";
 
-// Processing form data when form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	// Include config file
-	require_once $_SERVER['DOCUMENT_ROOT'] . '/include/common.php';
+if ($_SERVER["REQUEST_METHOD"] != "POST") { // Save referrer on GET, to redirect on success
+	if (isset($_GET['page']))
+		$_SESSION['referrer'] = $_GET['page'];
+	else
+		$_SESSION['referrer'] = "/";
+} else { // Processing form data when form is submitted
+	// Include MySQL config file
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/include/config.php';
 
 	// Make sure this is a new user
 	$email = trim($_POST["email"]);
@@ -20,29 +24,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	} else if (empty($afm)) {
 		$name_err = "Παρακαλώ εισάγετε τον ΑΦΜ σας.";
 	} else {
-		$sql = "SELECT id FROM users WHERE registered = TRUE AND email = ? OR afm = ?;";
+		$sql = "SELECT * FROM users WHERE registered = TRUE AND email = ? OR afm = ?";
 
-		if ($stmt = mysqli_prepare($link, $sql)) {
-			// Bind variables to the prepared statement as parameters
-			mysqli_stmt_bind_param($stmt, "ss", $email, $afm);
+		$stmt = mysqli_prepare($link, $sql);
+		mysqli_stmt_bind_param($stmt, "ss", $email, $afm);
 
-			// Attempt to execute the prepared statement
-			if (mysqli_stmt_execute($stmt)) {
-				// Store result
-				mysqli_stmt_store_result($stmt);
+		mysqli_stmt_execute($stmt);
 
-				// Check if user exists, if yes then verify password
-				if (mysqli_stmt_num_rows($stmt) > 0) {
-					$email_err = "Υπάρχει ήδη εγγεγραμμένος χρήστης με αυτή τη διεύθυνση email ή το AΦΜ.";
-				}
-			} else {
-				// DEBUG: show the actual error
-				$email_err = "Σφάλμα: [" . mysqli_error($link) . "]. Παρακαλώ δοκιμάστε ξανά αργότερα.";
-			}
-
-			// Close statement
-			mysqli_stmt_close($stmt);
+		mysqli_stmt_store_result($stmt);
+		if (mysqli_stmt_num_rows($stmt) > 0) {
+			$email_err = "Υπάρχει ήδη εγγεγραμμένος χρήστης με αυτή τη διεύθυνση email ή το AΦΜ.";
 		}
+
+		mysqli_stmt_close($stmt);
 	}
 
 	// AMKA can be empty for now, just make it NULL for MySQL
@@ -63,8 +57,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$name_err = "Παρακαλώ εισάγετε το επώνυμό σας.";
 	}
 
+	// Validate category
+	$category = trim($_POST["category"]);
+	if (empty($category)) {
+		$name_err = "Παρακαλώ επιλέξτε την κατηγορία σας (π.χ. Εργαζόμενος).";
+	}
+
 	// Validate password
-	$password = trim($_POST["password"]);
+	$password = $_POST["password"];
 	if (empty($password)) {
 		$password_err = "Παρακαλώ εισάγετε τον κωδικό πρόσβασής σας.";
 	} elseif (strlen($password) < 8) {
@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	}
 
 	// Validate confirm-password
-	$confirm_password = trim($_POST["confirm-password"]);
+	$confirm_password = $_POST["confirm-password"];
 	if (empty($confirm_password)) {
 		$password_err = "Παρακαλώ επαληθεύστε τον κωδικό πρόσβασής σας.";
 	} elseif (empty($password_err) & ($password != $confirm_password)) {
@@ -81,41 +81,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	// If no errors, proceed to insert values
 	if (empty($email_err) && empty($name_err) && empty($password_err)) {
-		// Prepare an insert statement. Update previously unregistered user's info
-		$sql = "INSERT INTO users (afm, amka, name, surname, registered, email, password) VALUES (?, ?, ?, ?, TRUE, ?, ?)
+		// INSERT or UPDATE previously unregistered user's info
+		$sql = "INSERT INTO users (afm, amka, name, surname, registered, email, password, category) VALUES (?, ?, ?, ?, TRUE, ?, ?, ?)
 			ON DUPLICATE KEY UPDATE
 				amka = VALUES(amka),
 				name = VALUES(name),
 				surname = VALUES(surname),
 				registered = VALUES(registered),
 				email = VALUES(email),
-				password = VALUES(password);";
+				password = VALUES(password),
+				category = VALUES(category)";
 
-		if ($stmt = mysqli_prepare($link, $sql)) {
-			// Bind variables to the prepared statement as parameters
-			mysqli_stmt_bind_param($stmt, "ssssss", $afm, $amka, $name, $surname, $email, $password);
+		$stmt = mysqli_prepare($link, $sql);
+		mysqli_stmt_bind_param($stmt, "sssssss", $afm, $amka, $name, $surname, $email, $password, $category);
 
-			// Hash password before insert
-			$password = password_hash($password, PASSWORD_DEFAULT);
+		// Hash password before insert
+		$password = password_hash($password, PASSWORD_DEFAULT);
 
-			// Attempt to execute the prepared statement
-			if (mysqli_stmt_execute($stmt)) {
-				session_start();
+		mysqli_stmt_execute($stmt);
 
-				// Store data in session variables
-				$_SESSION["loggedin"] = true;
-				$_SESSION["afm"] = $afm;
-				$_SESSION["name"] = $name;
+		mysqli_stmt_close($stmt);
 
-				// SUCCESS. Redirect user to home page
-				header("location: /");
-			} else {
-				$email_err = "Σφάλμα: [" . mysqli_error($link) . "]. Παρακαλώ δοκιμάστε ξανά αργότερα.";
-			}
+		// LOG IN
+		$referrer = $_SESSION['referrer'];
 
-			// Close statement
-			mysqli_stmt_close($stmt);
-		}
+		// Unset all of the session variables
+		$_SESSION = array();
+
+		// Destroy the session.
+		session_destroy();
+
+		// New session with this user
+		session_start();
+
+		// Store data in session variables
+		$_SESSION["loggedin"] = true;
+		$_SESSION["afm"] = $afm;
+		$_SESSION["name"] = $name;
+
+		// SUCCESS. Redirect user to referring page
+		header("location: " . $referrer);
 	}
 
 	// Close connection
@@ -123,7 +128,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="el">
 <head>
@@ -145,7 +149,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			<a href="/"><img id="login-logo" src="/images/logo.gif" class="logo" alt="Λογότυπο Υπουργείου"></a><br>
 			<h1 class="title stresstitle">Εγγραφή Χρήστη</h1>
 		</header>
-		<form id="register-form" class="form c8" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+		<form id="register-form" class="form c8" method="post" action="<?php echo samepage(); ?>">
 			<?php
 				if (!empty($email_err)) {
 					echo '<p class="alert error">';
@@ -181,6 +185,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				<input type="text" name="surname" id="surname" maxlength="64" required>
 			</div>
 
+			<label for="category" class="required">Ιδιότητα:</label>
+			<select name="category" id="category">
+				<!-- <option disabled selected> -- Επιλέξτε -- </option> -->
+				<option value="1">Εργοδότης/τρια</option>
+				<option value="2">Εργαζόμενος/η</option>
+				<option value="3">Άνεργος/η</option>
+			</select>
+
 			<?php
 				if (!empty($password_err)) {
 					echo '<p class="alert error clear">';
@@ -189,10 +201,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				}
 			?>
 			<label for="password" class="required">Κωδικός πρόσβασης:</label>
-			<input type="password" name="password" id="password" maxlength="16" required>
+			<input type="password" name="password" id="password" minlength="8" maxlength="16" required>
 
 			<label for="confirm-password" class="required">Επανάληψη κωδικού πρόσβασης:</label>
-			<input type="password" name="confirm-password" id="confirm-password" maxlength="16" required>
+			<input type="password" name="confirm-password" id="confirm-password" minlength="8" maxlength="16" required>
 
 			<input type="checkbox" name="consent" id="consent" required>
 			<label for="consent" class="required" style="display: inline-block">Συμφωνώ να <del>απολέσω τα νεφρά μου</del> με τους <a href="#">Όρους Χρήσης</a> και την <a href="#">Πολιτική Απορρήτου</a></label>

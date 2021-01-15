@@ -12,51 +12,37 @@ $user_err = $leave_err = "";
 // Used to show success message
 $submit_success = false;
 
+// Include MySQL config file
+require_once $_SERVER['DOCUMENT_ROOT'] . '/include/config.php';
+
 // Autocomplete known fields for logged-in users (PERK!)
 if (loggedin()) {
-	// Include config file
-	require_once $_SERVER['DOCUMENT_ROOT'] . '/include/config.php';
-
 	$afm = $_SESSION["afm"];
+	$name = $_SESSION["name"];
 
-	// Prepare a select statement
-	$sql = "SELECT name, surname FROM users WHERE afm = ?;";
+	$sql = "SELECT surname FROM users WHERE afm = ?";
 
-	if ($stmt = mysqli_prepare($link, $sql)) {
-		// Bind variables to the prepared statement as parameters
-		mysqli_stmt_bind_param($stmt, "s", $afm);
+	$stmt = mysqli_prepare($link, $sql);
+	mysqli_stmt_bind_param($stmt, "s", $afm);
 
-		// Attempt to execute the prepared statement
-		if (mysqli_stmt_execute($stmt)) {
-			// Store result
-			mysqli_stmt_store_result($stmt);
+	mysqli_stmt_execute($stmt);
 
-			// Check if user exists, if yes then verify password
-			if (mysqli_stmt_num_rows($stmt) == 1) {
-				// Bind result variables
-				mysqli_stmt_bind_result($stmt, $name, $surname);
+	mysqli_stmt_store_result($stmt);
+	mysqli_stmt_bind_result($stmt, $surname);
+	mysqli_stmt_fetch($stmt);
 
-				if (!mysqli_stmt_fetch($stmt)) {
-					$user_err = "Σφάλμα: [" . mysqli_error($link) . "]. Παρακαλώ δοκιμάστε ξανά αργότερα.";
-				}
-			}
-		} else {
-			$user_err = "Σφάλμα: [" . mysqli_error($link) . "]. Παρακαλώ δοκιμάστε ξανά αργότερα.";
-		}
-
-		// Close statement
-		mysqli_stmt_close($stmt);
-	}
+	mysqli_stmt_close($stmt);
 }
 
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	// TODO: Extra validation?
-
-	// Get these elements from the form, only if the user isn't logged in
+	// Get these elements from the form, only if unknown from DB
 	if (!loggedin()) {
-		// Include config file
-		require_once $_SERVER['DOCUMENT_ROOT'] . '/include/config.php';
+		// Validate afm
+		$afm = trim($_POST["afm"]);
+		if (empty($afm)) {
+			$user_err = "Παρακαλώ εισάγετε τον ΑΦΜ σας.";
+		}
 
 		// Validate name
 		$name = trim($_POST["name"]);
@@ -68,12 +54,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$surname = trim($_POST["surname"]);
 		if (empty($surname)) {
 			$user_err = "Παρακαλώ εισάγετε το επώνυμό σας.";
-		}
-
-		// Validate afm
-		$afm = trim($_POST["afm"]);
-		if (empty($afm)) {
-			$user_err = "Παρακαλώ εισάγετε τον ΑΦΜ σας.";
 		}
 	}
 
@@ -120,106 +100,63 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	// If no errors, proceed to insert values
 	if (empty($user_err) && empty($leave_err)) {
-		// 1. Update number of children
+		// 1. INSERT or UPDATE user entry, with number of children.
+		// Name only changed from the form for logged out users
+		// Don't modify existing 'registered' field because this might be a registered user operating while logged out.
+		// TODO: In case where names differ? Use this or previous?
+		$sql = "INSERT INTO users (afm, name, surname, children) VALUES (?, ?, ?, ?)
+			ON DUPLICATE KEY UPDATE
+				name = VALUES(name),
+				surname = VALUES(surname),
+				children = VALUES(children)";
 
-		// For LOGGED-IN user: simple update on existing record
-		if (loggedin()) {
-			$sql = "UPDATE users SET children = ? WHERE afm = ?;";
+		$stmt = mysqli_prepare($link, $sql);
+		mysqli_stmt_bind_param($stmt, "ssss", $afm, $name, $surname, $children);
 
-			if ($stmt = mysqli_prepare($link, $sql)) {
-				// Bind variables to the prepared statement as parameters
-				mysqli_stmt_bind_param($stmt, "ss", $children, $afm);
+		mysqli_stmt_execute($stmt);
 
-				// Attempt to execute the prepared statement
-				if (!mysqli_stmt_execute($stmt)) {
-					$user_err = "Σφάλμα: [" . mysqli_error($link) . "]. Παρακαλώ δοκιμάστε ξανά αργότερα.";
-				}
+		mysqli_stmt_close($stmt);
 
-				// Close statement
-				mysqli_stmt_close($stmt);
-			}
-		} else { // For LOGGED-OUT/UNREGISTERED user: Update or insert user entry, with number of children.
-			// Don't modify existing 'registered' field because this might be a registered user operating while logged out.
-			// TODO: In case whre names differ? Use this or previous?
-			$sql = "INSERT INTO users (afm, name, surname, registered, children) VALUES (?, ?, ?, FALSE, ?)
-				ON DUPLICATE KEY UPDATE
-					name = VALUES(name),
-					surname = VALUES(surname),
-					children = VALUES(children);";
 
-			if ($stmt = mysqli_prepare($link, $sql)) {
-				// Bind variables to the prepared statement as parameters
-				mysqli_stmt_bind_param($stmt, "ssss", $afm, $name, $surname, $children);
-
-				// Attempt to execute the prepared statement
-				if (!mysqli_stmt_execute($stmt)) {
-					$user_err = "Σφάλμα: [" . mysqli_error($link) . "]. Παρακαλώ δοκιμάστε ξανά αργότερα.";
-				}
-
-				// Close statement
-				mysqli_stmt_close($stmt);
-			}
-		}
-
-		// For ANY user:
-
-		// 2. Update children entries
+		// 2. INSERT children entries
 		// Multiple bind calls aren't too wasteful because the number of children a parent has
 		// (and/or is willing to input one by one in the form) is fairly limited
-		if (empty($user_err)) {
-			$sql = "INSERT INTO children (parent_id, age, category) VALUES (?, ?, ?);";
-				// TODO: if the primary key is a composite of those three, is the update needed?
-				// same for third sql
-				// ON DUPLICATE KEY UPDATE
-				// 	parent_id = VALUES(parent_id),
-				// 	age = VALUES(age),
-				// 	category = VALUES(category);"
+		$sql = "INSERT INTO children (parent_id, age, category) VALUES (?, ?, ?)";
+			// Since the primary key is a composite of those three, no update needed
+			// same for third sql
+			// ON DUPLICATE KEY UPDATE
+			// 	parent_id = VALUES(parent_id),
+			// 	age = VALUES(age),
+			// 	category = VALUES(category);"
 
-			if ($stmt = mysqli_prepare($link, $sql)) {
-				for ($i = 0; $i < $children; $i++) {
-					// Bind variables to the prepared statement as parameters
-					// TODO: enum for category?
-					mysqli_stmt_bind_param($stmt, "sss", $afm, $age[$i], $edu[$i]);
+		$stmt = mysqli_prepare($link, $sql);
 
-					// Attempt to execute the prepared statement
-					if (!mysqli_stmt_execute($stmt)) {
-						$user_err = "Σφάλμα: [" . mysqli_error($link) . "]. Παρακαλώ δοκιμάστε ξανά αργότερα.";
-						break;
-					}
-				}
-
-				// Close statement
-				mysqli_stmt_close($stmt);
-			}
+		for ($i = 0; $i < $children; $i++) {
+			mysqli_stmt_bind_param($stmt, "sss", $afm, $age[$i], $edu[$i]);
+			mysqli_stmt_execute($stmt);
 		}
 
-		// 3. Create special leave entry
-		if (empty($user_err)) {
-			$sql = "INSERT INTO special_leave (parent_id, from_date, to_date, special_notes) VALUES (?, ?, ?, ?);";
+		mysqli_stmt_close($stmt);
 
-			if ($stmt = mysqli_prepare($link, $sql)) {
-				// Bind variables to the prepared statement as parameters
-				mysqli_stmt_bind_param($stmt, "ssss", $afm, $from, $to, $special_notes);
 
-				// Attempt to execute the prepared statement
-				if (!mysqli_stmt_execute($stmt)) {
-					$user_err = "Σφάλμα: [" . mysqli_error($link) . "]. Παρακαλώ δοκιμάστε ξανά αργότερα.";
-				}
+		// 3. INSERT special leave entry
+		$sql = "INSERT INTO special_leave (parent_id, from_date, to_date, special_notes) VALUES (?, ?, ?, ?)";
 
-				// Close statement
-				mysqli_stmt_close($stmt);
-			}
-		}
-	}
+		$stmt = mysqli_prepare($link, $sql);
+		mysqli_stmt_bind_param($stmt, "ssss", $afm, $from, $to, $special_notes);
 
-	// Close connection
-	mysqli_close($link);
+		mysqli_stmt_execute($stmt);
 
-	// If everything ran smoothly, it's time for the success page!
-	if (empty($user_err) && empty($leave_err)) {
+		mysqli_stmt_close($stmt);
+
+
+		// If everything ran smoothly, it's time for the success page!
 		$submit_success = true;
 	}
 }
+
+// Close connection
+mysqli_close($link);
 
 ?>
 
@@ -283,9 +220,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		<!-- end sidebar -->
 		<!-- MAIN CONTENT -->
 		<section class="c9">
-			<!-- Step 1. The Form -->
 			<?php if (!$submit_success): ?>
-			<form class="form" id="special-leave-form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+			<!-- Step 1. The Form -->
+			<form class="form" id="special-leave-form" method="post" action="<?php echo samepage(); ?>">
 				<p>
 					Η άδεια ειδικού σκοπού απευθύνεται σε εργαζόμενους γονείς με παιδιά έως 15 ετών και παραμένει σε ισχύ ανάλογα με την πορεία ανοίγματος των σχολικών μονάδων, των παιδικών και βρεφικών σταθμών.
 				</p>
@@ -303,22 +240,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				</h2>
 
 				<div class="c6 noleftmargin">
+					<label for="afm" class="required">ΑΦΜ:</label>
+					<input type="text" name="afm" id="afm" pattern="[0-9]+" minlength="9" maxlength="9" required <?php autocomplete_disabled($afm); ?>>
+				</div>
+
+				<div class="c6 noleftmargin clear">
 					<label for="name" class="required">Όνομα:</label>
-					<input type="text" name="name" id="name" maxlength="64" required <?php if (loggedin()) echo 'value="' . $name . '" disabled'; ?>>
+					<input type="text" name="name" id="name" maxlength="64" required <?php autocomplete_disabled($name); ?>>
 				</div>
 				<div class="c6 norightmargin">
 					<label for="surname" class="required">Επώνυμο:</label>
-					<input type="text" name="surname" id="surname" maxlength="64" required <?php if (loggedin()) echo 'value="' . $surname . '" disabled'; ?>>
+					<input type="text" name="surname" id="surname" maxlength="64" required <?php autocomplete_disabled($surname); ?>>
 				</div>
-
-				<div class="c6 noleftmargin">
-					<label for="afm" class="required">ΑΦΜ:</label>
-					<input type="text" name="afm" id="afm" pattern="[0-9]+" minlength="9" maxlength="9" required <?php if (loggedin()) echo 'value="' . $afm . '" disabled'; ?>>
-				</div>
-				<!-- <div class="c6 norightmargin">
-					<label for="amka" class="required">ΑΜΚΑ:</label>
-					<input type="text" name="amka" id="amka" pattern="[0-9]+" minlength="11" maxlength="11" required <?php if (loggedin() && !empty($amka)) echo 'value="' . $amka . '" disabled'; ?>>
-				</div> -->
 				</section>
 
 				<section class="clear">
@@ -365,7 +298,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 						<i class="icon-info-sign smallrightmargin"></i>Πατώντας <strong>Υποβολή</strong> δηλώνετε ότι τα παραπάνω στοιχεία είναι αληθή.
 					</p>
 				</div>
-				<div class="buttons c4">
+				<div class="buttons c4 norightmargin">
 					<input type="reset" value="Καθαρισμός"> |
 					<input type="submit" class="actionbutton" value="Υποβολή">
 				</div>
@@ -390,11 +323,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					</select>
 				</div>
 			</fieldset>
-			<!-- Step 2. Success message! -->
 			<?php else: ?>
-				<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/include/success.php' ?>
+			<!-- Step 2. Success message! -->
+			<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/include/success.php' ?>
 			<?php endif; ?>
-
 		</section>
 		<!-- end main content -->
 	</div>

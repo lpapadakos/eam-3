@@ -101,7 +101,7 @@ form { margin-bottom: 20px; font: 14px "HelveticaNeue","Helvetica Neue",Helvetic
 #login-form, #register-form { float: none; margin: 60px auto 20px; }
 #login-logo { margin-top: 50px; height: auto; }
 #login-form #login { margin-top: 10px; width: 100%; }
-fieldset { margin-bottom: 20px; border: 1px solid #777; padding: 5px; }
+fieldset { margin-bottom: 20px; border: 1px solid #777; padding: 10px; }
 textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], select { background: #ffffff; border: 1px solid #ddd; padding: 8px 8px; vertical-align: middle; outline: none; border-radius: 2px; -moz-border-radius: 2px; -webkit-border-radius: 2px; transition: border linear 0.4s,box-shadow linear 0.4s; -o-transition: border linear 0.4s,box-shadow linear 0.4s; -moz-transition: border linear 0.4s,box-shadow linear 0.4s; -webkit-transition: border linear 0.4s,box-shadow linear 0.4s; margin: 0; width: 100%; display: block; margin-bottom: 20px; }
 input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, textarea:focus { border: 1px solid; border-color: rgba(82,168,236,0.8); color: #444; box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(81,168,236,0.5); -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(81,168,236,0.5); -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(81,168,236,0.5); }
 textarea { min-height: 120px }
@@ -113,6 +113,8 @@ input[type="reset"]:hover { text-decoration: underline; }
 input[disabled] { background: #eee; }
 form .buttons { text-align: right; }
 form .buttons > input { display: inline; }
+#success { color: green; font-size: 10em; }
+#save-area button {width: 200px; margin: 10px;}
 /* ---- Alerts ---- */
 .alert { padding: 10px; margin-bottom: 18px; color: #c09853; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); background-color: #fcf8e3; border: 1px solid #fbeee0; border-radius: 4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; }
 .success { color: #468847;background-color: #dff0d8;border-color: #d6e9c6;padding: 10px;font-weight: bold;margin-bottom: 10px;}
@@ -159,6 +161,10 @@ button.black:hover, button.black:active { background: #222; background: -webkit-
 table { *border-collapse: collapse; /* IE7 and lower */ border-spacing: 0; width: 100%; border: solid #ccc 1px; border-radius: 6px; -moz-border-radius: 6px; -webkit-border-radius: 6px; box-shadow: 0 1px 1px #ccc; -moz-box-shadow: 0 1px 1px #ccc; -webkit-box-shadow: 0 1px 1px #ccc; }
 td, th { border-left: 1px solid #ccc; border-top: 1px solid #ccc; padding: 10px; text-align: left; }
 th { background-color: #d9edf0; background-image: -webkit-gradient(linear,left top,left bottom,from(#ebf3fc),to(#dce9f9)); background-image: -webkit-linear-gradient(top,#ebf3fc,#dce9f9); background-image: -moz-linear-gradient(top,#ebf3fc,#dce9f9); background-image: -ms-linear-gradient(top,#ebf3fc,#dce9f9); background-image: -o-linear-gradient(top,#ebf3fc,#dce9f9); background-image: linear-gradient(top,#ebf3fc,#dce9f9); box-shadow: 0 1px 0 rgba(255,255,255,.8) inset; -moz-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset; -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset; border-top: none; text-shadow: 0 1px 0 rgba(255,255,255,.5); }
+#employees { max-height: 10px; overflow: auto; }
+#employees tr[onclick] { cursor: pointer; }
+#employees tr:hover { background: #eee; }
+#employees th, #employees td { padding: 10px; }
 /* ----------------------------------------- Tabs ----------------------------------------- */
 .tab-page p { padding: 20px }
 .tab-container { position: relative }
@@ -175,6 +181,7 @@ th { background-color: #d9edf0; background-image: -webkit-gradient(linear,left t
 	.row .row>div:last-child { margin-bottom: 0 !important }
 	.grid > #tools { flex-direction: column; }
 	.grid > #tools .c4 {width: 90%; margin:auto; margin-top: 10px; margin-bottom: 10px}
+	#menu > #login-area { margin-top: -20px; }
 }
 /* =Media query for iPad and tablets-------------------------------------------------------------- */
 @media handheld,only screen and (max-width:768px),only screen and (max-device-width:768px) and (orientation:portrait) {
@@ -214,7 +221,7 @@ nav li a { display: block; padding: 10px; color: #111; text-decoration: none; }
 #top-nav ul ul a { text-transform: none; padding: 5px 10px; border-left: none; border-right: none; font-size: 14px; color: #fff; margin-left: -5px; }
 #top-nav ul ul a:hover { margin-left: 0px; background: rgba(0,0,0,0.1); margin-left: -5px; }
 nav ul>li:hover>a { color: #fff }
-#login-area {padding: 0 10px; height: auto; margin-top: 5px; }
+#login-area { padding: 0 10px; height: auto; margin-top: 5px; }
 #login-area a {display: block; text-align: center; margin: 5px auto; padding: 5px 10px; width: 100%; font-size: 13px; font-weight: bold; }
 #breadcrumbs {font-size: 15px; padding: 10px; margin-bottom: 20px; color: #222;}
 #breadcrumbs a:first-child {font-size: 20px;}
@@ -223,6 +230,7 @@ nav ul>li:hover>a { color: #fff }
 #breadcrumbs a:not(:first-child) {font-weight: bold;}
 #sidebar-nav ul {font-size: 20px;}
 div.slide img { float: left; margin: 8px 5px 30px; }
+.da-slide img { max-height: 340px; }
 blockquote.testimonial-wrap.testimonial { position: relative; display: table; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; padding: 15px; -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.4); -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.4); box-shadow: 0 1px 3px rgba(0,0,0,0.4); font-size: 15px; line-height: 22px; background: #ebebeb; color: #545454; text-shadow: 0 1px 0 #fff; margin-bottom: 22px; }
 blockquote.testimonial-wrap .testimonialdiv.valign { display: table-cell; vertical-align: middle; }
 blockquote.testimonial-wrap .testimonial:after { position: absolute; z-index: 1; content: ' '; width: 14px; height: 14px; bottom: -14px; left: 28px; background: transparent url('http://www.happytables.com/wp-content/themes/happyv1/images/testimonial-arrow.png') 0 0; }
@@ -450,7 +458,7 @@ ul.accordion>li.active .content { background: white; display: block; border-left
 .noshadowbox { padding: 0 15px 15px 15px; background-color: #F5F5F5; text-align: center; border: 1px solid #e9e9e9; border-top: 0px; }
 #tools {display: flex; justify-content: space-between; flex-direction: row;}
 #tools .c4 {width:30%; padding: 0; box-shadow: 5px 5px 10px #aaa;}
-#tools .c4 > ul {margin: 0}
+#tools .c4 > ul { border: 0; margin: 0; }
 #tools .c4 h2 a {display: block; color: inherit; font-weight: medium;}
 #tools .c4 .noshadowbox {padding: 0;}
 #tools .c4 li a {padding: 10px; color: black; display: block; font-size: 1.2em; color: #444}
@@ -495,7 +503,6 @@ ul.accordion>li.active .content { background: white; display: block; border-left
 .mosaicover2col { height: 260px }
 .mosaicover4col { height: 180px }
 .mosaicover5col { height: 140px }
-.boxcontainer img { width: 100%; }
 .boxcontainer p { margin-bottom: 10px }
 .boxcontainer h2 { font-size: 15px; line-height: 1; font-family: OpenSansRegular; font-weight: bold; padding: 20px 10px; margin: 0; color: #222; }
 #content { width: 100%; margin-top: 10px; z-index: 0; }
