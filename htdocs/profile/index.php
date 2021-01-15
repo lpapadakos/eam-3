@@ -2,6 +2,12 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/include/common.php';
 
+// Logged-in only page
+if (!loggedin()) {
+	header("location: /login.php?" . referrer());
+	exit;
+}
+
 // Define variables and initialize with empty values
 $afm = $amka = $name = $surname = $email = $hashed_password = $phone = $category = $company_afm = $company_name = $company_address =  "";
 $user_err = $company_err = "";
@@ -9,84 +15,49 @@ $user_err = $company_err = "";
 // Used to show success message
 $submit_success = false;
 
-// Logged-in only page
-if (!loggedin()) {
-	header("location: /login.php?" . referrer());
-	exit;
-}
-
-// Autocomplete known fields. Users can change their information here.
-// Include config file
+// Include MySQL config file
 require_once $_SERVER['DOCUMENT_ROOT'] . '/include/config.php';
 
+// Autocomplete known fields. Users can change their information here.
+
+// Get user section
 $afm = $_SESSION["afm"];
 $name = $_SESSION["name"];
 
-// Get user sections
-$sql = "SELECT amka, surname, email, password, phone, category+0, company_id FROM users WHERE afm = ?;";
+$sql = "SELECT amka, surname, email, password, phone, category+0, company_id FROM users WHERE afm = ?";
 
-if ($stmt = mysqli_prepare($link, $sql)) {
-	// Bind variables to the prepared statement as parameters
-	mysqli_stmt_bind_param($stmt, "s", $afm);
+$stmt = mysqli_prepare($link, $sql);
+mysqli_stmt_bind_param($stmt, "s", $afm);
 
-	// Attempt to execute the prepared statement
-	if (mysqli_stmt_execute($stmt)) {
-		// Store result
-		mysqli_stmt_store_result($stmt);
+mysqli_stmt_execute($stmt);
 
-		// Check if user exists, if yes then verify password
-		if (mysqli_stmt_num_rows($stmt) == 1) {
-			// Bind result variables
-			mysqli_stmt_bind_result($stmt, $amka, $surname, $email, $hashed_password, $phone, $category, $company_afm);
+mysqli_stmt_store_result($stmt);
+mysqli_stmt_bind_result($stmt, $amka, $surname, $email, $hashed_password, $phone, $category, $company_afm);
+mysqli_stmt_fetch($stmt);
 
-			if (!mysqli_stmt_fetch($stmt)) {
-				$user_err = "Σφάλμα: [" . mysqli_error($link) . "]. Παρακαλώ δοκιμάστε ξανά αργότερα.";
-			}
-		}
-	} else {
-		$user_err = "Σφάλμα: [" . mysqli_error($link) . "]. Παρακαλώ δοκιμάστε ξανά αργότερα.";
-	}
+mysqli_stmt_close($stmt);
 
-	// Close statement
-	mysqli_stmt_close($stmt);
-}
 
 // Get company section
 $sql = "SELECT name, address FROM companies WHERE afm = ?";
 
-if ($stmt = mysqli_prepare($link, $sql)) {
-	// Bind variables to the prepared statement as parameters
-	mysqli_stmt_bind_param($stmt, "s", $company_afm);
+$stmt = mysqli_prepare($link, $sql);
+mysqli_stmt_bind_param($stmt, "s", $company_afm);
 
-	// Attempt to execute the prepared statement
-	if (mysqli_stmt_execute($stmt)) {
-		// Store result
-		mysqli_stmt_store_result($stmt);
+mysqli_stmt_execute($stmt);
 
-		// Check if user exists, if yes then verify password
-		if (mysqli_stmt_num_rows($stmt) == 1) {
-			// Bind result variables
-			mysqli_stmt_bind_result($stmt, $company_name, $company_address);
+mysqli_stmt_store_result($stmt);
 
-			if (!mysqli_stmt_fetch($stmt)) {
-				$user_err = "Σφάλμα: [" . mysqli_error($link) . "]. Παρακαλώ δοκιμάστε ξανά αργότερα.";
-			}
-		}
-	} else {
-		$user_err = "Σφάλμα: [" . mysqli_error($link) . "]. Παρακαλώ δοκιμάστε ξανά αργότερα.";
-	}
-
-	// Close statement
-	mysqli_stmt_close($stmt);
+if (mysqli_stmt_num_rows($stmt) == 1) {
+	mysqli_stmt_bind_result($stmt, $company_name, $company_address);
+	mysqli_stmt_fetch($stmt);
 }
+
+mysqli_stmt_close($stmt);
 
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	// TODO: Extra validation?
-
 	// Get the changed elements from the form, and update records in db
-	// Include config file
-	require_once $_SERVER['DOCUMENT_ROOT'] . '/include/config.php';
 
 	// Validate name
 	if (empty(trim($_POST["name"])))
@@ -141,30 +112,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				company_id = ?
 			WHERE afm = ?;";
 
-		if ($stmt = mysqli_prepare($link, $sql)) {
-			// Bind variables to the prepared statement as parameters
-			mysqli_stmt_bind_param($stmt, "ssssssss", $amka, $name, $surname, $email, $phone, $category, $company_afm, $afm);
+		$stmt = mysqli_prepare($link, $sql);
+		mysqli_stmt_bind_param($stmt, "ssssssss", $amka, $name, $surname, $email, $phone, $category, $company_afm, $afm);
 
-			// Attempt to execute the prepared statement
-			if (!mysqli_stmt_execute($stmt)) {
-				$user_err = "Σφάλμα: [" . mysqli_error($link) . "]. Παρακαλώ δοκιμάστε ξανά αργότερα.";
-			}
+		mysqli_stmt_execute($stmt);
 
-			// Close statement
-			mysqli_stmt_close($stmt);
-		}
+		mysqli_stmt_close($stmt);
 
-		//TODO: Change company info for employers
-	}
+		//TODO: Change company info for employers?
 
-	// Close connection
-	mysqli_close($link);
-
-	// If everything ran smoothly, it's time for the success message!
-	if (empty($user_err) && empty($company_err)) {
+		// If everything ran smoothly, it's time for the success message!
 		$submit_success = true;
 	}
 }
+
+// Close connection
+mysqli_close($link);
 
 ?>
 
@@ -215,8 +178,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			<nav id="sidebar-nav">
 			<h2 class="title stresstitle">ΠΡΟΦΙΛ</h2>
 			<ul>
-				<?php if (isset($category) && $category == "employer"): ?>
-				<li><a href="employees-file.php"><i class="icon-file-alt smallrightmargin"></i>Αρχείο Εργαζομένων</a></li>
+				<?php if (isset($category) && $category == '1'): ?>
+				<li style="background: #efe188"><a href="employees-file.php"><i class="icon-file-alt smallrightmargin"></i>Αρχείο Εργαζομένων</a></li>
 				<?php else: ?>
 				<li style="background: #efe188"><a href="employee-view.php"><i class="icon-file-alt smallrightmargin"></i>Το Αρχείο Μου</a></li>
 				<?php endif; ?>
@@ -228,7 +191,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		<!-- end sidebar -->
 		<!-- MAIN CONTENT -->
 		<section class="c9">
-			<!-- Step 1. The Form -->
 			<?php
 				if ($submit_success) {
 						echo '<p class="alert success">';
@@ -236,7 +198,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 						echo '</p>';
 				};
 			?>
-			<form class="form" id="profile-data-form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+			<form class="form" id="profile-data-form" method="post" action="<?php echo samepage(); ?>">
 				<p>
 					Εδώ μπορείτε να δείτε και <strong>αλλάξετε</strong> τα στοιχεία του προφίλ σας, καθώς και να ενημερωθείτε για την κατάσταση σας στην επιχείριση: (ημέρες αναστολής, τηλεργασίας, άδειες).
 				</p>
@@ -254,30 +216,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				</h2>
 
 				<div class="c6 noleftmargin">
-					<label for="name" class="required">Όνομα:</label>
-					<input type="text" name="name" id="name" maxlength="64" required <?php perk($name, false); ?>>
-				</div>
-				<div class="c6 norightmargin">
-					<label for="surname" class="required">Επώνυμο:</label>
-					<input type="text" name="surname" id="surname" maxlength="64" required <?php perk($surname, false); ?>>
-				</div>
-
-				<div class="c6 noleftmargin">
 					<label for="afm" class="required">ΑΦΜ:</label>
-					<input type="text" name="afm" id="afm" pattern="[0-9]+" minlength="9" maxlength="9" required <?php perk($afm); ?>>
+					<input type="text" name="afm" id="afm" pattern="[0-9]+" minlength="9" maxlength="9" required <?php autocomplete_disabled($afm); ?>>
 				</div>
 				<div class="c6 norightmargin">
 					<label for="amka">ΑΜΚΑ:</label>
-					<input type="text" name="amka" id="amka" pattern="[0-9]+" minlength="11" maxlength="11" <?php perk($amka, false); ?>>
+					<input type="text" name="amka" id="amka" pattern="[0-9]+" minlength="11" maxlength="11" <?php autocomplete($amka); ?>>
+				</div>
+
+				<div class="c6 noleftmargin">
+					<label for="name" class="required">Όνομα:</label>
+					<input type="text" name="name" id="name" maxlength="64" required <?php autocomplete($name); ?>>
+				</div>
+				<div class="c6 norightmargin">
+					<label for="surname" class="required">Επώνυμο:</label>
+					<input type="text" name="surname" id="surname" maxlength="64" required <?php autocomplete($surname); ?>>
 				</div>
 
 				<div class="c6 noleftmargin">
 					<label for="email" class="required">Email:</label>
-					<input type="email" name="email" id="email" maxlength="64" required <?php perk($email, false); ?>>
+					<input type="email" name="email" id="email" maxlength="64" required <?php autocomplete($email); ?>>
 				</div>
 				<div class="c6 norightmargin">
 					<label for="phone">Τηλέφωνο (Ελλάδας, χωρίς το πρόθημα +30):</label>
-					<input type="tel" name="phone" id="phone" pattern="[0-9]+" minlength="10" maxlength=10" <?php perk($phone, false); ?>>
+					<input type="tel" name="phone" id="phone" pattern="[0-9]+" minlength="10" maxlength=10" <?php autocomplete($phone); ?>>
 				</div>
 
 				<label for="category" class="required">Ιδιότητα:</label>
@@ -306,17 +268,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 				<div class="c6 noleftmargin">
 					<label for="company-afm" class="required">ΑΦΜ/VAT:</label>
-					<input type="text" name="afm" id="afm" pattern="[0-9]+" minlength="9" maxlength="9" required <?php perk($company_afm); ?>>
+					<input type="text" name="afm" id="afm" pattern="[0-9]+" minlength="9" maxlength="9" required <?php autocomplete_disabled($company_afm); ?>>
 				</div>
 
 				<div class="clear">
 					<label for="company-name" class="required">Επωνυμία:</label>
-					<input type="text" name="company-name" id="company-name" maxlength="64" required <?php perk($company_name); ?>>
+					<input type="text" name="company-name" id="company-name" maxlength="64" required <?php autocomplete_disabled($company_name); ?>>
 				</div>
 
 				<div class="clear">
 					<label for="company-address" class="required">Διεύθυνση:</label>
-					<input type="text" name="company-address" id="company-address" maxlength="64" required <?php perk($company_address); ?>>
+					<input type="text" name="company-address" id="company-address" maxlength="64" required <?php autocomplete_disabled($company_address); ?>>
 				</div>
 				</section>
 

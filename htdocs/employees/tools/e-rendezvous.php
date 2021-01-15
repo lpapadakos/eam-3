@@ -9,52 +9,37 @@ $user_err = $rendezvous_err = "";
 // Used to show success message
 $submit_success = false;
 
+// Include MySQL config file
+require_once $_SERVER['DOCUMENT_ROOT'] . '/include/config.php';
+
 // Autocomplete known fields for logged-in users (PERK!)
 if (loggedin()) {
-	// Include config file
-	require_once $_SERVER['DOCUMENT_ROOT'] . '/include/config.php';
-
 	$afm = $_SESSION["afm"];
 	$name = $_SESSION["name"];
 
-	// Prepare a select statement
-	$sql = "SELECT surname, email, phone FROM users WHERE afm = ?;";
+	$sql = "SELECT surname, email, phone FROM users WHERE afm = ?";
 
-	if ($stmt = mysqli_prepare($link, $sql)) {
-		// Bind variables to the prepared statement as parameters
-		mysqli_stmt_bind_param($stmt, "s", $afm);
+	$stmt = mysqli_prepare($link, $sql);
+	mysqli_stmt_bind_param($stmt, "s", $afm);
 
-		// Attempt to execute the prepared statement
-		if (mysqli_stmt_execute($stmt)) {
-			// Store result
-			mysqli_stmt_store_result($stmt);
+	mysqli_stmt_execute($stmt);
 
-			// Check if user exists, if yes then verify password
-			if (mysqli_stmt_num_rows($stmt) == 1) {
-				// Bind result variables
-				mysqli_stmt_bind_result($stmt, $surname, $email, $phone);
+	mysqli_stmt_store_result($stmt);
+	mysqli_stmt_bind_result($stmt, $surname, $email, $phone);
+	mysqli_stmt_fetch($stmt);
 
-				if (!mysqli_stmt_fetch($stmt)) {
-					$user_err = "Σφάλμα: [" . mysqli_error($link) . "]. Παρακαλώ δοκιμάστε ξανά αργότερα.";
-				}
-			}
-		} else {
-			$user_err = "Σφάλμα: [" . mysqli_error($link) . "]. Παρακαλώ δοκιμάστε ξανά αργότερα.";
-		}
-
-		// Close statement
-		mysqli_stmt_close($stmt);
-	}
+	mysqli_stmt_close($stmt);
 }
 
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	// TODO: Extra validation?
-
-	// Get these elements from the form, only if the user isn't logged in
+	// Get these elements from the form, only if unknown from DB
 	if (!loggedin()) {
-		// Include config file
-		require_once $_SERVER['DOCUMENT_ROOT'] . '/include/config.php';
+		// Validate afm
+		$afm = trim($_POST["afm"]);
+		if (empty($afm)) {
+			$user_err = "Παρακαλώ εισάγετε τον ΑΦΜ σας.";
+		}
 
 		// Validate name
 		$name = trim($_POST["name"]);
@@ -68,18 +53,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			$user_err = "Παρακαλώ εισάγετε το επώνυμό σας.";
 		}
 
-		// Validate afm
-		$afm = trim($_POST["afm"]);
-		if (empty($afm)) {
-			$user_err = "Παρακαλώ εισάγετε τον ΑΦΜ σας.";
-		}
-
 		// Validate email
 		$email = trim($_POST["email"]);
 		if (empty($afm)) {
 			$user_err = "Παρακαλώ εισάγετε τη διεύθνυση email σας.";
 		}
+	}
 
+	if (empty($phone)) {
 		$phone = trim($_POST["phone"]);
 	}
 
@@ -103,81 +84,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	// If no errors, proceed to insert values
 	if (empty($user_err) && empty($rendezvous_err)) {
-		// 1. Update number of children
+		// 1. INSERT or UPDATE user entry, with phone number.
+		// Name only changed from the form for logged out users
+		// Don't modify existing 'registered' field because this might be a registered user operating while logged out.
+		// TODO: In case where names differ? Use this or previous?
+		$sql = "INSERT INTO users (afm, name, surname, registered, email, phone) VALUES (?, ?, ?, FALSE, ?, ?)
+			ON DUPLICATE KEY UPDATE
+				name = VALUES(name),
+				surname = VALUES(surname),
+				phone = VALUES(phone)";
 
-		// For LOGGED-IN user: simple update on existing record
-		if (loggedin() && isset($phone) && $phone != "") {
-			$sql = "UPDATE users SET phone = ? WHERE afm = ?;";
+		$stmt = mysqli_prepare($link, $sql);
+		mysqli_stmt_bind_param($stmt, "sssss", $afm, $name, $surname, $email, $phone);
 
-			if ($stmt = mysqli_prepare($link, $sql)) {
-				// Bind variables to the prepared statement as parameters
-				mysqli_stmt_bind_param($stmt, "ss", $phone, $afm);
+		mysqli_stmt_execute($stmt);
 
-				// Attempt to execute the prepared statement
-				if (!mysqli_stmt_execute($stmt)) {
-					$user_err = "Σφάλμα: [" . mysqli_error($link) . "]. Παρακαλώ δοκιμάστε ξανά αργότερα.";
-				}
+		mysqli_stmt_close($stmt);
 
-				// Close statement
-				mysqli_stmt_close($stmt);
-			}
-		} else { // For LOGGED-OUT/UNREGISTERED user: Update or insert user entry, with email and phone number.
-			// Don't modify existing 'registered' field or email (used for login) because this might be a registered user operating while logged out.
-			// TODO: In case where names differ? Use this or previous?
-			$sql = "INSERT INTO users (afm, name, surname, registered, email, phone) VALUES (?, ?, ?, FALSE, ?, ?)
-				ON DUPLICATE KEY UPDATE
-					name = VALUES(name),
-					surname = VALUES(surname),
-					phone = VALUES(phone);";
 
-			if ($stmt = mysqli_prepare($link, $sql)) {
-				// Bind variables to the prepared statement as parameters
-				mysqli_stmt_bind_param($stmt, "sssss", $afm, $name, $surname, $email, $phone);
+		// 2. INSERT e-rendezvous entry
+		$sql = "INSERT INTO e_rendezvous (user_id, time, reason) VALUES (?, ?, ?);";
 
-				// Attempt to execute the prepared statement
-				if (!mysqli_stmt_execute($stmt)) {
-					$user_err = "Σφάλμα: [" . mysqli_error($link) . "]. Παρακαλώ δοκιμάστε ξανά αργότερα.";
-				}
+		$stmt = mysqli_prepare($link, $sql);
 
-				// Close statement
-				mysqli_stmt_close($stmt);
-			}
-		}
+		// Concat values of inputs to get full DATETIME for MySQL
+		$datetime = $date . ' ' . $time;
 
-		// For ANY user:
+		mysqli_stmt_bind_param($stmt, "sss", $afm, $datetime, $reason);
 
-		// 2. Create e-rendezvous entry
-		if (empty($user_err)) {
-			$sql = "INSERT INTO e_rendezvous (user_id, time, reason) VALUES (?, ?, ?);";
+		mysqli_stmt_execute($stmt);
 
-			if ($stmt = mysqli_prepare($link, $sql)) {
-				$datetime = "";
+		mysqli_stmt_close($stmt);
 
-				// Bind variables to the prepared statement as parameters
-				mysqli_stmt_bind_param($stmt, "sss", $afm, $datetime, $reason);
 
-				// Concat values of inputs to get full datetime
-				$datetime = $date . ' ' . $time;
-
-				// Attempt to execute the prepared statement
-				if (!mysqli_stmt_execute($stmt)) {
-					$user_err = "Σφάλμα: [" . mysqli_error($link) . "]. Παρακαλώ δοκιμάστε ξανά αργότερα.";
-				}
-
-				// Close statement
-				mysqli_stmt_close($stmt);
-			}
-		}
-	}
-
-	// Close connection
-	mysqli_close($link);
-
-	// If everything ran smoothly, it's time for the success page!
-	if (empty($user_err) && empty($rendezvous_err)) {
+		// If everything ran smoothly, it's time for the success page!
 		$submit_success = true;
 	}
 }
+
+// Close connection
+mysqli_close($link);
 
 ?>
 
@@ -232,9 +178,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		<!-- end sidebar -->
 		<!-- MAIN CONTENT -->
 		<section class="c9">
-			<!-- Step 1. The Form -->
 			<?php if (!$submit_success): ?>
-			<form class="form" id="special-leave-form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+			<!-- Step 1. The Form -->
+			<form class="form" id="special-leave-form" method="post" action="<?php echo samepage(); ?>">
 				<p>
 					Εάν <strong>επείγει</strong> κάποιο ζήτημα για το οποίο <strong>δεν μπορείτε να εξυπηρετηθήτε ηλεκτρονικά</strong>, υπάρχει η δυνατότητα καθορισμού συγκεκριμένης ημερομηνίας και ώρας για φυσική εξυπηρέτηση.
 				</p>
@@ -252,32 +198,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				</h2>
 
 				<div class="c6 noleftmargin">
+					<label for="afm" class="required">ΑΦΜ:</label>
+					<input type="text" name="afm" id="afm" pattern="[0-9]+" minlength="9" maxlength="9" required <?php autocomplete_disabled($afm); ?>>
+				</div>
+
+				<div class="c6 noleftmargin clear">
 					<label for="name" class="required">Όνομα:</label>
-					<input type="text" name="name" id="name" maxlength="64" required <?php perk($name); ?>>
+					<input type="text" name="name" id="name" maxlength="64" required <?php autocomplete_disabled($name); ?>>
 				</div>
 				<div class="c6 norightmargin">
 					<label for="surname" class="required">Επώνυμο:</label>
-					<input type="text" name="surname" id="surname" maxlength="64" required <?php perk($surname); ?>>
+					<input type="text" name="surname" id="surname" maxlength="64" required <?php autocomplete_disabled($surname); ?>>
 				</div>
 
-				<div class="c6 noleftmargin">
-					<label for="afm" class="required">ΑΦΜ:</label>
-					<input type="text" name="afm" id="afm" pattern="[0-9]+" minlength="9" maxlength="9" required <?php perk($afm); ?>>
+				<div class="c6 noleftmargin clear">
+					<label for="email" class="required">Email:</label>
+					<input type="email" name="email" id="email" maxlength="64" required <?php autocomplete_disabled($email); ?>>
 				</div>
-				<!-- <div class="c6 norightmargin">
-					<label for="amka" class="required">ΑΜΚΑ:</label>
-					<input type="text" name="amka" id="amka" pattern="[0-9]+" minlength="11" maxlength="11" required <?php perk($amka); ?>>
-				</div> -->
-
-				<div class="clear">
-					<div class="c6 noleftmargin">
-						<label for="email" class="required">Email:</label>
-						<input type="email" name="email" id="email" maxlength="64" required <?php perk($email); ?>>
-					</div>
-					<div class="c6 norightmargin">
-						<label for="phone">Τηλέφωνο (Ελλάδας, χωρίς το πρόθημα +30):</label>
-						<input type="tel" name="phone" id="phone" pattern="[0-9]+" minlength="10" maxlength=10" <?php perk($phone); ?>>
-					</div>
+				<div class="c6 norightmargin">
+					<label for="phone">Τηλέφωνο (Ελλάδας, χωρίς το πρόθημα +30):</label>
+					<input type="tel" name="phone" id="phone" pattern="[0-9]+" minlength="10" maxlength=10" <?php autocomplete_disabled($phone); ?>>
 				</div>
 				</section>
 
@@ -320,11 +260,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					<input type="submit" class="actionbutton" value="Υποβολή">
 				</div>
 			</form>
-			<!-- Step 2. Success message! -->
 			<?php else: ?>
-				<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/include/success.php' ?>
+			<!-- Step 2. Success message! -->
+			<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/include/success.php' ?>
 			<?php endif; ?>
-
 		</section>
 		<!-- end main content -->
 	</div>

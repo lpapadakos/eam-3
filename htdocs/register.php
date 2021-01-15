@@ -6,15 +6,13 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/include/common.php';
 $afm = $amka = $name = $surname = $email = $password = "";
 $email_err = $name_err = $password_err = "";
 
-// Processing form data when form is submitted
-if ($_SERVER["REQUEST_METHOD"] != "POST") {
-	if (isset($_GET['page'])) {
+if ($_SERVER["REQUEST_METHOD"] != "POST") { // Save referrer on GET, to redirect on success
+	if (isset($_GET['page']))
 		$_SESSION['referrer'] = $_GET['page'];
-	} else {
+	else
 		$_SESSION['referrer'] = "/";
-	}
-} else {
-	// Include config file
+} else { // Processing form data when form is submitted
+	// Include MySQL config file
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/include/config.php';
 
 	// Make sure this is a new user
@@ -26,29 +24,19 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 	} else if (empty($afm)) {
 		$name_err = "Παρακαλώ εισάγετε τον ΑΦΜ σας.";
 	} else {
-		$sql = "SELECT * FROM users WHERE registered = TRUE AND email = ? OR afm = ?;";
+		$sql = "SELECT * FROM users WHERE registered = TRUE AND email = ? OR afm = ?";
 
-		if ($stmt = mysqli_prepare($link, $sql)) {
-			// Bind variables to the prepared statement as parameters
-			mysqli_stmt_bind_param($stmt, "ss", $email, $afm);
+		$stmt = mysqli_prepare($link, $sql);
+		mysqli_stmt_bind_param($stmt, "ss", $email, $afm);
 
-			// Attempt to execute the prepared statement
-			if (mysqli_stmt_execute($stmt)) {
-				// Store result
-				mysqli_stmt_store_result($stmt);
+		mysqli_stmt_execute($stmt);
 
-				// Check if user exists, if yes then verify password
-				if (mysqli_stmt_num_rows($stmt) > 0) {
-					$email_err = "Υπάρχει ήδη εγγεγραμμένος χρήστης με αυτή τη διεύθυνση email ή το AΦΜ.";
-				}
-			} else {
-				// DEBUG: show the actual error
-				$email_err = "Σφάλμα: [" . mysqli_error($link) . "]. Παρακαλώ δοκιμάστε ξανά αργότερα.";
-			}
-
-			// Close statement
-			mysqli_stmt_close($stmt);
+		mysqli_stmt_store_result($stmt);
+		if (mysqli_stmt_num_rows($stmt) > 0) {
+			$email_err = "Υπάρχει ήδη εγγεγραμμένος χρήστης με αυτή τη διεύθυνση email ή το AΦΜ.";
 		}
+
+		mysqli_stmt_close($stmt);
 	}
 
 	// AMKA can be empty for now, just make it NULL for MySQL
@@ -93,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 
 	// If no errors, proceed to insert values
 	if (empty($email_err) && empty($name_err) && empty($password_err)) {
-		// Prepare an insert statement. Update previously unregistered user's info
+		// INSERT or UPDATE previously unregistered user's info
 		$sql = "INSERT INTO users (afm, amka, name, surname, registered, email, password, category) VALUES (?, ?, ?, ?, TRUE, ?, ?, ?)
 			ON DUPLICATE KEY UPDATE
 				amka = VALUES(amka),
@@ -102,42 +90,37 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 				registered = VALUES(registered),
 				email = VALUES(email),
 				password = VALUES(password),
-				category = VALUES(category);";
+				category = VALUES(category)";
 
-		if ($stmt = mysqli_prepare($link, $sql)) {
-			// Bind variables to the prepared statement as parameters
-			mysqli_stmt_bind_param($stmt, "sssssss", $afm, $amka, $name, $surname, $email, $password, $category);
+		$stmt = mysqli_prepare($link, $sql);
+		mysqli_stmt_bind_param($stmt, "sssssss", $afm, $amka, $name, $surname, $email, $password, $category);
 
-			// Hash password before insert
-			$password = password_hash($password, PASSWORD_DEFAULT);
+		// Hash password before insert
+		$password = password_hash($password, PASSWORD_DEFAULT);
 
-			// Attempt to execute the prepared statement
-			if (mysqli_stmt_execute($stmt)) {
-				$referrer = $_SESSION['referrer'];
+		mysqli_stmt_execute($stmt);
 
-				// Unset all of the session variables
-				$_SESSION = array();
+		mysqli_stmt_close($stmt);
 
-				// Destroy the session.
-				session_destroy();
+		// LOG IN
+		$referrer = $_SESSION['referrer'];
 
-				// New session with this user
-				session_start();
+		// Unset all of the session variables
+		$_SESSION = array();
 
-				// Store data in session variables
-				$_SESSION["loggedin"] = true;
-				$_SESSION["afm"] = $afm;
-				$_SESSION["name"] = $name;
+		// Destroy the session.
+		session_destroy();
 
-				// SUCCESS. Redirect user to referring page
-				header("location: " . $referrer);
-			} else {
-				$email_err = "Σφάλμα: [" . mysqli_error($link) . "]. Παρακαλώ δοκιμάστε ξανά αργότερα.";
-			}
+		// New session with this user
+		session_start();
 
-			// Close statement
-			mysqli_stmt_close($stmt);
-		}
+		// Store data in session variables
+		$_SESSION["loggedin"] = true;
+		$_SESSION["afm"] = $afm;
+		$_SESSION["name"] = $name;
+
+		// SUCCESS. Redirect user to referring page
+		header("location: " . $referrer);
 	}
 
 	// Close connection
@@ -166,7 +149,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 			<a href="/"><img id="login-logo" src="/images/logo.gif" class="logo" alt="Λογότυπο Υπουργείου"></a><br>
 			<h1 class="title stresstitle">Εγγραφή Χρήστη</h1>
 		</header>
-		<form id="register-form" class="form c8" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+		<form id="register-form" class="form c8" method="post" action="<?php echo samepage(); ?>">
 			<?php
 				if (!empty($email_err)) {
 					echo '<p class="alert error">';

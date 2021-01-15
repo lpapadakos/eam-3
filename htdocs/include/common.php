@@ -1,18 +1,29 @@
 <?php
 
+function samepage() {
+	return htmlspecialchars(str_replace('index.php', '', $_SERVER["PHP_SELF"]));
+}
+
 function referrer() {
-	return "page=" . str_replace('index.php', '', $_SERVER["PHP_SELF"]);
+	return "page=" . samepage();
 }
 
 function loggedin() {
 	return (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true);
 }
 
-function perk($input, $hide = true) {
-	if (loggedin()) {
+function autocomplete($input) {
+	$flag = loggedin();
+
+	if ($flag)
 		echo 'value="' . $input . '"';
-		if ($hide == true) echo 'disabled';
-	}
+
+	return $flag;
+}
+
+function autocomplete_disabled($input) {
+	if (autocomplete($input) && isset($input) && !empty($input))
+		echo 'disabled';
 }
 
 session_start();

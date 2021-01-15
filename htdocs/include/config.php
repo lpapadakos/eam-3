@@ -1,19 +1,21 @@
 <?php
-/* Database credentials. Assuming you are running MySQL
-server with default setting (user 'root' with no password) */
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
-define('DB_NAME', 'sdi1700117');
 
-/* Attempt to connect to MySQL database */
-$link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+// Enable exception handling
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+set_exception_handler(function ($e) {
+	error_log($e->getMessage());
 
-// Check connection
-if($link === false){
-	die("ERROR: Could not connect. " . mysqli_connect_error());
-}
+	// Don't reveal sensitive info to users.
+	//die("Σφάλμα Βάσης Δεδομένων. Παρακαλώ δοκιμάστε αργότερα");
 
+	// Debug version:
+	die("Σφάλμα Βάσης Δεδομένων: " . $e->getMessage());
+});
+
+// Attempt to connect to MySQL database
+$link = mysqli_connect("localhost", "root", "", "sdi1700117");
+
+// We'll be using Greek, after all
 mysqli_set_charset($link, "utf8mb4");
 
 ?>
