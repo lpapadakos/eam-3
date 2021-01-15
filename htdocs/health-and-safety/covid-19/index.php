@@ -103,7 +103,7 @@
 						</ul>
 					</div>
 					<div class="c4">
-						<a class="actionbutton" href="..\..\employees\tools\e-rendezvous.php">
+						<a class="actionbutton" href="..\..\contact.php">
 							Κλείστε Ραντεβού
 						</a>
 					</div>
