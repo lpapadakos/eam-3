@@ -104,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		// Name only changed from the form for logged out users
 		// Don't modify existing 'registered' field because this might be a registered user operating while logged out.
 		// TODO: In case where names differ? Use this or previous?
-		$sql = "INSERT INTO users (afm, name, surname, registered, children) VALUES (?, ?, ?, FALSE, ?)
+		$sql = "INSERT INTO users (afm, name, surname, children) VALUES (?, ?, ?, ?)
 			ON DUPLICATE KEY UPDATE
 				name = VALUES(name),
 				surname = VALUES(surname),

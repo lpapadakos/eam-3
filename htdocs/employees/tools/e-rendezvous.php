@@ -88,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		// Name only changed from the form for logged out users
 		// Don't modify existing 'registered' field because this might be a registered user operating while logged out.
 		// TODO: In case where names differ? Use this or previous?
-		$sql = "INSERT INTO users (afm, name, surname, registered, email, phone) VALUES (?, ?, ?, FALSE, ?, ?)
+		$sql = "INSERT INTO users (afm, name, surname, email, phone) VALUES (?, ?, ?, ?, ?)
 			ON DUPLICATE KEY UPDATE
 				name = VALUES(name),
 				surname = VALUES(surname),
@@ -103,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 		// 2. INSERT e-rendezvous entry
-		$sql = "INSERT INTO e_rendezvous (user_id, time, reason) VALUES (?, ?, ?);";
+		$sql = "INSERT INTO e_rendezvous (user_id, time, reason) VALUES (?, ?, ?)";
 
 		$stmt = mysqli_prepare($link, $sql);
 

@@ -110,7 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				phone = ?,
 				category = ?,
 				company_id = ?
-			WHERE afm = ?;";
+			WHERE afm = ?";
 
 		$stmt = mysqli_prepare($link, $sql);
 		mysqli_stmt_bind_param($stmt, "ssssssss", $amka, $name, $surname, $email, $phone, $category, $company_afm, $afm);
