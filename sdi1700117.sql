@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Φιλοξενητής: localhost
--- Χρόνος δημιουργίας: 13 Ιαν 2021 στις 23:01:56
+-- Χρόνος δημιουργίας: 15 Ιαν 2021 στις 03:43:54
 -- Έκδοση διακομιστή: 10.4.16-MariaDB
 -- Έκδοση PHP: 7.4.12
 
@@ -77,7 +77,8 @@ CREATE TABLE `e_rendezvous` (
 --
 
 INSERT INTO `e_rendezvous` (`user_id`, `time`, `reason`) VALUES
-('240741129', '2021-01-14 13:09:00', 'Το καίγομαι σου λέω...!');
+('240741129', '2021-01-14 13:09:00', 'Το καίγομαι σου λέω...!'),
+('304696340', '2021-01-15 17:00:00', 'Just testing, honestly');
 
 -- --------------------------------------------------------
 
@@ -111,23 +112,26 @@ CREATE TABLE `users` (
   `amka` varchar(11) DEFAULT NULL,
   `name` varchar(64) NOT NULL,
   `surname` varchar(64) NOT NULL,
-  `registered` tinyint(1) NOT NULL,
+  `registered` tinyint(1) NOT NULL DEFAULT 0,
   `email` varchar(64) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `phone` varchar(10) DEFAULT NULL,
+  `children` tinyint(3) UNSIGNED DEFAULT NULL,
   `category` enum('employer','employee','unemployed') DEFAULT NULL,
   `company_id` varchar(9) DEFAULT NULL,
-  `children` tinyint(3) UNSIGNED DEFAULT NULL
+  `contract` enum('full-time','part-time') DEFAULT NULL,
+  `role` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Άδειασμα δεδομένων του πίνακα `users`
 --
 
-INSERT INTO `users` (`afm`, `amka`, `name`, `surname`, `registered`, `email`, `password`, `phone`, `category`, `company_id`, `children`) VALUES
-('123456789', NULL, 'John', 'Smith', 0, 'john@example.com', NULL, NULL, 'employee', '048919395', 1),
-('240741129', '01106100081', 'Αθανάσιος', 'Σπηλιωτόπουλος', 1, 'spilios@gmail.com', '$2y$10$IDSGenNkkfLmugqgohhZ2ez0DBEjIbpVFv38S0lNrO3CKSa4J9GCe', NULL, 'employee', NULL, 1),
-('304696340', '11111111111', 'Haruhi', 'Suzumiya', 1, 'haruhisuzu@yahoo.com', '$2y$10$.RVuwu.qqyqb2B.tEtpUx.CRawLWj76PKlbOw6By3p94eM9/anR0S', '', 'employer', '048919395', 0);
+INSERT INTO `users` (`afm`, `amka`, `name`, `surname`, `registered`, `email`, `password`, `phone`, `children`, `category`, `company_id`, `contract`, `role`) VALUES
+('123456789', NULL, 'John', 'Smith', 0, 'john@example.com', NULL, NULL, 1, 'employee', '048919395', 'full-time', 'Υπάλληλος Γραφείου'),
+('240741129', '01106100081', 'Αθανάσιος', 'Σπηλιωτόπουλος', 1, 'spilios@gmail.com', '$2y$10$IDSGenNkkfLmugqgohhZ2ez0DBEjIbpVFv38S0lNrO3CKSa4J9GCe', '6262626262', 1, 'employee', NULL, 'full-time', 'Senior Developer'),
+('304696340', '11111111113', 'Haruhi', 'Suzumiya', 1, 'haruhisuzu@yahoo.com', '$2y$10$.RVuwu.qqyqb2B.tEtpUx.CRawLWj76PKlbOw6By3p94eM9/anR0S', '', 0, 'employer', '048919395', 'full-time', NULL),
+('485882945', NULL, 'Suzuha', 'Amane', 0, NULL, NULL, NULL, NULL, 'employee', '048919395', 'part-time', 'Πρακτική Εργασία');
 
 --
 -- Ευρετήρια για άχρηστους πίνακες
