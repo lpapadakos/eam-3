@@ -121,9 +121,10 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") { // Save referrer on GET, to redirect
 			<input type="password" name="password" id="password" maxlength="16" required>
 			<input type="submit" id="login" class="actionbutton" value="Σύνδεση">
 		</form>
-		<p class="royalcontent">
-			Δεν έχετε λογαριασμό; <a href="register.php<?php if (isset($_SESSION['referrer']) && $_SESSION['referrer'] != "/") echo "?url=" . $_SESSION['referrer']; ?>">Δημιουργήστε έναν!</a>		</p>
 
+		<p class="royalcontent">
+			Δεν έχετε λογαριασμό; <a href="register.php<?php if (isset($_SESSION['referrer']) && $_SESSION['referrer'] != "/") echo "?url=" . $_SESSION['referrer']; ?>">Δημιουργήστε έναν!</a>
+		</p>
 		<section id="perks" class="c8 text-center">
 			<h2 class="title text-center">Προνόμια Λογαριασμού</h2>
 			<!-- service 1-->

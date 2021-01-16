@@ -352,7 +352,7 @@ mysqli_close($link);
 <script>
 
 $(document).ready(function(){
-	//Date validation
+	// Date validation
 	var today = new Date().toISOString().split('T')[0];
 
 	// Disallow dates before today

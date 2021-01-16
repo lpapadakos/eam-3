@@ -179,9 +179,9 @@ mysqli_close($link);
 			<h2 class="title stresstitle">ΠΡΟΦΙΛ</h2>
 			<ul>
 				<?php if (isset($category) && $category == '1'): ?>
-				<li style="background: #efe188"><a href="employees-file.php"><i class="icon-file-alt smallrightmargin"></i>Αρχείο Εργαζομένων</a></li>
+				<li style="background: #efe188"><a href="employees-file"><i class="icon-file-alt smallrightmargin"></i>Αρχείο Εργαζομένων</a></li>
 				<?php else: ?>
-				<li style="background: #efe188"><a href="employee-view.php"><i class="icon-file-alt smallrightmargin"></i>Το Αρχείο Μου</a></li>
+				<li style="background: #efe188"><a href="employees-file/view.php"><i class="icon-file-alt smallrightmargin"></i>Το Αρχείο Μου</a></li>
 				<?php endif; ?>
 				<li><a href="change-password.php">Αλλαγή κωδικού πρόσβασης</a></li>
 				<li><a href="#" class="alert error">Διαγραφή λογαριασμού</a></li>
@@ -268,17 +268,17 @@ mysqli_close($link);
 
 				<div class="c6 noleftmargin">
 					<label for="company-afm" class="required">ΑΦΜ/VAT:</label>
-					<input type="text" name="afm" id="afm" pattern="[0-9]+" minlength="9" maxlength="9" required <?php autocomplete_disabled($company_afm); ?>>
+					<input type="text" name="afm" id="afm" pattern="[0-9]+" minlength="9" maxlength="9" required <?php autocomplete($company_afm); if ($category != '1') echo ' disabled'; ?>>
 				</div>
 
 				<div class="clear">
 					<label for="company-name" class="required">Επωνυμία:</label>
-					<input type="text" name="company-name" id="company-name" maxlength="64" required <?php autocomplete_disabled($company_name); ?>>
+					<input type="text" name="company-name" id="company-name" maxlength="64" required <?php autocomplete($company_name); if ($category != '1') echo ' disabled'; ?>>
 				</div>
 
 				<div class="clear">
 					<label for="company-address" class="required">Διεύθυνση:</label>
-					<input type="text" name="company-address" id="company-address" maxlength="64" required <?php autocomplete_disabled($company_address); ?>>
+					<input type="text" name="company-address" id="company-address" maxlength="64" required <?php autocomplete($company_address); if ($category != '1') echo ' disabled'; ?>>
 				</div>
 				</section>
 
@@ -322,22 +322,12 @@ mysqli_close($link);
 <!-- twitter -->
 <!-- <script src="/js/jquery.tweet.js"></script> -->
 
-<script>
+<!-- <script>
 
 $(document).ready(function(){
-	// Date validation
-	var today = new Date().toISOString().split('T')[0];
 
-	// Disallow dates before today
-	//$("#date").val(today);
-	$('#date').attr("min", today);
-
-	// Disallow "to" date, before "from" date
-	// $('#from, #to').on('change', function(){
-	// 	$('#to').attr('min', $('#from').val());
-	// });
 });
 
-</script>
+</script> -->
 </body>
 </html>

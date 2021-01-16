@@ -39,7 +39,7 @@ mysqli_stmt_close($stmt);
 if ($category != "employer") {
 	mysqli_close($link);
 
-	header("location: employee-view.php");
+	header("location: view.php");
 	exit;
 }
 
@@ -177,7 +177,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			<nav id="sidebar-nav">
 			<h2 class="title stresstitle">ΠΡΟΦΙΛ</h2>
 			<ul>
-				<li class="active" style="background: #efe188"><a href="employees-file.php"><i class="icon-file-alt smallrightmargin"></i>Αρχείο Εργαζομένων</a></li>
+				<li class="active" style="background: #efe188"><a href="."><i class="icon-file-alt smallrightmargin"></i>Αρχείο Εργαζομένων</a></li>
 				<li><a href="change-password.php">Αλλαγή κωδικού πρόσβασης</a></li>
 				<li><a href="#" class="alert error">Διαγραφή λογαριασμού</a></li>
 			</ul>
@@ -238,7 +238,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 			// Fetch each row of the result, append to table
 			while (mysqli_stmt_fetch($stmt)) {
-				echo '<tr onclick="window.location=\'employee-view.php?id=' . $afm . '\'">';
+				echo '<tr onclick="window.location=\'view.php?id=' . $afm . '\'">';
 				echo "<td>" . $afm . "</td>";
 				echo "<td>" . $surname . "</td>";
 				echo "<td>" . $name . "</td>";
