@@ -101,6 +101,7 @@ form { margin-bottom: 20px; font: 14px "HelveticaNeue","Helvetica Neue",Helvetic
 #login-form, #register-form { float: none; margin: 60px auto 20px; }
 #login-logo { margin-top: 50px; height: auto; }
 #login-form #login { margin-top: 10px; width: 100%; }
+#perks { float: none; margin: 0 auto; }
 fieldset { margin-bottom: 20px; border: 1px solid #777; padding: 10px; }
 textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], select { background: #ffffff; border: 1px solid #ddd; padding: 8px 8px; vertical-align: middle; outline: none; border-radius: 2px; -moz-border-radius: 2px; -webkit-border-radius: 2px; transition: border linear 0.4s,box-shadow linear 0.4s; -o-transition: border linear 0.4s,box-shadow linear 0.4s; -moz-transition: border linear 0.4s,box-shadow linear 0.4s; -webkit-transition: border linear 0.4s,box-shadow linear 0.4s; margin: 0; width: 100%; display: block; margin-bottom: 20px; }
 input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, textarea:focus { border: 1px solid; border-color: rgba(82,168,236,0.8); color: #444; box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(81,168,236,0.5); -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(81,168,236,0.5); -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(81,168,236,0.5); }
@@ -161,10 +162,26 @@ button.black:hover, button.black:active { background: #222; background: -webkit-
 table { *border-collapse: collapse; /* IE7 and lower */ border-spacing: 0; width: 100%; border: solid #ccc 1px; border-radius: 6px; -moz-border-radius: 6px; -webkit-border-radius: 6px; box-shadow: 0 1px 1px #ccc; -moz-box-shadow: 0 1px 1px #ccc; -webkit-box-shadow: 0 1px 1px #ccc; }
 td, th { border-left: 1px solid #ccc; border-top: 1px solid #ccc; padding: 10px; text-align: left; }
 th { background-color: #d9edf0; background-image: -webkit-gradient(linear,left top,left bottom,from(#ebf3fc),to(#dce9f9)); background-image: -webkit-linear-gradient(top,#ebf3fc,#dce9f9); background-image: -moz-linear-gradient(top,#ebf3fc,#dce9f9); background-image: -ms-linear-gradient(top,#ebf3fc,#dce9f9); background-image: -o-linear-gradient(top,#ebf3fc,#dce9f9); background-image: linear-gradient(top,#ebf3fc,#dce9f9); box-shadow: 0 1px 0 rgba(255,255,255,.8) inset; -moz-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset; -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset; border-top: none; text-shadow: 0 1px 0 rgba(255,255,255,.5); }
-#employees { max-height: 10px; overflow: auto; }
+
+#employees { max-height: 10px; overflow: auto; border-color: #3973ad;}
 #employees tr[onclick] { cursor: pointer; }
-#employees tr:hover { background: #eee; }
-#employees th, #employees td { padding: 10px; }
+#employees tr > * { border-color: #3973ad; padding: 10px; box-shadow: none; text-shadow: none; }
+
+#employee-tables table { box-shadow: none; }
+#employee-tables table tr i { font-size: 20px; }
+#employee-tables table tr > * { border: none; padding: 5px 10px; box-shadow: none; text-shadow: none; }
+#employee-tables table tr:last-child > * { padding: 0; }
+#employee-tables table h4 { padding: 0; margin: 0; font-size: 16px; font-weight: bold; color: inherit; }
+#employee-tables table .add { margin: 0; width: 100%; border: 0; border-radius: 0; }
+
+#leave { border-color: #38761d; }
+#leave tr:first-of-type th { background: #38761d; color: white; }
+
+#suspension { border-color: #351c75; }
+#suspension tr:first-of-type th { background: #351c75; color: white; }
+
+#remote-work { border-color: #b17322; }
+#remote-work tr:first-of-type th { background: #b17322; color: white; }
 /* ----------------------------------------- Tabs ----------------------------------------- */
 .tab-page p { padding: 20px }
 .tab-container { position: relative }

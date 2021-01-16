@@ -122,8 +122,30 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") { // Save referrer on GET, to redirect
 			<input type="submit" id="login" class="actionbutton" value="Σύνδεση">
 		</form>
 		<p class="royalcontent">
-			Δεν έχετε λογαριασμό; <a href="register.php<?php if (isset($_SESSION['referrer']) && $_SESSION['referrer'] != "/") echo "?url=" . $_SESSION['referrer']; ?>">Δημιουργήστε έναν!</a>.
-			Έτσι θα φτάνετε στους στόχους σας πιο εύκολα και γρήγορα, γλιτώνοντας χρόνο σε συμπλήρωση φορμών.
-		</p>
+			Δεν έχετε λογαριασμό; <a href="register.php<?php if (isset($_SESSION['referrer']) && $_SESSION['referrer'] != "/") echo "?url=" . $_SESSION['referrer']; ?>">Δημιουργήστε έναν!</a>		</p>
+
+		<section id="perks" class="c8 text-center">
+			<h2 class="title text-center">Προνόμια Λογαριασμού</h2>
+			<!-- service 1-->
+			<div class="c6">
+				<h2 class="subtitles">
+					<span class="serviceicon"><i class="icon-forward rotate"></i></span><br>
+					Ταχύτητα
+				</h2>
+				<p>
+					Φτάνετε στους στόχους σας πιο εύκολα και γρήγορα, γλιτώνοντας χρόνο σε συμπλήρωση φορμών.
+				</p>
+			</div>
+			<!-- service 2-->
+			<div class="c6">
+				<h2 class="subtitles">
+					<span class="serviceicon"><i class="icon-cog rotate"></i></span><br>
+					Εξατομικευμένη Πληροφόρηση
+				</h2>
+				<p>
+					Διαχειριστείτε τα στοιχεία σας (άδειες, ημέρες αναστολής, τηλεργασίας) στο προσωπικό σας προφίλ.
+				</p>
+			</div>
+		</div>
 	</section>
 </body>
