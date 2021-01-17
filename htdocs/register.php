@@ -3,7 +3,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/include/common.php';
 
 // Define variables and initialize with empty values
-$afm = $amka = $name = $surname = $email = $password = "";
+$afm = $amka = $name = $surname = $email = $password = $category = "";
 $email_err = $name_err = $password_err = "";
 
 if ($_SERVER["REQUEST_METHOD"] != "POST") { // Save referrer on GET, to redirect on success
@@ -119,6 +119,18 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") { // Save referrer on GET, to redirect
 		$_SESSION["afm"] = $afm;
 		$_SESSION["name"] = $name;
 
+		switch ($category) {
+			case '1':
+				$_SESSION["category"] = "employer";
+				break;
+			case '2':
+				$_SESSION["category"] = "employee";
+				break;
+			case '3':
+				$_SESSION["category"] = "unemployed";
+				break;
+		}
+
 		// SUCCESS. Redirect user to referring page
 		header("location: " . $referrer);
 	}
@@ -149,7 +161,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") { // Save referrer on GET, to redirect
 			<a href="/"><img id="login-logo" src="/images/logo.gif" class="logo" alt="Λογότυπο Υπουργείου"></a><br>
 			<h1 class="title stresstitle">Εγγραφή Χρήστη</h1>
 		</header>
-		<form id="register-form" class="form c8" method="post" action="<?php echo samepage(); ?>">
+		<form id="register-form" class="c8" method="post" action="<?php echo samepage(); ?>">
 			<?php
 				if (!empty($email_err)) {
 					echo '<p class="alert error">';

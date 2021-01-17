@@ -9,7 +9,7 @@ if (loggedin()) {
 }
 
 // Define variables and initialize with empty values
-$afm = $name = $email = $password = "";
+$afm = $name = $email = $password = $category = "";
 $email_err = $password_err = "";
 
 if ($_SERVER["REQUEST_METHOD"] != "POST") { // Save referrer on GET, to redirect on success
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") { // Save referrer on GET, to redirect
 		// Assume wrong information entered
 		$email_err = "Λανθασμένο email ή κωδικός πρόσβασης.";
 
-		$sql = "SELECT afm, name, password FROM users WHERE email = ?";
+		$sql = "SELECT afm, name, password, category FROM users WHERE email = ?";
 
 		$stmt = mysqli_prepare($link, $sql);
 		mysqli_stmt_bind_param($stmt, "s", $email);
@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") { // Save referrer on GET, to redirect
 		mysqli_stmt_store_result($stmt);
 		// Check if user exists, if yes then verify password
 		if (mysqli_stmt_num_rows($stmt) == 1) {
-			mysqli_stmt_bind_result($stmt, $afm, $name, $hashed_password);
+			mysqli_stmt_bind_result($stmt, $afm, $name, $hashed_password, $category);
 
 			if (mysqli_stmt_fetch($stmt)) {
 				if (password_verify($password, $hashed_password)) {
@@ -59,6 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") { // Save referrer on GET, to redirect
 					$_SESSION["loggedin"] = true;
 					$_SESSION["afm"] = $afm;
 					$_SESSION["name"] = $name;
+					$_SESSION["category"] = $category;
 
 					// SUCCESS. Clear error and redirect user to referring page
 					$email_err = "";
@@ -99,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") { // Save referrer on GET, to redirect
 			<h1 class="title stresstitle">Σύνδεση Χρήστη</h1><br>
 			<span>(ας υποθέσουμε ότι αυτό γίνεται μέσω taxisNET)</span>
 		</header>
-		<form id="login-form" class="form c8" method="post" action="<?php echo samepage(); ?>">
+		<form id="login-form" class="c8" method="post" action="<?php echo samepage(); ?>">
 			<?php
 				if (!empty($email_err)) {
 					echo '<p class="alert error">';
