@@ -122,16 +122,18 @@
 					<a href="#">
 					<div class="mosaic-block cover mosaicover4col">
 						<div class="mosaic-overlay">
-							<img src="http://placehold.it/278x180" alt="">
+							<img src="/images/efka.jpg" alt="">
 						</div>
 						<div class="mosaic-backdrop red">
 						<div class="details">
-							<p></p>
+							<p>
+								Exaplanatory text, probably
+							</p>
 							<i class="icon-cog mosaiclink"></i>
 						</div>
 						</div>
 					</div>
-					<h2><i class="icon-large icon-cog smallrightmargin"></i>Προβολή Ενσήμων</h2>
+					<h2><i class="icon-large icon-h-sign smallrightmargin"></i>Προβολή Ενσήμων</h2>
 					</a>
 				</div>
 			</div>

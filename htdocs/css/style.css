@@ -126,7 +126,7 @@ form .buttons > input { display: inline; }
 .accordion { width: 100%; background: #fff; font-size: 14px; font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 0 1px 3px rgba(0,0,0,.3); -moz-box-shadow: 0 1px 3px rgba(0,0,0,.3); -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.3); }
 .accordion p { height: 0; margin-bottom: 0px; padding: 0; color: #888; overflow: hidden; }
 .accordion a { display: block; height: auto; padding: 5px; line-height: 24px; background-color: #eee; color: #333; text-decoration: none; text-align: center; border-bottom: 1px solid #aaa; }
-.accordion a:hover, .accordion a:focus { opacity: .9; color: #ooo; }
+.accordion a:hover, .accordion a:focus { opacity: .9; color: #000; }
 .accordion a:active { color: #000 }
 .accordion :target + p { padding: 10px 15px; border-bottom: 1px solid #ccc; height: auto; }
 .accordion { }
@@ -290,6 +290,7 @@ nav ul>li:hover>a { color: #fff }
 #breadcrumbs > p {margin: 0}
 #breadcrumbs a {color: inherit;}
 #breadcrumbs a:not(:first-child) {font-weight: bold;}
+/* #sidebar-nav ul {font-size: 20px;} */
 #sidebar-nav ul {padding-top: 10px; font-size: 15px;}
 div.slide img { float: left; margin: 8px 5px 30px; }
 .da-slide img { max-height: 340px; }
@@ -630,7 +631,9 @@ ul.teambox { padding-left: 25px }
 .neutralbutton { background: #0E8FAB; color: #fff; padding: 5px 10px; -webkit-transition: all 0.5s ease-in-out; -moz-transition: all 0.5s ease-in-out; -o-transition: all 0.5s ease-in-out; -ms-transition: all 0.5s ease-in-out; transition: all 0.5s ease-in-out; }
 .neutralbutton:hover { color: #fff; background: #333; }
 .serviceicon { color: #fff; display: inline-block; width: 50px; height: 50px; border-radius: 50%; background-color: #0E8FAB; font-size: 25px; text-align: center; margin-bottom: 20px; padding-top: 12px; }
-.subtitles { line-height: 27px; font-size: 15px; text-transform: uppercase; }
+.serviceicon:hover { color: #fff; display: inline-block; width: 50px; height: 50px; border-radius: 50%; background-color: #0E8FAB; font-size: 25px; text-align: center; margin-bottom: 20px; padding-top: 12px; }
+.subtitles { line-height: 27px; font-size: 25px;}
+.subtitles p {font-size: 18px;}
 .titlehead { margin-top: -50px; margin-bottom: 0px; color: #fff; font-size: 26px; padding-bottom: 25px; font-family: OpenSansBold; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4); font-family: OpenSansBold; }
 .rightareaheader { float: right; font-size: 15px; font-family: OpenSansRegular; }
 #skill { list-style: none; font-size: :12px; margin: 37px auto 0; position: relative; line-height: 2em; }
@@ -701,3 +704,16 @@ ul.teambox { padding-left: 25px }
 .clear {clear:both;}
 .error input,input.error,.error textarea,textarea.error{background-color: #ffffff;  border: 1px solid #eb9468 !Important;  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s; -moz-transition: border linear 0.2s, box-shadow linear 0.2s;-o-transition: border linear 0.2s, box-shadow linear 0.2s; transition: border linear 0.2s, box-shadow linear 0.2s;}.error label,label.error{color:#c60f13;}.error small,small.error{display:block;padding:6px 4px;margin-top:-13px;margin-bottom:12px;background:#c60f13;color:#fff;font-size:12px;font-weight:bold;-moz-border-radius-bottomleft:2px;-webkit-border-bottom-left-radius:2px;border-bottom-left-radius:2px;-moz-border-radius-bottomright:2px;-webkit-border-bottom-right-radius:2px;border-bottom-right-radius:2px;}.error textarea:focus,textarea.error:focus{background:#fafafa;border-color: #b3b3b3;}
 .toolbutton{ font-size: 16px; background: rgb(255, 255, 255); color: rgba(0, 0, 0, 0.678); border: 0px; line-height: 30px; padding-left: 15px; padding-right: 15px; padding-top: 5px; padding-bottom: 5px; cursor: pointer; }
+.tickboxes{font-size: 35px; color: #279118; }
+.tickboxes li {margin-bottom: 45px;}
+.linelist{font-size: 15px; }
+.linelist li{width:35%; margin-right: 3% ; margin-left: 3%; margin-top: 2%; margin-bottom: 2%;float:inline-start; list-style:inside decimal}
+.reglist{font-size: 15px; color: #555; list-style:inside}
+.reglist li {margin-bottom: 10px;}
+.bigbutton { z-index: 50; display: inline-flex; margin: 0 auto ; font-weight: normal; text-transform: uppercase; letter-spacing: 1px; font-size: 15px; padding: 20px 20px; color: #fff; cursor: pointer; cursor: hand; background-color: #0E8FAB; -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5); -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5); text-shadow: 0 -1px 1px rgba(0,0,0,0.25); border-bottom: 1px solid rgba(0,0,0,0.25); -webkit-transition: all 0.5s ease-in-out; -moz-transition: all 0.5s ease-in-out; -o-transition: all 0.5s ease-in-out; -ms-transition: all 0.5s ease-in-out; transition: all 0.5s ease-in-out; }
+.bigbutton a {color: #FFF;}
+.smallheader { font-size: 17px; line-height: 27px; font-family: OpenSansRegular; font-weight: bold; }
+#thicklink {color:#333; font-family:OpenSansBold;}
+#bigparagraph{font-size: 16px;}
+#listiconmargin { margin:0 normal; padding-right: 3%; font-size: 18px;}
+#nopadding.c12{padding-left:0}

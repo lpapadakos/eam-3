@@ -272,7 +272,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $category == "employer") {
 					// Repeat and make the three tables
 					$tables = array("leave", "suspension", "remote-work");
 					$labels = array("Άδειες", "Αναστολή Σύμβασης", "Τηλεργασία");
-					$icons = array("", "icon-home", "icon-laptop");
+					$icons = array("icon-coffee", "icon-home", "icon-laptop");
 
 					for ($i = 0; $i < count($tables); $i++):
 				?>

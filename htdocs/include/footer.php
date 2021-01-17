@@ -25,7 +25,7 @@
 			</div>
 			<!-- 3rd column -->
 			<div class="c3">
-				<h2 class="title"><i class="icon-envelope-alt smallrightmargin"></i>ΕΠΙΚΟΙΝΩΝΙΑ</h2>
+				<a href="/contact.php"><h2 class="title"><i class="icon-envelope-alt smallrightmargin"></i>ΕΠΙΚΟΙΝΩΝΙΑ</h2></a>
 				<hr class="footerstress">
 				<dl>
 					<dt>Σταδίου 29, Αθήνα 105 59</dt>

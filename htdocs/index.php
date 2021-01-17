@@ -62,7 +62,7 @@
 					</div>
 				</div>
 				<!--Box 2-->
-				<a href="#"class="c3 introbox introboxfirst">
+				<a href="/health-and-safety/covid-19" class="c3 introbox introboxfirst">
 					<div class="introboxinner">
 						<i class="icon-file-alt homeicone"></i>
 						<h3>Οδηγίες</h3>
@@ -70,7 +70,7 @@
 					</div>
 				</a>
 				<!--Box 3-->
-				<a href="#" class="c3 introbox introboxmiddle">
+				<a href="/health-and-safety/covid-19/employees.php" class="c3 introbox introboxmiddle">
 					<div class="introboxinner">
 						<i class="icon-suitcase homeicone"></i>
 						<h3>Επιλογές Εργασίας</h3>
@@ -78,7 +78,7 @@
 					</div>
 				</a>
 				<!--Box 1-->
-				<a href="employees/tools/e-rendezvous.php" class="c3 introbox introboxlast">
+				<a href="/employees/tools/e-rendezvous.php" class="c3 introbox introboxlast">
 					<div class="introboxinner">
 						<i class="icon-bolt homeicone"></i>
 						<h3>Ηλεκτρονικό Ραντεβού</h3>
