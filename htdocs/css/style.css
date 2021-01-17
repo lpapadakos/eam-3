@@ -167,21 +167,26 @@ th { background-color: #d9edf0; background-image: -webkit-gradient(linear,left t
 #employees tr[onclick] { cursor: pointer; }
 #employees tr > * { border-color: #3973ad; padding: 10px; box-shadow: none; text-shadow: none; }
 
-#employee-tables table { box-shadow: none; }
-#employee-tables table tr i { font-size: 20px; }
-#employee-tables table tr > * { border: none; padding: 5px 10px; box-shadow: none; text-shadow: none; }
-#employee-tables table tr:last-child > * { padding: 0; }
+#employee-tables table tr > * { border: none; padding: 8px; box-shadow: none; text-shadow: none; }
 #employee-tables table h4 { padding: 0; margin: 0; font-size: 16px; font-weight: bold; color: inherit; }
-#employee-tables table .add { margin: 0; width: 100%; border: 0; border-radius: 0; }
+#employee-tables table th i { font-size: 1.25em; }
+#employee-tables table td:not(:last-child) { font-weight: bold; color: black; }
+
+#employee-tables table input[type="checkbox"]:checked {
+	background: red;
+}
+#employee-tables table tr.add td:not(.days) { padding: 0; }
+#employee-tables table tr.add input { margin: 0; display: inline-block; vertical-align: middle; }
+#employee-tables table input[type="submit"] { padding: 8px; width: 100%; }
 
 #leave { border-color: #38761d; }
-#leave tr:first-of-type th { background: #38761d; color: white; }
+#leave th { background: #38761d; color: white; }
 
 #suspension { border-color: #351c75; }
-#suspension tr:first-of-type th { background: #351c75; color: white; }
+#suspension th { background: #351c75; color: white; }
 
 #remote-work { border-color: #b17322; }
-#remote-work tr:first-of-type th { background: #b17322; color: white; }
+#remote-work th { background: #b17322; color: white; }
 /* ----------------------------------------- Tabs ----------------------------------------- */
 .tab-page p { padding: 20px }
 .tab-container { position: relative }

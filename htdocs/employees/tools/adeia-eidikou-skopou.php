@@ -222,7 +222,7 @@ mysqli_close($link);
 		<section class="c9">
 			<?php if (!$submit_success): ?>
 			<!-- Step 1. The Form -->
-			<form class="form" id="special-leave-form" method="post" action="<?php echo samepage(); ?>">
+			<form id="special-leave-form" method="post" action="<?php echo samepage(); ?>">
 				<p>
 					Η άδεια ειδικού σκοπού απευθύνεται σε εργαζόμενους γονείς με παιδιά έως 15 ετών και παραμένει σε ισχύ ανάλογα με την πορεία ανοίγματος των σχολικών μονάδων, των παιδικών και βρεφικών σταθμών.
 				</p>

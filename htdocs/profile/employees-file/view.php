@@ -9,7 +9,7 @@ if (!loggedin()) {
 }
 
 // Define variables and initialize with empty values
-$afm = $name = $surname = $category = $company_afm = $company_name = $company_address = $from = $to = "";
+$afm = $name = $surname = $category = $company_afm = $company_name = $company_address = $from = $to = $sql_from = $sql_to = "";
 $err = "";
 
 // Used to show success message
@@ -33,6 +33,13 @@ mysqli_stmt_bind_result($stmt, $surname, $category, $company_afm);
 mysqli_stmt_fetch($stmt);
 
 mysqli_stmt_close($stmt);
+
+// POST (adding entries)? "Emulate" GET.
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	$_GET["id"] = $_POST["id"];
+	$_GET["from"] = $_POST["from"];
+	$_GET["to"] = $_POST["to"];
+}
 
 // Assume unauthorized
 $authorized = false;
@@ -101,7 +108,7 @@ if (mysqli_stmt_num_rows($stmt) == 1) {
 
 mysqli_stmt_close($stmt);
 
-// Retrieve info for this period
+// Retrieve date info for this period
 
 // Validate 'from' date
 if (isset($_GET["from"])) {
@@ -119,6 +126,58 @@ if (isset($_GET["to"])) {
 	}
 }
 
+if ($from > $to) {
+	$from = $to = "";
+	$err = "Λανθασμένο διάστημα χρόνου";
+}
+
+// Processing when table changes submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	// Only start things rolling if we know the table that was modified
+	if (isset($_POST["type"]) && !empty(trim($_POST["type"]))) {
+		$type = trim($_POST["type"]);
+
+		// Recalls/Deletions
+		if (isset($_POST["remove"])) {
+			$recall = $_POST["remove"];
+
+			$sql = "DELETE FROM employee_info
+				WHERE id = ?
+					AND type = ?
+					AND from_date = ?
+					AND to_date = ?";
+
+			$stmt = mysqli_prepare($link, $sql);
+
+			for ($i = 0; $i < count($recall); $i++) {
+				// Get from, to for deletion
+				$dates = explode(' ', $recall[$i]);
+
+				mysqli_stmt_bind_param($stmt, "ssss", $view_afm, $type, $dates[0], $dates[1]);
+				mysqli_stmt_execute($stmt);
+			}
+
+			mysqli_stmt_close($stmt);
+		}
+
+		// Insertion
+		if ((isset($_POST["insert-from"]) && !empty(trim($_POST["insert-from"]))) &&
+		    (isset($_POST["insert-to"]) && !empty(trim($_POST["insert-to"])))) {
+			$sql_from = trim($_POST["insert-from"]);
+			$sql_to = trim($_POST["insert-to"]);
+
+			// INSERT entry
+			$sql = "INSERT INTO employee_info (id, type, from_date, to_date) VALUES (?, ?, ?, ?)";
+
+			$stmt = mysqli_prepare($link, $sql);
+			mysqli_stmt_bind_param($stmt, "ssss", $view_afm, $type, $sql_from, $sql_to);
+
+			mysqli_stmt_execute($stmt);
+
+			mysqli_stmt_close($stmt);
+		}
+	}
+}
 ?>
 
 <!DOCTYPE HTML>
@@ -166,29 +225,16 @@ if (isset($_GET["to"])) {
 	</nav>
 	<div class="row">
 		<!-- SIDEBAR -->
-		<div class="c3">
-			<nav id="sidebar-nav">
-			<h2 class="title stresstitle">ΠΡΟΦΙΛ</h2>
-			<ul>
-				<?php if ($category == "employer"): ?>
-				<li class="active" style="background: #efe188"><a href="."><i class="icon-file-alt smallrightmargin"></i>Αρχείο Εργαζομένων</a></li>
-				<?php else: ?>
-				<li class="active" style="background: #efe188"><a href="view.php"><i class="icon-file-alt smallrightmargin"></i>Το Αρχείο Μου</a></li>
-				<?php endif; ?>
-				<li><a href="change-password.php">Αλλαγή κωδικού πρόσβασης</a></li>
-				<li><a href="#" class="alert error">Διαγραφή λογαριασμού</a></li>
-			</ul>
-			</nav>
-		</div>
+		<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/include/sidenav.php'; ?>
 		<!-- end sidebar -->
 		<!-- MAIN CONTENT -->
 		<section class="c9">
 			<h2 class="stresstitle"><i class="icon-building smallrightmargin"></i><?php echo $company_name; ?></h2>
 			<h3 class="space-top"><i class="icon-user smallrightmargin"></i><?php echo $view_name . ' ' . $view_surname; ?></h3>
 
-			<form class="form" id="date-range-form" method="get" action="<?php echo samepage(); ?>">
+			<form class="space-bot" id="date-range-form" method="get" action="<?php echo samepage(); ?>">
 				<p class="space-top">
-					Επιλέξτε διάστημα ώστε να εμφανιστούν τα στοιχεία του εργαζόμενου.
+					Επιλέξτε ένα χρόνικό διάστημα. Θα εμφανιστούν οι δηλωμένοι περίοδοι αδειών/αναστολής/τηλεργασίας, εφόσον μέρος αυτών βρίσκεται στο διάστημα που επιλέξατε.
 				</p>
 
 				<?php
@@ -222,47 +268,130 @@ if (isset($_GET["to"])) {
 			</form>
 
 			<div id="employee-tables" class="clear space-top">
-			<div class="c4 noleftmargin">
-			<table id="leave">
-				<tr>
-				<th><h4>Άδειες: <?php echo 'χ'; ?> ημέρες</h4></th>
-				</tr>
-				<tr>
-				<?php if ($category == "employer"): ?>
-				<td><button class="add"><i class="icon-plus smallrightmargin"></i>Προσθήκη</button></td>
-				<?php endif; ?>
-				</tr>
-			</table>
-			</div>
-
-			<div class="c4">
-			<table id="suspension">
-				<tr>
-				<th><h4><i class="icon-home smallrightmargin"></i>Αναστολή Σύμβασης: <?php echo 'χ'; ?> ημέρες</h4></th>
-				</tr>
-				<tr>
-				<?php if ($category == "employer"): ?>
-				<td><button class="add"><i class="icon-plus smallrightmargin"></i>Προσθήκη</button></td>
-				<?php endif; ?>
-				</tr>
-			</table>
-			</div>
-
-			<div class="c4 norightmargin">
-			<table id="remote-work">
-				<tr>
-				<th><h4><i class="icon-laptop smallrightmargin"></i>Τηλεργασία: <?php echo 'χ'; ?> ημέρες</h4></th>
-				</tr>
 				<?php
-					// Close connection
-					mysqli_close($link);
+					// Repeat and make the three tables
+					$tables = array("leave", "suspension", "remote-work");
+					$labels = array("Άδειες", "Αναστολή Σύμβασης", "Τηλεργασία");
+					$icons = array("", "icon-home", "icon-laptop");
+
+					for ($i = 0; $i < count($tables); $i++):
 				?>
-				<tr>
+				<div class="<?php echo (($category == "employer") ? "c6" : "c4"); ?> noleftmargin">
+				<?php
+
+				// Get days count
+				$sql = "SELECT SUM(DATEDIFF(to_date, from_date) + 1)
+					FROM employee_info
+					WHERE
+						id = ?
+						AND type = '" . $tables[$i] . "'
+						AND from_date <= ?
+						AND to_date >= ?";
+
+				$stmt = mysqli_prepare($link, $sql);
+				mysqli_stmt_bind_param($stmt, "sss", $view_afm, $to, $from);
+
+				mysqli_stmt_execute($stmt);
+
+				mysqli_stmt_store_result($stmt);
+				mysqli_stmt_bind_result($stmt, $days);
+				mysqli_stmt_fetch($stmt);
+
+				mysqli_stmt_close($stmt);
+
+				?>
+
 				<?php if ($category == "employer"): ?>
-				<td><button class="add"><i class="icon-plus smallrightmargin"></i>Προσθήκη</button></td>
+				<form method="post" action="<?php echo samepage(); ?>">
+						<!-- POST request? keep the GET parameters for view -->
+						<input type="hidden" name="from" required <?php autocomplete($from); ?>>
+						<input type="hidden" name="to" required <?php autocomplete($to); ?>>
+
+						<input type="hidden" name="id" <?php autocomplete($view_afm); ?>>
+						<input type="hidden" name="type" <?php autocomplete($tables[$i]); ?>>
 				<?php endif; ?>
-				</tr>
-			</table>
+				<table id="<?php echo $tables[$i]; ?>">
+					<tr>
+						<th colspan="4"><h4><i class="<?php echo $icons[$i] ?> smallrightmargin"></i><?php echo $labels[$i] . ": " . (isset($days) ? $days : 0); ?> ημέρες</h4></th>
+					</tr>
+					<tr>
+					<?php if ($category == "employer"): ?>
+						<th>Ανάκληση</th>
+					<?php endif; ?>
+						<th>Δηλωμένη από</th>
+						<th>Δηλωμένη έως</th>
+						<th>Ημέρες</th>
+					</tr>
+					<?php
+
+					// Get rows of entries
+					$sql = "SELECT from_date, to_date, DATEDIFF(to_date, from_date) + 1
+						FROM employee_info
+						WHERE
+							id = ?
+							AND type = '" . $tables[$i] . "'
+							AND from_date <= ?
+							AND to_date >= ?";
+
+					$stmt = mysqli_prepare($link, $sql);
+					mysqli_stmt_bind_param($stmt, "sss", $view_afm, $to, $from);
+
+					mysqli_stmt_execute($stmt);
+
+					mysqli_stmt_store_result($stmt);
+					mysqli_stmt_bind_result($stmt, $sql_from, $sql_to, $days);
+
+					// Fetch each row of the result, append to table
+					while (mysqli_stmt_fetch($stmt)):
+					?>
+					<tr>
+						<?php if ($category == "employer"): ?>
+						<td>
+						<?php if ($sql_to >= date("Y-m-d")): // Can't really recall John's leave from 2006 ?>
+						<!-- input associated with form on other td -->
+						<input type="checkbox" name="remove[]" aria-label="Ανάκληση:" value="<?php echo $sql_from . ' ' . $sql_to ?>">
+						<?php endif; ?>
+						</td>
+						<?php endif; ?>
+						<td>
+						<?php echo $sql_from; ?>
+						</td>
+						<td>
+						<?php echo $sql_to; ?>
+						</td>
+						<td>
+						<?php echo $days; ?>
+						</td>
+
+					</tr>
+					<?php
+					endwhile;
+
+					mysqli_stmt_close($stmt);
+
+					if ($category == "employer"):
+					?>
+					<tr class="add">
+						<td>
+							<!-- <input type="reset" class="icon-" aria-label="Καθαρισμός" value="&#xf014;"> -->
+							<input type="submit" class="actionbutton" value="Υποβολή">
+						</td>
+						<td><input type="date" name="insert-from" aria-label="Εισαγωγή από:" class="from"></td>
+						<td><input type="date" name="insert-to" aria-label="Εισαγωγή έως:" class="to"></td>
+						<td class="days">(Νέα)</td>
+					</tr>
+					<?php endif; ?>
+				</table>
+				<?php if ($category == "employer"): ?>
+				</form>
+				<?php endif; ?>
+				</div>
+				<?php
+				endfor;
+
+				// Close connection
+				mysqli_close($link);
+				?>
 			</div>
 		</section>
 		<!-- end main content -->
@@ -296,6 +425,23 @@ $(document).ready(function(){
 		// Submit dynamically on change
 		if (Date.parse($('#from').val()) <= Date.parse($('#to').val()))
 			$("#date-range-form").submit();
+	});
+
+	// For the tables
+	$('.from').change(function(){
+		// Disallow "to" date, before "from" date
+		$(this).closest('tr').find('.to').attr('min', $(this).val());
+	});
+
+	$('.from, .to').change(function(){
+		// Show number of days
+		const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+		var from = new Date($(this).closest('tr').find('.from').val());
+		var to = new Date($(this).closest('tr').find('.to').val());
+
+		var dayCount = Math.round(Math.abs((to - from) / oneDay)) + 1;
+
+		$(this).closest('tr').find('.days').html(dayCount);
 	});
 });
 

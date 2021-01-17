@@ -23,8 +23,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/include/config.php';
 // Get user section
 $afm = $_SESSION["afm"];
 $name = $_SESSION["name"];
+$category = $_SESSION["category"];
 
-$sql = "SELECT amka, surname, email, password, phone, category+0, company_id FROM users WHERE afm = ?";
+$sql = "SELECT amka, surname, email, password, phone, company_id FROM users WHERE afm = ?";
 
 $stmt = mysqli_prepare($link, $sql);
 mysqli_stmt_bind_param($stmt, "s", $afm);
@@ -32,7 +33,7 @@ mysqli_stmt_bind_param($stmt, "s", $afm);
 mysqli_stmt_execute($stmt);
 
 mysqli_stmt_store_result($stmt);
-mysqli_stmt_bind_result($stmt, $amka, $surname, $email, $hashed_password, $phone, $category, $company_afm);
+mysqli_stmt_bind_result($stmt, $amka, $surname, $email, $hashed_password, $phone, $company_afm);
 mysqli_stmt_fetch($stmt);
 
 mysqli_stmt_close($stmt);
@@ -107,19 +108,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				name = ?,
 				surname = ?,
 				email = ?,
-				phone = ?,
-				category = ?,
-				company_id = ?
+				phone = ?
 			WHERE afm = ?";
 
 		$stmt = mysqli_prepare($link, $sql);
-		mysqli_stmt_bind_param($stmt, "ssssssss", $amka, $name, $surname, $email, $phone, $category, $company_afm, $afm);
+		mysqli_stmt_bind_param($stmt, "ssssss", $amka, $name, $surname, $email, $phone, $afm);
 
 		mysqli_stmt_execute($stmt);
 
 		mysqli_stmt_close($stmt);
 
-		//TODO: Change company info for employers?
+		if ($category == "employer") {
+			// Update company info
+			$sql = "UPDATE companies SET
+					name = ?,
+					address = ?
+				WHERE afm = ?";
+
+			$stmt = mysqli_prepare($link, $sql);
+			mysqli_stmt_bind_param($stmt, "sss", $company_name, $company_address, $company_afm);
+
+			mysqli_stmt_execute($stmt);
+
+			mysqli_stmt_close($stmt);
+		}
 
 		// If everything ran smoothly, it's time for the success message!
 		$submit_success = true;
@@ -174,20 +186,7 @@ mysqli_close($link);
 	</nav>
 	<div class="row">
 		<!-- SIDEBAR -->
-		<div class="c3">
-			<nav id="sidebar-nav">
-			<h2 class="title stresstitle">ΠΡΟΦΙΛ</h2>
-			<ul>
-				<?php if (isset($category) && $category == '1'): ?>
-				<li style="background: #efe188"><a href="employees-file"><i class="icon-file-alt smallrightmargin"></i>Αρχείο Εργαζομένων</a></li>
-				<?php else: ?>
-				<li style="background: #efe188"><a href="employees-file/view.php"><i class="icon-file-alt smallrightmargin"></i>Το Αρχείο Μου</a></li>
-				<?php endif; ?>
-				<li><a href="change-password.php">Αλλαγή κωδικού πρόσβασης</a></li>
-				<li><a href="#" class="alert error">Διαγραφή λογαριασμού</a></li>
-			</ul>
-			</nav>
-		</div>
+		<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/include/sidenav.php'; ?>
 		<!-- end sidebar -->
 		<!-- MAIN CONTENT -->
 		<section class="c9">
@@ -198,7 +197,7 @@ mysqli_close($link);
 						echo '</p>';
 				};
 			?>
-			<form class="form" id="profile-data-form" method="post" action="<?php echo samepage(); ?>">
+			<form id="profile-data-form" method="post" action="<?php echo samepage(); ?>">
 				<p>
 					Εδώ μπορείτε να δείτε και <strong>αλλάξετε</strong> τα στοιχεία του προφίλ σας, καθώς και να ενημερωθείτε για την κατάσταση σας στην επιχείριση: (ημέρες αναστολής, τηλεργασίας, άδειες).
 				</p>
@@ -245,9 +244,9 @@ mysqli_close($link);
 				<label for="category" class="required">Ιδιότητα:</label>
 				<select name="category" id="category" disabled>
 					<!-- <option disabled selected> -- Επιλέξτε -- </option> -->
-					<option value="1" <?php if ($category == '1') echo 'selected' ?>>Εργοδότης/τρια</option>
-					<option value="2" <?php if ($category == '2') echo 'selected' ?>>Εργαζόμενος/η</option>
-					<option value="3" <?php if ($category == '3') echo 'selected' ?>>Άνεργος/η</option>
+					<option value="1" <?php if ($category == "employer") echo 'selected' ?>>Εργοδότης/τρια</option>
+					<option value="2" <?php if ($category == "employee") echo 'selected' ?>>Εργαζόμενος/η</option>
+					<option value="3" <?php if ($category == "unemployed") echo 'selected' ?>>Άνεργος/η</option>
 				</select>
 				</section>
 
@@ -262,23 +261,26 @@ mysqli_close($link);
 				<h2 class="maintitle space-top">
 					<span>Στοιχεία Επιχείρισης</span>
 				</h2>
+
+				<?php if ($category != "employer"): ?>
 				<p class="alert info">
 				<i class="icon-info-sign smallrightmargin"></i>Τα παρακάτω στοιχεία ορίζονται από τον εργοδότη.
 				</p>
+				<?php endif; ?>
 
 				<div class="c6 noleftmargin">
 					<label for="company-afm" class="required">ΑΦΜ/VAT:</label>
-					<input type="text" name="afm" id="afm" pattern="[0-9]+" minlength="9" maxlength="9" required <?php autocomplete($company_afm); if ($category != '1') echo ' disabled'; ?>>
+					<input type="text" name="afm" id="afm" pattern="[0-9]+" minlength="9" maxlength="9" required <?php autocomplete_disabled($company_afm); if ($category != "employer") echo ' disabled'; ?>>
 				</div>
 
 				<div class="clear">
 					<label for="company-name" class="required">Επωνυμία:</label>
-					<input type="text" name="company-name" id="company-name" maxlength="64" required <?php autocomplete($company_name); if ($category != '1') echo ' disabled'; ?>>
+					<input type="text" name="company-name" id="company-name" maxlength="64" required <?php autocomplete($company_name); if ($category != "employer") echo ' disabled'; ?>>
 				</div>
 
 				<div class="clear">
 					<label for="company-address" class="required">Διεύθυνση:</label>
-					<input type="text" name="company-address" id="company-address" maxlength="64" required <?php autocomplete($company_address); if ($category != '1') echo ' disabled'; ?>>
+					<input type="text" name="company-address" id="company-address" maxlength="64" required <?php autocomplete($company_address); if ($category != "employer") echo ' disabled'; ?>>
 				</div>
 				</section>
 

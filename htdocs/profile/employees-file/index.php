@@ -173,16 +173,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	</nav>
 	<div class="row">
 		<!-- SIDEBAR -->
-		<div class="c3">
-			<nav id="sidebar-nav">
-			<h2 class="title stresstitle">ΠΡΟΦΙΛ</h2>
-			<ul>
-				<li class="active" style="background: #efe188"><a href="."><i class="icon-file-alt smallrightmargin"></i>Αρχείο Εργαζομένων</a></li>
-				<li><a href="change-password.php">Αλλαγή κωδικού πρόσβασης</a></li>
-				<li><a href="#" class="alert error">Διαγραφή λογαριασμού</a></li>
-			</ul>
-			</nav>
-		</div>
+		<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/include/sidenav.php'; ?>
 		<!-- end sidebar -->
 		<!-- MAIN CONTENT -->
 		<section class="c9">
@@ -204,7 +195,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					echo '</p>';
 				};
 			?>
-
 
 			<div class="c10 noleftmargin">
 				<input class="search" type="search" data-column="all" placeholder="Αναζήτηση σε όλες τις στήλες...">
@@ -258,7 +248,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			</tbody>
 			</table>
 
-			<form class="form" id="add-employee-form" method="post" action="<?php echo samepage(); ?>">
+			<form id="add-employee-form" method="post" action="<?php echo samepage(); ?>">
 				<fieldset id="employee-data">
 					<legend>Νέα καταχώρηση εργαζομένου</legend>
 

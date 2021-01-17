@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Φιλοξενητής: localhost
--- Χρόνος δημιουργίας: 15 Ιαν 2021 στις 03:43:54
+-- Χρόνος δημιουργίας: 17 Ιαν 2021 στις 01:28:50
 -- Έκδοση διακομιστή: 10.4.16-MariaDB
 -- Έκδοση PHP: 7.4.12
 
@@ -58,7 +58,31 @@ CREATE TABLE `companies` (
 --
 
 INSERT INTO `companies` (`afm`, `name`, `address`) VALUES
-('048919395', 'SOS BRIGADE Α.Ε.', 'Παπαπάνου 8, Ηλιούπολη, Αττική, 76531');
+('048919395', 'SOS BRIGADE Α.Ε.', 'Παπαπάνου 8, Ηλιούπολη, Αττική, 76531'),
+('333444563', 'Cellular Reasoning S.A.', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Δομή πίνακα για τον πίνακα `employee_info`
+--
+
+CREATE TABLE `employee_info` (
+  `id` varchar(9) NOT NULL,
+  `type` enum('leave','suspension','remote-work') NOT NULL,
+  `from_date` date NOT NULL,
+  `to_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Άδειασμα δεδομένων του πίνακα `employee_info`
+--
+
+INSERT INTO `employee_info` (`id`, `type`, `from_date`, `to_date`) VALUES
+('123456789', 'leave', '2020-12-21', '2021-01-09'),
+('240741129', 'remote-work', '2021-01-01', '2021-01-31'),
+('485882945', 'suspension', '2021-01-01', '2021-01-31'),
+('485882945', 'remote-work', '2020-12-01', '2020-12-31');
 
 -- --------------------------------------------------------
 
@@ -129,9 +153,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`afm`, `amka`, `name`, `surname`, `registered`, `email`, `password`, `phone`, `children`, `category`, `company_id`, `contract`, `role`) VALUES
 ('123456789', NULL, 'John', 'Smith', 0, 'john@example.com', NULL, NULL, 1, 'employee', '048919395', 'full-time', 'Υπάλληλος Γραφείου'),
-('240741129', '01106100081', 'Αθανάσιος', 'Σπηλιωτόπουλος', 1, 'spilios@gmail.com', '$2y$10$IDSGenNkkfLmugqgohhZ2ez0DBEjIbpVFv38S0lNrO3CKSa4J9GCe', '6262626262', 1, 'employee', NULL, 'full-time', 'Senior Developer'),
+('240741129', '01106100081', 'Αθανάσιος', 'Σπηλιωτόπουλος', 1, 'spilios@gmail.com', '$2y$10$IDSGenNkkfLmugqgohhZ2ez0DBEjIbpVFv38S0lNrO3CKSa4J9GCe', '6262626262', 1, 'employee', '333444563', 'full-time', 'Senior Developer'),
 ('304696340', '11111111113', 'Haruhi', 'Suzumiya', 1, 'haruhisuzu@yahoo.com', '$2y$10$.RVuwu.qqyqb2B.tEtpUx.CRawLWj76PKlbOw6By3p94eM9/anR0S', '', 0, 'employer', '048919395', 'full-time', NULL),
-('485882945', NULL, 'Suzuha', 'Amane', 0, NULL, NULL, NULL, NULL, 'employee', '048919395', 'part-time', 'Πρακτική Εργασία');
+('485882945', NULL, 'Suzuha', 'Amane', 0, 'johntitor@resistance.com', NULL, NULL, NULL, 'employee', '048919395', 'part-time', 'Πρακτική Εργασία');
 
 --
 -- Ευρετήρια για άχρηστους πίνακες
@@ -148,6 +172,12 @@ ALTER TABLE `children`
 --
 ALTER TABLE `companies`
   ADD PRIMARY KEY (`afm`);
+
+--
+-- Ευρετήρια για πίνακα `employee_info`
+--
+ALTER TABLE `employee_info`
+  ADD PRIMARY KEY (`id`,`type`,`from_date`,`to_date`);
 
 --
 -- Ευρετήρια για πίνακα `e_rendezvous`
@@ -178,6 +208,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `children`
   ADD CONSTRAINT `children_ibfk_1` FOREIGN KEY (`parent_id`) REFERENCES `users` (`afm`);
+
+--
+-- Περιορισμοί για πίνακα `employee_info`
+--
+ALTER TABLE `employee_info`
+  ADD CONSTRAINT `employee_info_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users` (`afm`);
 
 --
 -- Περιορισμοί για πίνακα `e_rendezvous`

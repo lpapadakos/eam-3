@@ -180,7 +180,7 @@ mysqli_close($link);
 		<section class="c9">
 			<?php if (!$submit_success): ?>
 			<!-- Step 1. The Form -->
-			<form class="form" id="special-leave-form" method="post" action="<?php echo samepage(); ?>">
+			<form id="special-leave-form" method="post" action="<?php echo samepage(); ?>">
 				<p>
 					Εάν <strong>επείγει</strong> κάποιο ζήτημα για το οποίο <strong>δεν μπορείτε να εξυπηρετηθήτε ηλεκτρονικά</strong>, υπάρχει η δυνατότητα καθορισμού συγκεκριμένης ημερομηνίας και ώρας για φυσική εξυπηρέτηση.
 				</p>
