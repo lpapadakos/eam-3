@@ -132,7 +132,7 @@ if ($from > $to) {
 }
 
 // Processing when table changes submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && $category == "employer") {
 	// Only start things rolling if we know the table that was modified
 	if (isset($_POST["type"]) && !empty(trim($_POST["type"]))) {
 		$type = trim($_POST["type"]);
@@ -316,7 +316,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					</tr>
 					<tr>
 					<?php if ($category == "employer"): ?>
-						<th>Ανάκληση</th>
+						<th>Διαχείριση</th>
 					<?php endif; ?>
 						<th>Δηλωμένη από</th>
 						<th>Δηλωμένη έως</th>
@@ -331,7 +331,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 							id = ?
 							AND type = '" . $tables[$i] . "'
 							AND from_date <= ?
-							AND to_date >= ?";
+							AND to_date >= ?
+						ORDER BY from_date";
 
 					$stmt = mysqli_prepare($link, $sql);
 					mysqli_stmt_bind_param($stmt, "sss", $view_afm, $to, $from);
@@ -342,6 +343,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					mysqli_stmt_bind_result($stmt, $sql_from, $sql_to, $days);
 
 					// Fetch each row of the result, append to table
+					$row = 1;
 					while (mysqli_stmt_fetch($stmt)):
 					?>
 					<tr>
@@ -349,7 +351,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 						<td>
 						<?php if ($sql_to >= date("Y-m-d")): // Can't really recall John's leave from 2006 ?>
 						<!-- input associated with form on other td -->
-						<input type="checkbox" name="remove[]" aria-label="Ανάκληση:" value="<?php echo $sql_from . ' ' . $sql_to ?>">
+						<input type="checkbox" id="checkbox<?php echo $row; ?>" name="remove[]" value="<?php echo $sql_from . ' ' . $sql_to ?>">
+						<label for="checkbox<?php echo $row++; ?>">Ανάκληση</label>
 						<?php endif; ?>
 						</td>
 						<?php endif; ?>

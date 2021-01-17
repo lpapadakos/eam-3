@@ -170,11 +170,49 @@ th { background-color: #d9edf0; background-image: -webkit-gradient(linear,left t
 #employee-tables table tr > * { border: none; padding: 8px; box-shadow: none; text-shadow: none; }
 #employee-tables table h4 { padding: 0; margin: 0; font-size: 16px; font-weight: bold; color: inherit; }
 #employee-tables table th i { font-size: 1.25em; }
+
+#employee-tables c6 { max-height: 300px; }
 #employee-tables table td:not(:last-child) { font-weight: bold; color: black; }
 
-#employee-tables table input[type="checkbox"]:checked {
-	background: red;
-}
+#employee-tables table input[type="checkbox"] + label { display: inline; vertical-align: middle; margin: 0; }
+#employee-tables table input[type="checkbox"] {
+	appearance: initial;
+	background: #eee;
+	width: 15px;
+	height: 15px;
+	position: relative;
+	border: 1px solid #aaa;
+	display: inline-block;
+	vertical-align: middle;
+ }
+#employee-tables table input[type="checkbox"]:checked { background: red; }
+
+#employee-tables table input[type="checkbox"]:checked:after {
+	/* Heres your symbol replacement */
+	content: "\00D7";
+	color: #fff;
+	font-size: 20px;
+	/* The following positions my tick in the center,
+	 * but you could just overlay the entire box
+	 * with a full after element with a background if you want to */
+	position: absolute;
+	line-height: inherit;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%,-50%);
+	-moz-transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+	/*
+	 * If you want to fully change the check appearance, use the following:
+	 * content: " ";
+	 * width: 100%;
+	 * height: 100%;
+	 * background: blue;
+	 * top: 0;
+	 * left: 0;
+	 */
+    }
 #employee-tables table tr.add td:not(.days) { padding: 0; }
 #employee-tables table tr.add input { margin: 0; display: inline-block; vertical-align: middle; }
 #employee-tables table input[type="submit"] { padding: 8px; width: 100%; }

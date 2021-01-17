@@ -76,23 +76,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	}
 
 	// Validate children information
-	for ($i = 1; $i <= $children; $i++) {
-		if (!isset($_POST["age" . $i])) {
+	if (isset($_POST["age"]) && isset($_POST["edu"])) {
+		$age = $_POST["age"];
+		$edu = $_POST["edu"];
+	} else {
+		$leave_err = "Παρακαλώ εισάγετε τα στοιχεία των τέκνων.";
+	}
+
+	for ($i = 0; $i < $children; $i++) {
+		if (!isset($age[$i]) && empty(trim($age[$i]))) {
 			$leave_err  = "Παρακαλώ εισάγετε την ηλικία του/των τέκνου/ων.";
-		} else {
-			array_push($age, $_POST["age" . $i]);
-			if (empty($age[$i - 1])) {
-				$leave_err  = "Παρακαλώ εισάγετε την ηλικία του/των τέκνου/ων.";
-			}
+			break;
 		}
 
-		if (!isset($_POST["edu" . $i])) {
+		if (!isset($edu[$i]) && empty(trim($edu[$i]))) {
 			$leave_err  = "Παρακαλώ εισάγετε την εκπαιδευτική βαθμίδα του/των τέκνου/ων.";
-		} else {
-			array_push($edu, $_POST["edu" . $i]);
-			if (empty($edu[$i - 1])) {
-				$leave_err  = "Παρακαλώ εισάγετε την εκπαιδευτική βαθμίδα του/των τέκνου/ων.";
-			}
+			break;
 		}
 	}
 
@@ -308,11 +307,11 @@ mysqli_close($link);
 				<legend>Τέκνο</legend>
 				<div class="c4">
 					<label for="age" class="required">Ηλικία:</label>
-					<input type="number" name="age" id="age" min="1" required>
+					<input type="number" name="age[]" id="age" min="1" required>
 				</div>
 				<div class="c8">
 					<label for="edu" class="required">Εκπαιδευτική βαθμίδα:</label>
-					<select name="edu" id="edu">
+					<select name="edu[]" id="edu">
 						<option disabled selected> -- Επιλέξτε -- </option>
 						<option value="1">Βρεφικός/Βρεφονηπιακός/Παιδικός σταθμός</option>
 						<option value="2">Νηπιαγωγείο</option>
@@ -380,14 +379,10 @@ $(document).ready(function(){
 				.find("legend").html(name);
 
 			newChild.find(".c4 label").attr("for", age_id);
-			newChild.find(".c4 input")
-					.attr("name", age_id)
-					.attr("id", age_id);
+			newChild.find(".c4 input").attr("id", age_id);
 
 			newChild.find(".c8 label").attr("for", edu_id);
-			newChild.find(".c8 select")
-				 	.attr("name", edu_id)
-				 	.attr("id", edu_id);
+			newChild.find(".c8 select").attr("id", edu_id);
 
 			newChild.show();
 		}

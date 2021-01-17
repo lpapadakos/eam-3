@@ -213,10 +213,10 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") { // Save referrer on GET, to redirect
 				}
 			?>
 			<label for="password" class="required">Κωδικός πρόσβασης:</label>
-			<input type="password" name="password" id="password" minlength="8" maxlength="16" required>
+			<input type="password" name="password" id="password" autocomplete="new-password" minlength="8" maxlength="16" required>
 
 			<label for="confirm-password" class="required">Επανάληψη κωδικού πρόσβασης:</label>
-			<input type="password" name="confirm-password" id="confirm-password" minlength="8" maxlength="16" required>
+			<input type="password" name="confirm-password" id="confirm-password" autocomplete="new-password" minlength="8" maxlength="16" required>
 
 			<input type="checkbox" name="consent" id="consent" required>
 			<label for="consent" class="required" style="display: inline-block">Συμφωνώ να <del>απολέσω τα νεφρά μου</del> με τους <a href="#">Όρους Χρήσης</a> και την <a href="#">Πολιτική Απορρήτου</a></label>
