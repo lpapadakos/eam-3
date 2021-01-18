@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width"/>
-	<title>Η σελίδα δεν βρέθηκε - Υπουργείο Εργασίας &amp; Κοινωνικών Υποθέσεων</title>
+	<title>Υπο Κατασκευή - Υπουργείο Εργασίας &amp; Κοινωνικών Υποθέσεων</title>
 	<link rel="shortcut icon" href="/favicon.ico"/>
 	<!-- STYLES & JQUERY
 	================================================== -->
@@ -38,14 +38,14 @@
 			<nav id="breadcrumbs" class="c12">
 				<p>
 					<a href="/" rel="index" aria-label="Αρχική" class="icon-home"></a> /
-					<span>Η ΣΕΛΙΔΑ ΔΕΝ ΒΡΕΘΗΚΕ</span>
+					<span>Η ΣΕΛΙΔΑ ΕΙΝΑΙ ΥΠΟ ΚΑΤΑΣΚΕΥΗ</span>
 				</p>
 			</nav>
 			<div class="row space-bot">
 				<div class="c1">
 				</div>
 				<div class="c10" style="text-align: center;">
-					<h1>Η σελίδα δεν βρέθηκε</h1>
+					<h1>Η σελίδα βρίσκεται υπό κατασκευή (SOON™)</h1>
 					<div class="pageline">
 					</div>
 					<!--<p>
@@ -53,7 +53,7 @@
 					</p> -->
 					<br/>
 					<a class="actionbutton" href="/"><i class="icon-link smallrightmargin"></i>ΕΠΙΣΤΡΟΦΗ ΣΤΗΝ ΑΡΧΙΚΗ</a>
-					<img id="error-image" src="/images/404.jpg" alt="Αστροναύτης χαμένος στο κενό του διαστήματος">
+					<img id="error-image" src="/images/under-construction.webp" alt="Αστροναύτης χαμένος στο κενό του διαστήματος">
 				</div>
 				<div class="c1">
 				</div>

@@ -75,6 +75,7 @@ p.alert, p.alert * { color: #454545; text-shadow: 0 1px 0 rgba(255,255,255,0.6) 
 p.alert.success { background-color: #d7e87c; border-color: #97ae1e; }
 p.alert.error { background-color: #edb39b; border-color: #ed6127; }
 p.alert.info { background-color: #d9edf0; border-color: #b8e7f5; }
+#error-image { position: relative; z-index: -1; margin-top: 40px; }
 em, i { font-style: italic; line-height: inherit; }
 strong, b { font-weight: bold; line-height: inherit; }
 small { font-size: 70%; line-height: inherit; }
@@ -265,8 +266,13 @@ th { background-color: #d9edf0; background-image: -webkit-gradient(linear,left t
 #menu {justify-content: flex-end;}
 /* JS disabled styles */
 .no-js #top-nav li:hover > ul { display: block}
+/* use viewport-relative units to cover page fully */
+body {
+	height: 100vh;
+	width: 100vw;
+      }
 /* base nav styles */
-#top-nav { display: block; margin: 0px 20px 20px 0px; position: relative; color: #666; text-transform: uppercase; font-family: OpenSansRegular; }
+#top-nav { display: block; margin-bottom: 20px; position: relative; color: #666; text-transform: uppercase; font-family: OpenSansRegular; }
 #top-nav ul { padding: 0; margin: 0; }
 #top-nav ul ul li { height: auto }
 #top-nav li { position: relative; float: left; list-style-type: none; z-index: 1; font-size: 15px; margin-left: 5px; line-height: 67px; }
@@ -558,12 +564,14 @@ ul.accordion>li.active .content { background: white; display: block; border-left
 .isotope .isotope-item { -webkit-transition-property: -webkit-transform, opacity; -moz-transition-property: -moz-transform, opacity; transition-property: transform, opacity; }
 .boxtwocolumns { width: 50%; padding-left: 10px; padding-right: 10px; margin-bottom: 20px; height: 350px; }
 .boxthreecolumns { width: 33.33%; padding-left: 10px; padding-right: 10px; margin-bottom: 20px; }
+.boxthreecolumns .details p { font-size: 1.5em; }
 .boxfourcolumns { float: left; padding-left: 10px; padding-right: 10px; width: 24.99%; display: inline-block; margin-bottom: 20px; position: relative; z-index: 0; }
 .boxfivecolumns { width: 20%; padding-left: 10px; padding-right: 10px; margin-bottom: 20px; }
 .boxcontainer { background: #fff; font-size: 12px; text-align: center; border: 1px solid #eee; border-bottom: double #ddd; }
 .boxcontainer2col { height: 350px }
 .mosaicover2col { height: 260px }
 .mosaicover4col { height: 180px }
+.boxthreecolumns .mosaicover4col { height: 250px; }
 .mosaicover5col { height: 140px }
 .boxcontainer p { margin-bottom: 10px }
 .boxcontainer h2 { font-size: 15px; line-height: 1; font-family: OpenSansRegular; font-weight: bold; padding: 20px 10px; margin: 0; color: #222; }
