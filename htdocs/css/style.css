@@ -265,12 +265,7 @@ th { background-color: #d9edf0; background-image: -webkit-gradient(linear,left t
 /* MENUS ================================================== */
 #menu {justify-content: flex-end;}
 /* JS disabled styles */
-.no-js #top-nav li:hover > ul { display: block}
-/* use viewport-relative units to cover page fully */
-body {
-	height: 100vh;
-	width: 100vw;
-      }
+.no-js #top-nav li:hover > ul { display: block; }
 /* base nav styles */
 #top-nav { display: block; margin-bottom: 20px; position: relative; color: #666; text-transform: uppercase; font-family: OpenSansRegular; }
 #top-nav ul { padding: 0; margin: 0; }
