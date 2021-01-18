@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width"/>
-	<title>Εργαλεία Εργαζόμενων - Υπουργείο Εργασίας &amp; Κοινωνικών Υποθέσεων</title>
+	<title>Εργαλεία Εργαζομένων - Υπουργείο Εργασίας &amp; Κοινωνικών Υποθέσεων</title>
 	<link rel="shortcut icon" href="/favicon.ico"/>
 	<!-- STYLES & JQUERY
 	================================================== -->
@@ -26,7 +26,7 @@
 	<div class="grid">
 		<div class="row">
 			<div class="c8">
-				<h1 class="titlehead">Εργαλεία Εργαζόμενων</h1>
+				<h1 class="titlehead">Εργαλεία Εργαζομένων</h1>
 			</div>
 		</div>
 	</div>

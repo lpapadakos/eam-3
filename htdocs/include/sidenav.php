@@ -19,7 +19,7 @@
 	<a href="/health-and-safety/covid-19"><h2 class="title stresstitle">COVID-19</h2></a>
 	<ul>
 		<li <?php if ($_SERVER["PHP_SELF"] == "/health-and-safety/covid-19/employees.php") echo 'class="active"'; ?>><a href="/health-and-safety/covid-19/employees.php">Εργαζόμενοι</a></li>
-		<li <?php if ($_SERVER["PHP_SELF"] == "/health-and-safety/covid-19/employers.php") echo 'class="active"'; ?>><a href="health-and-safety/covid-19/employers.php">Εργοδότες</a></li>
+		<li <?php if ($_SERVER["PHP_SELF"] == "/health-and-safety/covid-19/employers.php") echo 'class="active"'; ?>><a href="/health-and-safety/covid-19/employers.php">Εργοδότες</a></li>
 	</ul>
 	<?php endif; ?>
 	</nav>

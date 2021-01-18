@@ -206,15 +206,6 @@ mysqli_close($link);
 		<!-- SIDEBAR -->
 		<div class="c3">
 			<a class="stresstitle" href="."><i class="icon-arrow-left smallrightmargin"></i>Επιστροφή στα Εργαλεία</a>
-			<!-- <div class="leftsidebar">
-				<nav id="sidebar-nav">
-				<h2 class="title stresstitle">COVID-19</h2>
-				<ul>
-					<li><a href="employees.php">Εργαζόμενοι</a></li>
-					<li><a href="employers.php">Εργοδότες</a></li>
-				</ul>
-				</nav>
-			</div> -->
 		</div>
 		<!-- end sidebar -->
 		<!-- MAIN CONTENT -->

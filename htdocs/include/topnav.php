@@ -8,7 +8,7 @@
 		</div>
 		<!--Menu-->
 		<div id="menu" class="c8 no-js flex">
-			<nav id="top-nav">
+			<nav id="top-nav" class="c10">
 			<ul id="responsivemenu">
 				<li <?php if ($_SERVER["PHP_SELF"] == "/index.php") echo 'class="active"'; ?>><a href="/"><i class="icon-home homeicon"></i>ΑΡΧΙΚΗ</a></li>
 				<li <?php if (substr($_SERVER["PHP_SELF"], 0, 9) == "/ministry") echo 'class="active"'; ?>><a href="/ministry">ΤΟ ΥΠΟΥΡΓΕΙΟ</a>
@@ -52,7 +52,7 @@
 				</li>
 			</ul>
 			</nav>
-			<div id="login-area">
+			<div id="login-area" class="c2">
 				<?php if (loggedin()): ?>
 				<a id="profile" class="actionbutton" title="Προφίλ" href="/profile"><i class="icon-user smallrightmargin"></i><?php echo $_SESSION["name"]; ?></a>
 				<a id="logout" href="<?php echo '/logout.php?' . referrer(); ?>">Αποσύνδεση <i class="icon-signout"></i></a>

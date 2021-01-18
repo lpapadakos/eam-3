@@ -32,7 +32,7 @@
 	<div class="grid">
 		<div class="row">
 			<div class="c8">
-				<h1 class="titlehead">Οδηγίες για τους εργαζόμενους</h1>
+				<h1 class="titlehead">Οδηγίες για τους εργαζομένους</h1>
 			</div>
 		</div>
 	</div>
@@ -54,7 +54,7 @@
 		<!-- END SIDEBAR -->
 		<!-- CONTENT -->
 		<div class ="c9">
-			<!-- <h2 class="stresstitle">Οδηγίες για τους εργαζόμενους</h2> -->
+			<!-- <h2 class="stresstitle">Οδηγίες για τους εργαζομένους</h2> -->
 			<div class="c12">
 				<h1 class="maintitle">Αποζημίωση Ειδικού Σκοπού</h1>
 				<div class="c4">
