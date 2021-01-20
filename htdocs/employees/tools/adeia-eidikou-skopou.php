@@ -289,7 +289,6 @@ mysqli_close($link);
 					</p>
 				</div>
 				<div class="buttons c4 norightmargin">
-					<input type="reset" value="Καθαρισμός"> |
 					<input type="submit" class="actionbutton" value="Υποβολή">
 				</div>
 			</form>

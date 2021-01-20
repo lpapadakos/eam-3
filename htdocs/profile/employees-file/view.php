@@ -386,10 +386,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $category == "employer") {
 					if ($category == "employer"):
 					?>
 					<tr class="add">
-						<td>
-							<!-- <input type="reset" class="icon-" aria-label="Καθαρισμός" value="&#xf014;"> -->
-							<input type="submit" class="actionbutton" value="Υποβολή">
-						</td>
+						<td><input type="submit" class="actionbutton" value="Υποβολή"></td>
 						<td><input type="date" name="insert-from" aria-label="Εισαγωγή από:" class="from"></td>
 						<td><input type="date" name="insert-to" aria-label="Εισαγωγή έως:" class="to"></td>
 						<td class="days">(Νέα)</td>

@@ -222,7 +222,6 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") { // Save referrer on GET, to redirect
 			<label for="consent" class="required" style="display: inline-block">Συμφωνώ να <del>απολέσω τα νεφρά μου</del> με τους <a href="#">Όρους Χρήσης</a> και την <a href="#">Πολιτική Απορρήτου</a></label>
 
 			<div  class="buttons space-top">
-				<input type="reset" value="Καθαρισμός"> |
 				<input type="submit" class="actionbutton" value="Υποβολή">
 			</div>
 		</form>
