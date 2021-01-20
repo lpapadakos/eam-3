@@ -47,7 +47,7 @@
 			<div id="nav">
 				<ul class="option-set">
 					<li><a href="" data-filter="*" class="selected">Προβολή όλων</a></li>
-					<li><a href="" data-filter=".cat1">Εργασιακά</a></li>
+					<li><a href="" data-filter=".cat1">Επιχείριση</a></li>
 					<li><a href="" data-filter=".cat2">Ασφάλιση</a></li>
 					<li><a href="" data-filter=".cat3">COVID-19</a></li>
 				</ul>
@@ -59,7 +59,7 @@
 		<div id="content">
 			<div class="boxfourcolumns cat1 cat3">
 				<div class="boxcontainer">
-					<a href="#">
+					<a href="/profile/employees-file">
 					<div class="mosaic-block cover mosaicover4col">
 						<div class="mosaic-overlay">
 							<img src="/images/adeia-eidikou-skopou.jpg" alt="Εργαζόμενη μητέρα με το παιδί της">
@@ -79,7 +79,7 @@
 			</div>
 			<div class="boxfourcolumns cat1 cat3">
 				<div class="boxcontainer">
-					<a href="e-rendezvous.php">
+					<a href="#">
 					<div class="mosaic-block cover mosaicover4col">
 						<div class="mosaic-overlay">
 							<img src="/images/ypoyrgeio_ergasias.jpg" alt="Το Υπουργείο Εργασίας">
@@ -93,7 +93,7 @@
 						</div>
 						</div>
 					</div>
-					<h2><i class="icon-large icon-bolt smallrightmargin"></i>Κρατική Επιχορήγηση</h2>
+					<h2><i class="icon-large icon-money smallrightmargin"></i>Κρατική Επιχορήγηση</h2>
 					</a>
 				</div>
 			</div>
