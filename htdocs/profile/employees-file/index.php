@@ -228,7 +228,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 			// Fetch each row of the result, append to table
 			while (mysqli_stmt_fetch($stmt)) {
-				echo '<tr onclick="window.location=\'view.php?id=' . $afm . '\'">';
+				echo '<tr onclick="window.location=\'view.php?id=' . $afm . '&from=today\'">';
 				echo "<td>" . $afm . "</td>";
 				echo "<td>" . $surname . "</td>";
 				echo "<td>" . $name . "</td>";

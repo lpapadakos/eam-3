@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Φιλοξενητής: localhost
--- Χρόνος δημιουργίας: 17 Ιαν 2021 στις 01:28:50
+-- Χρόνος δημιουργίας: 20 Ιαν 2021 στις 20:31:44
 -- Έκδοση διακομιστή: 10.4.16-MariaDB
 -- Έκδοση PHP: 7.4.12
 
@@ -64,6 +64,25 @@ INSERT INTO `companies` (`afm`, `name`, `address`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Δομή πίνακα για τον πίνακα `contact`
+--
+
+CREATE TABLE `contact` (
+  `id` varchar(9) NOT NULL,
+  `time` datetime NOT NULL DEFAULT current_timestamp(),
+  `message` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Άδειασμα δεδομένων του πίνακα `contact`
+--
+
+INSERT INTO `contact` (`id`, `time`, `message`) VALUES
+('304696340', '2021-01-20 21:19:59', 'Καλημέρα, έχω πρόβλημα με τους υπαλλήλους μου. Δεν σταματούν να μιλούν. Pls help.');
+
+-- --------------------------------------------------------
+
+--
 -- Δομή πίνακα για τον πίνακα `employee_info`
 --
 
@@ -80,6 +99,8 @@ CREATE TABLE `employee_info` (
 
 INSERT INTO `employee_info` (`id`, `type`, `from_date`, `to_date`) VALUES
 ('123456789', 'leave', '2020-12-21', '2021-01-09'),
+('123456789', 'leave', '2021-01-28', '2021-01-30'),
+('123456789', 'remote-work', '2021-02-01', '2021-02-28'),
 ('240741129', 'remote-work', '2021-01-01', '2021-01-31'),
 ('485882945', 'suspension', '2021-01-01', '2021-01-31'),
 ('485882945', 'remote-work', '2020-12-01', '2020-12-31');
@@ -154,7 +175,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`afm`, `amka`, `name`, `surname`, `registered`, `email`, `password`, `phone`, `children`, `category`, `company_id`, `contract`, `role`) VALUES
 ('123456789', NULL, 'John', 'Smith', 0, 'john@example.com', NULL, NULL, 1, 'employee', '048919395', 'full-time', 'Υπάλληλος Γραφείου'),
 ('240741129', '01106100081', 'Αθανάσιος', 'Σπηλιωτόπουλος', 1, 'spilios@gmail.com', '$2y$10$IDSGenNkkfLmugqgohhZ2ez0DBEjIbpVFv38S0lNrO3CKSa4J9GCe', '6262626262', 1, 'employee', '333444563', 'full-time', 'Senior Developer'),
-('304696340', '11111111113', 'Haruhi', 'Suzumiya', 1, 'haruhisuzu@yahoo.com', '$2y$10$.RVuwu.qqyqb2B.tEtpUx.CRawLWj76PKlbOw6By3p94eM9/anR0S', '', 0, 'employer', '048919395', 'full-time', NULL),
+('304696340', '88888888888', 'Haruhi', 'Suzumiya', 1, 'haruhisuzu@yahoo.com', '$2y$10$.RVuwu.qqyqb2B.tEtpUx.CRawLWj76PKlbOw6By3p94eM9/anR0S', '', NULL, 'employer', '048919395', 'full-time', 'Διευθύντρια'),
+('349008654', NULL, 'Yuki', 'Nagato', 0, 'yuki@sosbrigade.jp', NULL, '', NULL, 'employee', '048919395', 'full-time', 'Γραμματέας'),
 ('485882945', NULL, 'Suzuha', 'Amane', 0, 'johntitor@resistance.com', NULL, NULL, NULL, 'employee', '048919395', 'part-time', 'Πρακτική Εργασία');
 
 --
@@ -172,6 +194,12 @@ ALTER TABLE `children`
 --
 ALTER TABLE `companies`
   ADD PRIMARY KEY (`afm`);
+
+--
+-- Ευρετήρια για πίνακα `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`id`,`time`);
 
 --
 -- Ευρετήρια για πίνακα `employee_info`
@@ -208,6 +236,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `children`
   ADD CONSTRAINT `children_ibfk_1` FOREIGN KEY (`parent_id`) REFERENCES `users` (`afm`);
+
+--
+-- Περιορισμοί για πίνακα `contact`
+--
+ALTER TABLE `contact`
+  ADD CONSTRAINT `contact_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users` (`afm`);
 
 --
 -- Περιορισμοί για πίνακα `employee_info`
