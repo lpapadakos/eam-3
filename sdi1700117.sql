@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Φιλοξενητής: localhost
--- Χρόνος δημιουργίας: 20 Ιαν 2021 στις 20:31:44
+-- Χρόνος δημιουργίας: 20 Ιαν 2021 στις 21:48:57
 -- Έκδοση διακομιστή: 10.4.16-MariaDB
 -- Έκδοση PHP: 7.4.12
 
@@ -58,7 +58,7 @@ CREATE TABLE `companies` (
 --
 
 INSERT INTO `companies` (`afm`, `name`, `address`) VALUES
-('048919395', 'SOS BRIGADE Α.Ε.', 'Παπαπάνου 8, Ηλιούπολη, Αττική, 76531'),
+('048919395', 'SOS BRIGADE S.A.', 'Παπαπάνου 8, Ηλιούπολη, Αττική, 76531'),
 ('333444563', 'Cellular Reasoning S.A.', NULL);
 
 -- --------------------------------------------------------
@@ -175,7 +175,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`afm`, `amka`, `name`, `surname`, `registered`, `email`, `password`, `phone`, `children`, `category`, `company_id`, `contract`, `role`) VALUES
 ('123456789', NULL, 'John', 'Smith', 0, 'john@example.com', NULL, NULL, 1, 'employee', '048919395', 'full-time', 'Υπάλληλος Γραφείου'),
 ('240741129', '01106100081', 'Αθανάσιος', 'Σπηλιωτόπουλος', 1, 'spilios@gmail.com', '$2y$10$IDSGenNkkfLmugqgohhZ2ez0DBEjIbpVFv38S0lNrO3CKSa4J9GCe', '6262626262', 1, 'employee', '333444563', 'full-time', 'Senior Developer'),
-('304696340', '88888888888', 'Haruhi', 'Suzumiya', 1, 'haruhisuzu@yahoo.com', '$2y$10$.RVuwu.qqyqb2B.tEtpUx.CRawLWj76PKlbOw6By3p94eM9/anR0S', '', NULL, 'employer', '048919395', 'full-time', 'Διευθύντρια'),
+('304696340', '88888888888', 'Haruhi', 'Suzumiya', 1, 'haruhisuzu@yahoo.com', '$2y$10$6GR9qf8P/vKvawMY/aYmIuFILwld/GAvBSqVDgaKHMViwXhY57hWO', '', NULL, 'employer', '048919395', 'full-time', 'Διευθύντρια'),
 ('349008654', NULL, 'Yuki', 'Nagato', 0, 'yuki@sosbrigade.jp', NULL, '', NULL, 'employee', '048919395', 'full-time', 'Γραμματέας'),
 ('485882945', NULL, 'Suzuha', 'Amane', 0, 'johntitor@resistance.com', NULL, NULL, NULL, 'employee', '048919395', 'part-time', 'Πρακτική Εργασία');
 

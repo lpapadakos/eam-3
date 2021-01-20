@@ -257,8 +257,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $category == "employer") {
 					<input type="submit" class="actionbutton" value="Υποβολή">
 					</noscript>
 
-					<a id="view-all" href="<?php echo samepage() . "?id=" . $view_afm; ?>">Προβολή όλων</a> |
-					<a id="view-today" href="<?php echo samepage() . "?id=" . $view_afm . "&from=today"; ?>">Προβολή από σήμερα</a>
+					<a id="view-all" href="<?php echo samepage() . "?id=" . $view_afm; ?>"<?php if (empty($from) && empty($to)) echo 'style="font-weight: bold"'; ?>>Προβολή όλων</a> |
+					<a id="view-today" href="<?php echo samepage() . "?id=" . $view_afm . "&from=today"; ?>"<?php if (isset($_GET["from"]) && $_GET["from"] == "today") echo 'style="font-weight: bold"'; ?>>Προβολή από σήμερα</a>
 				</p>
 			</form>
 
