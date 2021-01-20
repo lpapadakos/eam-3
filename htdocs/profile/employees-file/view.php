@@ -287,12 +287,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $category == "employer") {
 					FROM employee_info
 					WHERE
 						id = ?
-						AND type = '" . $tables[$i] . "'
-						AND from_date <= ?
-						AND to_date >= ?";
+						AND type = '" . $tables[$i] . "' "
+						. (empty($to) ? "" : " AND from_date <= ? ")
+						. (empty($from) ? "" : " AND to_date >= ? ")
+					. "ORDER BY from_date";
 
 				$stmt = mysqli_prepare($link, $sql);
-				mysqli_stmt_bind_param($stmt, "sss", $view_afm, $to, $from);
+
+				if (!empty($from) && !empty($to))
+					mysqli_stmt_bind_param($stmt, "sss", $view_afm, $to, $from);
+				elseif (!empty($from) && empty($to))
+					mysqli_stmt_bind_param($stmt, "ss", $view_afm, $from);
+				elseif (empty($from) && !empty($to))
+					mysqli_stmt_bind_param($stmt, "ss", $view_afm, $to);
+				else
+					mysqli_stmt_bind_param($stmt, "s", $view_afm);
 
 				mysqli_stmt_execute($stmt);
 
