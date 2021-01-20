@@ -172,7 +172,7 @@ mysqli_close($link);
 				<?php
 					if ($submit_success) {
 						echo '<p class="alert success">';
-						echo '<i class="icon-ok-sign smallrightmargin"></i>Το μήνυμα σας εστάλη. ΘΑ σας απαντήσουμε το συντομότερο δυνατόν.';
+						echo '<i class="icon-ok-sign smallrightmargin"></i>Το μήνυμα σας εστάλη. Θα σας απαντήσουμε το συντομότερο δυνατόν.';
 						echo '</p>';
 					};
 				?>

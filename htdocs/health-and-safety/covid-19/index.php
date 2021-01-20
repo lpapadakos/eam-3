@@ -83,16 +83,12 @@
 					<h1 class="maintitle">ΩΡΑΡΙΟ ΕΠΙΣΚΕΨΕΩΝ</h1>
 					<div class="c8" >
 						<ul style="float:inline-start; margin-right:5%; font-size:15px" >
-							<li >Δευτερα-Παρασκευη</li>
-							<li>0:00-0:00</li>
-						</ul>
-						<ul style="float:inline-start; margin-right:5%; font-size:15px">
-							<li>Σαββατο-Κυριακη</li>
-							<li>0:00-0:00</li>
+							<li>Δευτέρα - Παρασκευή</li>
+							<li>07:00πμ - 02:00μμ</li>
 						</ul>
 					</div>
 					<div class="c4">
-						<a class="actionbutton" href="..\..\employees\tools\e-rendezvous.php">
+						<a class="actionbutton" href="/employees/tools/e-rendezvous.php">
 							Κλείστε Ραντεβού
 						</a>
 					</div>
