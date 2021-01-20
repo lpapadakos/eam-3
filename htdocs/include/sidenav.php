@@ -12,7 +12,7 @@
 			<a href="/profile/employees-file/view.php"><i class="icon-file-alt smallrightmargin"></i>Το Αρχείο Μου</a>
 			<?php endif; ?>
 		</li>
-		<li><a href="/profile/change-password.php">Αλλαγή κωδικού πρόσβασης</a></li>
+		<li><a href="/profile/change-password.php?<?php echo referrer(); ?>">Αλλαγή κωδικού πρόσβασης</a></li>
 		<li><a href="#" class="alert error">Διαγραφή λογαριασμού</a></li>
 	</ul>
 	<?php elseif (substr($_SERVER["PHP_SELF"], 0, 27) == "/health-and-safety/covid-19"): ?>
