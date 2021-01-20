@@ -235,12 +235,21 @@ mysqli_close($link);
 
 				<div>
 					<div class="c6 noleftmargin">
-						<label for="from" class="required">Επιλογή ημέρας:</label>
+						<label for="date" class="required">Επιλογή ημέρας:</label>
 						<input type="date" name="date" id="date" required>
 					</div>
 					<div class="c6 norightmargin">
-						<label for="from" class="required">Επιλογή ώρας:</label>
-						<input type="time" name="time" id="time" required>
+						<label for="time" class="required">Επιλογή ώρας:</label>
+						<select name="time" id="time">
+							<!-- <option disabled selected> -- Επιλέξτε -- </option> -->
+							<option value="07:00">07:00 πμ</option>
+							<option value="08:00">08:00 πμ</option>
+							<option value="09:00">09:00 πμ</option>
+							<option value="10:00">10:00 πμ</option>
+							<option value="11:00">11:00 πμ</option>
+							<option value="12:00">12:00 μμ</option>
+							<option value="13:00">13:00 μμ</option>
+						</select>
 					</div>
 				</div>
 
@@ -290,16 +299,21 @@ mysqli_close($link);
 
 $(document).ready(function(){
 	// Date validation
-	var today = new Date().toISOString().split('T')[0];
+	var tomorrow = new Date();
+	tomorrow.setDate(tomorrow.getDate() + 1);
+	tomorrow = tomorrow.toISOString().split('T')[0];
 
-	// Disallow dates before today
-	//$("#date").val(today);
-	$('#date').attr("min", today);
+	// Disallow dates before tomorrow
+	$('#date').attr("min", tomorrow);
 
-	// Disallow "to" date, before "from" date
-	// $('#from, #to').on('change', function(){
-	// 	$('#to').attr('min', $('#from').val());
-	// });
+	// Disallow Weekends
+	$('#date').change(function(){
+		var day = new Date(this.value).getUTCDay();
+		if ([6,0].includes(day)) {
+			this.value = '';
+			alert('Ραντεβού επιτρέπονται μόνο τις εργάσιμες μέρες!');
+		}
+	});
 });
 
 </script>
