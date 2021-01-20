@@ -192,9 +192,9 @@ mysqli_close($link);
 		<section class="c9">
 			<?php
 				if ($submit_success) {
-						echo '<p class="alert success">';
-						echo '<i class="icon-ok-sign smallrightmargin"></i>Οι αλλαγές στο προφίλ σας αποθηκεύτηκαν.';
-						echo '</p>';
+					echo '<p class="alert success">';
+					echo '<i class="icon-ok-sign smallrightmargin"></i>Οι αλλαγές στο προφίλ σας αποθηκεύτηκαν.';
+					echo '</p>';
 				};
 			?>
 			<form id="profile-data-form" method="post" action="<?php echo samepage(); ?>">

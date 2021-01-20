@@ -16,7 +16,7 @@ function autocomplete($input) {
 	$flag = loggedin();
 
 	if ($flag)
-		echo 'value="' . $input . '"';
+		echo 'value="' . htmlspecialchars($input) . '"';
 
 	return $flag;
 }

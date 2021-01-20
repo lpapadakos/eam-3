@@ -108,6 +108,9 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, textarea:focus { border: 1px solid; border-color: rgba(82,168,236,0.8); color: #444; box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(81,168,236,0.5); -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(81,168,236,0.5); -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(81,168,236,0.5); }
 textarea { min-height: 120px }
 input[type="checkbox"] { display: inline }
+#view-window, #view-window input, #view-window label{ font-size: 14px; display: inline-block; width: initial; vertical-align: middle; margin: 0; }
+#view-window a { text-decoration: underline; }
+#view-all { margin-left: 10px; }
 label span, legend span { font-size: 12px; color: #444; }
 label.required:after { content: " *"; color: red; }
 input[type="reset"] { background-color: inherit; cursor: pointer; }
@@ -181,39 +184,15 @@ th { background-color: #d9edf0; background-image: -webkit-gradient(linear,left t
 	background: #eee;
 	width: 15px;
 	height: 15px;
-	position: relative;
-	border: 1px solid #aaa;
+	border: 1px solid #777;
 	display: inline-block;
 	vertical-align: middle;
  }
-#employee-tables table input[type="checkbox"]:checked { background: red; }
 
-#employee-tables table input[type="checkbox"]:checked:after {
-	/* Heres your symbol replacement */
-	content: "\00D7";
-	color: #fff;
-	font-size: 20px;
-	/* The following positions my tick in the center,
-	 * but you could just overlay the entire box
-	 * with a full after element with a background if you want to */
-	position: absolute;
-	line-height: inherit;
-	left: 50%;
-	top: 50%;
-	-webkit-transform: translate(-50%,-50%);
-	-moz-transform: translate(-50%,-50%);
-	-ms-transform: translate(-50%,-50%);
-	transform: translate(-50%,-50%);
-	/*
-	 * If you want to fully change the check appearance, use the following:
-	 * content: " ";
-	 * width: 100%;
-	 * height: 100%;
-	 * background: blue;
-	 * top: 0;
-	 * left: 0;
-	 */
-    }
+ /* Checbox cross replacement */
+#employee-tables table input[type="checkbox"]:checked { background: red; }
+#employee-tables table input[type="checkbox"]:checked:after { content: "\00D7";	color: #fff; font-size: 23px; font-weight: bold; line-height: 15px; }
+
 #employee-tables table tr.add td:not(.days) { padding: 0; }
 #employee-tables table tr.add input { margin: 0; display: inline-block; vertical-align: middle; }
 #employee-tables table input[type="submit"] { padding: 8px; width: 100%; }

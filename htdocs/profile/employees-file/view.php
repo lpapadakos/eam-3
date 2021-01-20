@@ -38,7 +38,9 @@ mysqli_stmt_close($stmt);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$_GET["id"] = $_POST["id"];
 	$_GET["from"] = $_POST["from"];
-	$_GET["to"] = $_POST["to"];
+
+	// Reset 'to' on submit, to see newer addition
+	//$_GET["to"] = $_POST["to"];
 }
 
 // Assume unauthorized
@@ -113,22 +115,19 @@ mysqli_stmt_close($stmt);
 // Validate 'from' date
 if (isset($_GET["from"])) {
 	$from = trim($_GET["from"]);
-	if (empty($from)) {
-		$err = "Παρακαλώ εισάγετε την αρχική ημερομηνία για το διάστημα εμφάνισης.";
-	}
+
+	if ($from == "today")
+		$from = date("Y-m-d");
 }
 
 // Validate 'to' date
 if (isset($_GET["to"])) {
 	$to = trim($_GET["to"]);
-	if (empty($to)) {
-		$err = "Παρακαλώ εισάγετε την τελική ημερομηνία για το διάστημα εμφάνισης.";
-	}
-}
 
-if ($from > $to) {
-	$from = $to = "";
-	$err = "Λανθασμένο διάστημα χρόνου";
+	if ($from > $to) {
+	 	$from = $to = "";
+	 	$err = "Λανθασμένο διάστημα χρόνου.";
+	}
 }
 
 // Processing when table changes submitted
@@ -176,6 +175,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $category == "employer") {
 
 			mysqli_stmt_close($stmt);
 		}
+
+		// If everything ran smoothly, it's time for the success message!
+		$submit_success = true;
 	}
 }
 ?>
@@ -232,9 +234,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $category == "employer") {
 			<h2 class="stresstitle"><i class="icon-building smallrightmargin"></i><?php echo $company_name; ?></h2>
 			<h3 class="space-top"><i class="icon-user smallrightmargin"></i><?php echo $view_name . ' ' . $view_surname; ?></h3>
 
-			<form class="space-bot" id="date-range-form" method="get" action="<?php echo samepage(); ?>">
+			<form id="date-range-form" method="get" action="<?php echo samepage(); ?>">
 				<p class="space-top">
-					Επιλέξτε ένα χρόνικό διάστημα. Θα εμφανιστούν οι δηλωμένοι περίοδοι αδειών/αναστολής/τηλεργασίας, εφόσον μέρος αυτών βρίσκεται στο διάστημα που επιλέξατε.
+					Αν επιλέξτε ένα χρόνικό διάστημα, Θα εμφανιστούν μόνο οι δηλωμένοι περίοδοι αδειών/αναστολής/τηλεργασίας που επικαλύπτονται με το διάστημα που επιλέξατε.
 				</p>
 
 				<?php
@@ -247,25 +249,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $category == "employer") {
 
 				<input type="hidden" name="id" id="id" <?php autocomplete($view_afm); ?>>
 
-				<div class="c3 noleftmargin">
-					<label for="from" class="required">Από:</label>
-					<input type="date" name="from" id="from" required <?php autocomplete($from); ?>>
-				</div>
-				<div class="c2 text-center">
-					<br><i class="icon-arrow-right homeicon" style="vertical-align: bottom"></i>
-				</div>
-				<div class="c3">
-					<label for="to" class="required">Έως:</label>
-					<input type="date" name="to" id="to" required <?php autocomplete($to); ?>>
-				</div>
-
-				<noscript>
-				<div class="c4 norightmargin text-right">
-					<input type="reset" value="Καθαρισμός"> |
+				<p class="alert info" id="view-window">
+					Φαίνονται οι καταχωρίσεις
+					από: <input type="date" aria-label="Από:" name="from" id="from" <?php autocomplete($from); ?>>
+					έως: <input type="date" aria-label="Έως:" name="to" id="to" <?php autocomplete($to); ?>>
+					<noscript>
 					<input type="submit" class="actionbutton" value="Υποβολή">
-				</div>
-				</noscript>
+					</noscript>
+
+					<a id="view-all" href="<?php echo samepage() . "?id=" . $view_afm; ?>">Προβολή όλων</a> |
+					<a id="view-today" href="<?php echo samepage() . "?id=" . $view_afm . "&from=today"; ?>">Προβολή από σήμερα</a>
+				</p>
 			</form>
+
+			<?php
+				if ($submit_success) {
+					echo '<p class="alert success clear">';
+					echo '<i class="icon-ok-sign smallrightmargin"></i>Οι αλλαγές σας στο αρχείο αποθηκεύτηκαν.';
+					echo '</p>';
+				};
+			?>
 
 			<div id="employee-tables" class="clear space-top">
 				<?php
@@ -329,13 +332,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $category == "employer") {
 						FROM employee_info
 						WHERE
 							id = ?
-							AND type = '" . $tables[$i] . "'
-							AND from_date <= ?
-							AND to_date >= ?
-						ORDER BY from_date";
+							AND type = '" . $tables[$i] . "' "
+							. (empty($to) ? "" : " AND from_date <= ? ")
+							. (empty($from) ? "" : " AND to_date >= ? ")
+						. "ORDER BY from_date";
 
 					$stmt = mysqli_prepare($link, $sql);
-					mysqli_stmt_bind_param($stmt, "sss", $view_afm, $to, $from);
+
+					if (!empty($from) && !empty($to))
+						mysqli_stmt_bind_param($stmt, "sss", $view_afm, $to, $from);
+					elseif (!empty($from) && empty($to))
+						mysqli_stmt_bind_param($stmt, "ss", $view_afm, $from);
+					elseif (empty($from) && !empty($to))
+						mysqli_stmt_bind_param($stmt, "ss", $view_afm, $to);
+					else
+						mysqli_stmt_bind_param($stmt, "s", $view_afm);
 
 					mysqli_stmt_execute($stmt);
 
@@ -351,8 +362,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $category == "employer") {
 						<td>
 						<?php if ($sql_to >= date("Y-m-d")): // Can't really recall John's leave from 2006 ?>
 						<!-- input associated with form on other td -->
-						<input type="checkbox" id="checkbox<?php echo $row; ?>" name="remove[]" value="<?php echo $sql_from . ' ' . $sql_to ?>">
-						<label for="checkbox<?php echo $row++; ?>">Ανάκληση</label>
+						<input type="checkbox" id="<?php echo $tables[$i] . "-checkbox" . $row; ?>" name="remove[]" value="<?php echo $sql_from . ' ' . $sql_to ?>">
+						<label for="<?php echo $tables[$i] . "-checkbox" . $row; ?>">Ανάκληση</label>
 						<?php endif; ?>
 						</td>
 						<?php endif; ?>
@@ -445,6 +456,14 @@ $(document).ready(function(){
 		var dayCount = Math.round(Math.abs((to - from) / oneDay)) + 1;
 
 		$(this).closest('tr').find('.days').html(dayCount);
+	});
+
+	// View all function
+	$('#view-all').click(function(){
+		$('#from').val("");
+		$('#to').val("");
+
+		$('#date-range-form').submit();
 	});
 });
 
