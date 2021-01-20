@@ -60,6 +60,15 @@ mysqli_stmt_close($stmt);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	// Get the changed elements from the form, and update records in db
 
+	// User info
+	// AFM is immutable
+
+	// Validate amka
+	if (empty(trim($_POST["amka"])) && !is_null($amka) && !empty($amka))
+		$user_err = "Παρακαλώ εισάγετε τον ΑΜΚΑ σας.";
+	else
+		$amka = trim($_POST["amka"]);
+
 	// Validate name
 	if (empty(trim($_POST["name"])))
 		$user_err = "Παρακαλώ εισάγετε το όνομά σας.";
@@ -71,14 +80,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$user_err = "Παρακαλώ εισάγετε το επώνυμό σας.";
 	else
 		$surname = trim($_POST["surname"]);
-
-	// AFM is immutable
-
-	// Validate amka
-	if (empty(trim($_POST["amka"])) && !is_null($amka) && !empty($amka))
-		$user_err = "Παρακαλώ εισάγετε τον ΑΜΚΑ σας.";
-	else
-		$amka = trim($_POST["amka"]);
 
 	// Validate email
 	if (empty(trim($_POST["email"])))
@@ -94,6 +95,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	//TODO: hmm
 	// Category is immutable
+
+	if ($category == "employer") {
+		// Existing company afm is immutable, else insert new company
+		if (!isset($company_afm)) {
+			// Validate company afm
+			if (empty(trim($_POST["company-afm"])))
+				$company_err = "Παρακαλώ εισάγετε τον ΑΦΜ/VAT της εταιρείας.";
+			else
+				$company_afm = trim($_POST["company-afm"]);
+		}
+
+		// Validate company name
+		if (empty(trim($_POST["company-name"])))
+			$company_err = "Παρακαλώ εισάγετε την επνυμία της εταιρείας.";
+		else
+			$company_name = trim($_POST["company-name"]);
+
+		// Validate company address
+		if (empty(trim($_POST["company-address"])))
+			$company_err = "Παρακαλώ εισάγετε τη διεύθυνση της εταιρείας.";
+		else
+			$company_address = trim($_POST["company-address"]);
+	}
 
 	// Validate password to apply changes
 	$password = $_POST["password"];
@@ -118,15 +142,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 		mysqli_stmt_close($stmt);
 
+		// Employers can change company details
 		if ($category == "employer") {
 			// Update company info
-			$sql = "UPDATE companies SET
-					name = ?,
-					address = ?
-				WHERE afm = ?";
+			$sql = "INSERT INTO companies (afm, name, address) VALUES (?, ?, ?)
+				ON DUPLICATE KEY UPDATE
+					name = VALUES(name),
+					address = VALUES(address)";
 
 			$stmt = mysqli_prepare($link, $sql);
-			mysqli_stmt_bind_param($stmt, "sss", $company_name, $company_address, $company_afm);
+			mysqli_stmt_bind_param($stmt, "sss", $company_afm, $company_name, $company_address);
 
 			mysqli_stmt_execute($stmt);
 
@@ -203,6 +228,9 @@ mysqli_close($link);
 				</p>
 
 				<section>
+				<h2 class="maintitle space-top">
+					<span>Στοιχεία Χρήστη</span>
+				</h2>
 				<?php
 					if (!empty($user_err)) {
 						echo '<p class="alert error">';
@@ -210,9 +238,6 @@ mysqli_close($link);
 						echo '</p>';
 					}
 				?>
-				<h2 class="maintitle space-top">
-					<span>Στοιχεία Χρήστη</span>
-				</h2>
 
 				<div class="c6 noleftmargin">
 					<label for="afm" class="required">ΑΦΜ:</label>
@@ -251,6 +276,9 @@ mysqli_close($link);
 				</section>
 
 				<section class="clear">
+				<h2 class="maintitle space-top">
+					<span>Στοιχεία Επιχείρισης</span>
+				</h2>
 				<?php
 					if (!empty($company_err)) {
 						echo '<p class="alert error">';
@@ -258,19 +286,16 @@ mysqli_close($link);
 						echo '</p>';
 					}
 				?>
-				<h2 class="maintitle space-top">
-					<span>Στοιχεία Επιχείρισης</span>
-				</h2>
 
 				<?php if ($category != "employer"): ?>
 				<p class="alert info">
-				<i class="icon-info-sign smallrightmargin"></i>Τα παρακάτω στοιχεία ορίζονται από τον εργοδότη.
+					<i class="icon-info-sign smallrightmargin"></i>Τα παρακάτω στοιχεία ορίζονται από τον εργοδότη.
 				</p>
 				<?php endif; ?>
 
 				<div class="c6 noleftmargin">
 					<label for="company-afm" class="required">ΑΦΜ/VAT:</label>
-					<input type="text" name="afm" id="afm" pattern="[0-9]+" minlength="9" maxlength="9" required <?php autocomplete_disabled($company_afm); if ($category != "employer") echo ' disabled'; ?>>
+					<input type="text" name="company-afm" id="company-afm" pattern="[0-9]+" minlength="9" maxlength="9" required <?php autocomplete_disabled($company_afm); if ($category != "employer") echo ' disabled'; ?>>
 				</div>
 
 				<div class="clear">
